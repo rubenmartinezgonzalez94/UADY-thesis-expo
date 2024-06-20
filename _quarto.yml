@@ -1,0 +1,14 @@
+project:
+  type: website
+  output-dir: docs
+
+format:
+  revealjs:
+    theme: night
+    slideNumber: true
+    transition: slide
+    incrementalLists: true
+    center: true
+    controls: true
+    progress: true
+    history: true
