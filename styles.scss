@@ -1,0 +1,65 @@
+#title-slide {
+  .title {
+    font-size: 1.5em !important;
+  }
+
+  .subtitle {
+    font-size: .6em !important;
+  }
+
+  .quarto-title-authors {
+    margin-bottom: 2em;
+
+    .quarto-title-author {
+      width: 30%;
+
+      .quarto-title-author-name {
+        font-size: .55em;
+      }
+
+      .quarto-title-author-email {
+        font-size: .4em;;
+      }
+    }
+  }
+
+  .date {
+    font-size: 0.5em;
+  }
+}
+
+#TOC {
+  li {
+    font-size: x-large !important;
+  }
+}
+
+img.slide-logo {
+  /*poner un svg de color blanco*/
+  filter: invert(1);
+  max-height: 4rem !important;
+}
+
+div.reveal-header {
+  grid-template-columns: .7fr 2fr .7fr .4fr !important;
+}
+#aprendizaje-por-refuerzo{
+    .my-rl-diagram {
+        filter: invert(1);
+        width: 90% !important;
+        height: auto !important;
+    }
+  .my-rl-list{
+    //width: 45%;
+    height: 2.5em;
+  }
+  .my-rl-list-s{
+    width: 20%;
+    margin: 0 1px;
+  }
+
+}
+.my-list-s{
+  width: 22%;
+  margin: 0 1px;
+}
