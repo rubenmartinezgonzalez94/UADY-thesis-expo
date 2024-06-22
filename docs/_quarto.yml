@@ -41,7 +41,7 @@ format:
     code-line-highlight: true
     sc-sb-title: true
     incremental: true
-css: styles.scss
+css: styles.css
 filters:
   - reveal-header
 revealjs-plugins:
