@@ -371,12 +371,21 @@ Dr.&nbsp;Víctor Uc Cetina
 <li class="fragment"><a href="#/estacionamiento" id="/toc-estacionamiento">Estacionamiento</a></li>
 <li class="fragment"><a href="#/sistemas-de-asistencia-al-conductor" id="/toc-sistemas-de-asistencia-al-conductor">Sistemas de asistencia al conductor</a></li>
 <li class="fragment"><a href="#/aprendizaje-por-refuerzo" id="/toc-aprendizaje-por-refuerzo">Aprendizaje por Refuerzo</a></li>
+<li class="fragment"><a href="#/visión-computacional" id="/toc-visión-computacional">Visión Computacional</a></li>
 </ul></li>
 <li class="fragment"><a href="#/metodología" id="/toc-metodología">Metodología</a>
 <ul>
 <li class="fragment"><a href="#/entorno-de-simulación" id="/toc-entorno-de-simulación">Entorno de simulación</a></li>
+<li class="fragment"><a href="#/representación-de-la-posición-relativa-al-estacionamiento" id="/toc-representación-de-la-posición-relativa-al-estacionamiento">Representación de la posición relativa al estacionamiento</a></li>
 </ul></li>
-<li class="fragment"><a href="#/python" id="/toc-python">python</a></li>
+<li class="fragment"><a href="#/preguntas-de-investigación" id="/toc-preguntas-de-investigación">Preguntas de investigación</a></li>
+<li class="fragment"><a href="#/hipótesis" id="/toc-hipótesis">Hipótesis</a></li>
+<li class="fragment"><a href="#/objetivos" id="/toc-objetivos">Objetivos</a>
+<ul>
+<li class="fragment"><a href="#/objetivo-general" id="/toc-objetivo-general">Objetivo general:</a></li>
+<li class="fragment"><a href="#/objetivos-específicos" id="/toc-objetivos-específicos">Objetivos específicos:</a></li>
+<li class="fragment"><a href="#/calendario" id="/toc-calendario">calendario</a></li>
+</ul></li>
 </ul>
 </nav>
 </section>
@@ -394,11 +403,22 @@ Dr.&nbsp;Víctor Uc Cetina
 <li class="fragment">¿Cómo se puede mejorar?</li>
 </ul>
 
+<!-- 
+El estacionamiento es el acto de dejar un vehículo en reposo durante un período de tiempo determinado.
+Es importante porque permite a los conductores dejar sus vehículos de forma segura mientras realizan otras actividades.
+Sin embargo, en lugares concurridos, se torna complicado encontrar un lugar o lograr dirigir el vehículo para estacionar.
+Con la ayuda de tecnologías como visión computacional y aprendizaje automático, se han desarrollado soluciones de asistencia al conductor que facilitan esta tarea. 
+-->
 <img data-src=".\img/estfull.png" class="r-stretch"></section>
 
 <section id="sistemas-de-asistencia-al-conductor" class="title-slide slide level2 center">
 <h2>Sistemas de asistencia al conductor</h2>
-<p><img src="./img/asistencia1.jpg" alt="" width="30%"> <img src="./img/reversa.jpeg" alt="" width="30%"> <img src="./img/reversa2.jpg" alt="" width="30%"></p>
+<p><img src="./img/asistencia1.jpg" alt=""> <img src="./img/reversa.jpeg" alt=""> <img src="./img/reversa2.jpg" alt=""></p>
+<!-- 
+Los sistemas de asistencia al conductor son programas informáticos que proporcionan al conductor información sobre el entorno del vehículo.
+Algunos son tan avanzados que pueden estacionar el vehículo de forma autónoma y otros más simples que solo proporcionan información sobre la distancia a objetos cercanos.
+Una solución eficaz que puede contribuir a la mejora de estos sistemas es la inteligencia artificial.
+Si una red neuronal aprendiera a estacionar un vehículo en un ambiente controlado, con este conocimiento podría retornar información de utilidad para cumplir la tarea de estacionamiento. -->
 </section>
 
 <section id="aprendizaje-por-refuerzo" class="title-slide slide level2 center">
@@ -420,6 +440,26 @@ Dr.&nbsp;Víctor Uc Cetina
 </ul>
 </div>
 </div>
+<!-- Dentro de la inteligencia artificial, un buen candidato para esta situación son los algoritmos de aprendizaje por refuerzo.
+Estos algoritmos se basan en la interacción de un agente con un entorno.
+El agente realiza acciones en un entorno y un intérprete analiza cómo cambia el estado del entorno.
+El intérprete le da una recompensa al agente dependiendo de la acción realizada.
+El agente aprende a realizar acciones que maximicen la recompensa.
+
+En el caso de estacionamiento, el agente sería el vehículo,
+las acciones serían las maniobras que puede realizar el vehículo, acelerar, frenar, girar.
+El entorno sería el estacionamiento.
+El intérprete sería un sistema que analice los datos de los sensores del vehículo, como la cámara.
+El estado podría ser la pose del vehículo con respecto al estacionamiento.
+La recompensa podría ser una función que premie al vehículo por realizar una maniobra correcta y penalice por realizar una incorrecta. -->
+</section>
+
+<section id="visión-computacional" class="title-slide slide level2 center">
+<h2>Visión Computacional</h2>
+<p><img src="./img/up.png" alt=""> <img src="./img/front.png" alt=""></p>
+<!-- ¿Qué haría falta para implementar un algoritmo así?
+Pues el agente, las acciones y el entorno nos lo puede proveer un simulador.
+Y el intérprete, el estado y la recompensa lo podemos estimar con análisis de visión computacional. -->
 </section>
 </section>
 <section>
@@ -438,27 +478,118 @@ Dr.&nbsp;Víctor Uc Cetina
 <iframe src="https://www.youtube.com/embed/q4V9GYjA1pE" width="100%" height="500">
 </iframe>
 </div><div class="column" style="width:50%;">
-<p><img class="my-list-s" src="./img/intel.png" alt=""> <img class="my-list-s" src="./img/tri.png" alt=""> <img class="my-list-s" src="./img/compvisioncenter.png" alt=""> <img class="my-list-s" src="./img/UnrealEngine.svg" alt=""></p>
+<ul>
+<li class="fragment"><p>Car learning to act</p></li>
+<li class="fragment"><p>Simulador de código abierto</p></li>
+<li class="fragment"><p>Entornos urbanos</p></li>
+<li class="fragment"><p>Ciudades, carreteras, estacionamientos</p></li>
+<li class="fragment"><p>Vehículos, peatones, semáforos, sensores</p></li>
+<li class="fragment"><p>Api Python</p></li>
+<li class="fragment"><p><img class="my-list-s" src="./img/intel.png" alt=""> <img class="my-list-s" src="./img/tri.png" alt=""> <img class="my-list-s" src="./img/compvisioncenter.png" alt=""> <img class="my-list-s" src="./img/UnrealEngine.svg" alt=""></p></li>
+</ul>
+</div>
+</div>
+<!-- Para simular el entorno de estacionamiento se utilizará el simulador Carla (Car learning to act).
+Carla es un simulador de código abierto para la investigación de la conducción autónoma.
+Incluye mapas de entornos urbanos con ciudades, carreteras, estacionamientos,
+así como diversos actores como vehículos, peatones, semáforos o sensores
+que proveen interfaces para manipular su comportamiento a conveniencia. -->
+</section>
+<section id="diseño-del-entorno-de-simulación" class="slide level3 center">
+<h3>Diseño del entorno de simulación</h3>
+<p><img class="my-h" src="./img/distances.png" alt=""> <img class="my-h" src="./img/distances2.png" alt=""> <img class="my-h" src="./img/mirrow_camara_ex.jpg" alt=""> <img class="my-h" src="./img/mirrow_camara_ex2.jpg" alt=""></p>
+</section>
+
+<section id="representación-de-la-posición-relativa-al-estacionamiento" class="title-slide slide level2 center">
+<h2>Representación de la posición relativa al estacionamiento</h2>
+
+</section>
+<section id="origen-del-sistema-de-coordenadas" class="slide level3 center">
+<h3>Origen del sistema de coordenadas</h3>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img class="my-h" src="./img/distances_ubi_11.png" alt=""> <img class="my-h" src="./img/distances_ubi_12.png" alt=""></p>
+</div><div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Eje z se define como la altura conocida de la camara con respecto al suelo.</li>
+<li class="fragment">Eje x se define como la orientación del vehículo</li>
+<li class="fragment">Eje y se define como la orientación lateral del vehículo</li>
+</ul>
 </div>
 </div>
 </section>
+<section id="puntos-de-referencia" class="slide level3 center">
+<h3>Puntos de referencia</h3>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img class="my-h" src="./img/distances_ubi_21.png" alt=""> <img class="my-h" src="./img/distances_ubi_22.png" alt=""></p>
+</div><div class="column" style="width:60%;">
+<ul>
+<li class="fragment">Punto 1: Esquina superior izquierda.</li>
+<li class="fragment">Punto 2: Esquina superior derecha.</li>
+<li class="fragment">Punto 3: Esquina inferior izquierda.</li>
+<li class="fragment">Punto 4: Esquina inferior derecha.</li>
+</ul>
+</div>
+</div>
 </section>
-<section id="python" class="title-slide slide level1 center">
-<h1>python</h1>
-<div id="cell-fig-polar" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<div id="fig-polar" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-polar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="index_files/figure-revealjs/fig-polar-output-1.png" width="450" height="439">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-polar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: A line plot on a polar axis
-</figcaption>
-</figure>
+<section id="coordenadas-cilíndricas" class="slide level3 center">
+<h3>Coordenadas cilíndricas</h3>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img class="my-h" src="./img/distances_ubi_31.png" alt=""> <img class="my-h" src="./img/distances_ubi_32.png" alt=""></p>
+</div><div class="column" style="width:60%;">
+<ul>
+<li class="fragment">ρ: a distancia entre el vehículo y un punto de referencia.</li>
+<li class="fragment">θ: ángulo de orientación del vehículo.</li>
+<li class="fragment">z: Esquina inferior izquierda.</li>
+</ul>
 </div>
 </div>
-</div>
+</section>
+<section id="posición-relativa" class="slide level3 center">
+<h3>Posición relativa</h3>
+<p>(ρ1,θ1,z), (ρ2,θ2,z), (ρ3,θ3,z), (ρ4,θ4,z)</p>
+</section>
+</section>
+<section id="preguntas-de-investigación" class="title-slide slide level1 center">
+<h1>Preguntas de investigación</h1>
+<ul>
+<li class="fragment">¿Cómo se puede representar la posición de un vehículo con respecto a su espacio de estacionamiento?</li>
+<li class="fragment">¿Cómo se puede estimar esta posición utilizando las cámaras y sensores del vehículo?</li>
+<li class="fragment">¿Cómo usar esta posición estimada para que el vehículo se estacione automáticamente?</li>
+</ul>
+</section>
+
+<section id="hipótesis" class="title-slide slide level1 center">
+<h1>Hipótesis</h1>
+<p>“Estimando la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores, y utilizando esta posición, se puede lograr un sistema de parqueo automático en simulación.”</p>
+</section>
+
+<section>
+<section id="objetivos" class="title-slide slide level1 center">
+<h1>Objetivos</h1>
+
+</section>
+<section id="objetivo-general" class="title-slide slide level2 center">
+<h2>Objetivo general:</h2>
+<p>Desarrollar un sistema de estimación de la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores para parqueo automático.</p>
+</section>
+
+<section id="objetivos-específicos" class="title-slide slide level2 center">
+<h2>Objetivos específicos:</h2>
+<ul>
+<li class="fragment">Modelar un ambiente de simulación de un vehículo y estacionamiento.</li>
+<li class="fragment">Obtener datos de los sensores del vehículo en simulación.</li>
+<li class="fragment">Interpretar los datos de los sensores mediante técnicas de visión computacional.</li>
+<li class="fragment">Procesar los datos y estimar la posición del vehículo con respecto al estacionamiento.</li>
+<li class="fragment">Utilizar la posición estimada para lograr un sistema de parqueo automático en simulación.</li>
+</ul>
+</section>
+
+<section id="calendario" class="title-slide slide level2 center">
+<h2>calendario</h2>
+<p><img src="./img/calend.png" alt=""></p>
 
 <div class="quarto-auto-generated-content">
 <p><img src="./img/uady.svg" class="slide-logo"></p>
@@ -480,6 +611,7 @@ Figure&nbsp;1: A line plot on a polar axis
 <p> </p>
 </div>
 </div>
+</section>
 </section>
     </div>
   </div>
