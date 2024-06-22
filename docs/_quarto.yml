@@ -1,0 +1,51 @@
+project:
+  type: website
+  output-dir: docs
+
+title: "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación"
+date: 06/25/2024
+date-format: "MMM, YYYY"
+authors:
+
+  - name: Ing. Rubén Martínez González
+    email: rubenmartinezgonzalez94@gmail.com
+  - name: Dr. Arturo Espinosa Romero
+    email: eromero@correo.uady.mx
+  - name: Dr. Víctor Uc Cetina
+    email: victoruccetina@gmail.com
+
+
+format:
+  revealjs:
+    title: "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación"
+    subtitle: "Protocolo de tesis"
+#    header: "Protocolo de tesis"
+    footer: Faculty of Mathematics</br>Autonomous University of Yucatan
+    footer-logo-link: "https://www.matematicas.uady.mx"
+    theme: moon
+    slideNumber: true
+    show-slide-number: all
+    transition: slide
+    incrementalLists: true
+    center: true
+    controls: true
+    progress: true
+    history: true
+    logo: /img/uady.svg
+    toc: true
+    toc-depth: 2
+    toc-title: "Contenido"
+    toc-icon: "toc"
+    code-fold: true
+    code-line-numbers: true
+    code-line-highlight: true
+    sc-sb-title: true
+    incremental: true
+css: styles.css
+filters:
+  - reveal-header
+revealjs-plugins:
+  - pointer
+slide-level: 3
+number-sections: false
+

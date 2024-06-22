@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "index.html#estacionamiento",
+    "href": "index.html#estacionamiento",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación",
+    "section": "Estacionamiento",
+    "text": "Estacionamiento\n\n¿Qué es el estacionamiento?\n¿Por qué es importante?\n¿Qué problemas presenta?\n¿Cómo se puede mejorar?"
+  },
+  {
+    "objectID": "index.html#sistemas-de-asistencia-al-conductor",
+    "href": "index.html#sistemas-de-asistencia-al-conductor",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación",
+    "section": "Sistemas de asistencia al conductor",
+    "text": "Sistemas de asistencia al conductor"
+  },
+  {
+    "objectID": "index.html#aprendizaje-por-refuerzo",
+    "href": "index.html#aprendizaje-por-refuerzo",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación",
+    "section": "Aprendizaje por Refuerzo",
+    "text": "Aprendizaje por Refuerzo\n\n\n\n\n\nAgente \nAcciones \nEntorno \n\n\n\nInterprete \nEstado \nRecompensa"
+  },
+  {
+    "objectID": "index.html#visión-computacional",
+    "href": "index.html#visión-computacional",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación",
+    "section": "Visión Computacional",
+    "text": "Visión Computacional"
+  },
+  {
+    "objectID": "index.html#entorno-de-simulación",
+    "href": "index.html#entorno-de-simulación",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación",
+    "section": "Entorno de simulación",
+    "text": "Entorno de simulación"
+  },
+  {
+    "objectID": "index.html#representación-de-la-posición-relativa-al-estacionamiento",
+    "href": "index.html#representación-de-la-posición-relativa-al-estacionamiento",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación",
+    "section": "Representación de la posición relativa al estacionamiento",
+    "text": "Representación de la posición relativa al estacionamiento"
+  },
+  {
+    "objectID": "index.html#objetivo-general",
+    "href": "index.html#objetivo-general",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación",
+    "section": "Objetivo general:",
+    "text": "Objetivo general:\nDesarrollar un sistema de estimación de la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores para parqueo automático."
+  },
+  {
+    "objectID": "index.html#objetivos-específicos",
+    "href": "index.html#objetivos-específicos",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación",
+    "section": "Objetivos específicos:",
+    "text": "Objetivos específicos:\n\nModelar un ambiente de simulación de un vehículo y estacionamiento.\nObtener datos de los sensores del vehículo en simulación.\nInterpretar los datos de los sensores mediante técnicas de visión computacional.\nProcesar los datos y estimar la posición del vehículo con respecto al estacionamiento.\nUtilizar la posición estimada para lograr un sistema de parqueo automático en simulación."
+  },
+  {
+    "objectID": "index.html#calendario",
+    "href": "index.html#calendario",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación",
+    "section": "calendario",
+    "text": "calendario\n\n\n\n\n\nFaculty of MathematicsAutonomous University of Yucatan"
+  }
+]
