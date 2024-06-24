@@ -78,10 +78,12 @@ div.reveal-header {
     }
 }
 
-#carla-simulator {
+#carla,
+#puntos-de-referencia,
+#origen-del-sistema-de-coordenadas,
+#coordenadas-cilíndricas {
     li {
         font-size: .8em
-
     }
 }
 
@@ -94,4 +96,9 @@ img.my-h {
 .my-list-s {
     width: 20%;
     margin: 0 1px;
+}
+
+.reveal table th,
+.reveal table td {
+    font-size: 14px;
 }
