@@ -306,6 +306,14 @@ entonces habiendo estimado estas 4 $\rho$ y 4 $\theta$ podemos representar la po
 servira como modelo del estado del entorno.
 :::
 
+## Cálculo de distancias
+
+### Detección de líneas paralelas
+### Ecuaciones de las rectas de las líneas
+### Ubicación de puntos de fuga
+### Posición de la retícula del estacionamiento
+### Selección de espacio para estacionar
+### Predicción de distancias
 
 # Preguntas de investigación
 

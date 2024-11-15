@@ -61,5 +61,68 @@
     "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
     "section": "Calendario",
     "text": "Calendario"
+  },
+  {
+    "objectID": "docs/index.html#estacionamiento",
+    "href": "docs/index.html#estacionamiento",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
+    "section": "Estacionamiento",
+    "text": "Estacionamiento\n\n¿Qué es el estacionamiento?\n¿Por qué es importante?\n¿Qué problemas presenta?\n¿Cómo se puede minimizar?\n\n\n\n\nEl estacionamiento es el acto de dejar un vehículo en reposo en un espacio destinado para esto.\nEs importante porque permite a los conductores dejar sus vehículos de forma segura mientras realizan otras actividades.\nEn lugares concurridos, puede ser complicado encontrar un lugar o incluso si ya encontraste un lugar, la maniobra para posicionar el vehículo dentro del espacio se puede entorpecer por obstaculos o falta de visibilidad o inexperiencia del conductor. o incluso conductores habilidosos pueden fallar cuando es necesario una serie de maniobras que dependen unas de otras y si calculas mal en alguna , en la siguiente maniobra se tendria rectificar esta equivocación.\nCon la ayuda de sistemas de asistencia al conductor."
+  },
+  {
+    "objectID": "docs/index.html#sistemas-de-asistencia-al-conductor",
+    "href": "docs/index.html#sistemas-de-asistencia-al-conductor",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
+    "section": "Sistemas de asistencia al conductor",
+    "text": "Sistemas de asistencia al conductor\n  \n\n\nLos sistemas de asistencia al conductor son programas informáticos que proporcionan información sobre el entorno del vehículo.\nAlgunos son tan avanzados que pueden estacionar el vehículo de forma autónoma y otros más simples que solo proporcionan información sobre la distancia a objetos cercanos y orientacion del vehículo.\nUna solución eficaz que puede contribuir a la mejora de estos sistemas es la inteligencia artificial. Si una red neuronal aprendiera a estacionar un vehículo en un ambiente controlado, con este conocimiento podría retornar información de utilidad para cumplir esta tarea."
+  },
+  {
+    "objectID": "docs/index.html#aprendizaje-por-refuerzo",
+    "href": "docs/index.html#aprendizaje-por-refuerzo",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
+    "section": "Aprendizaje por Refuerzo",
+    "text": "Aprendizaje por Refuerzo\n\n\n\n\n\n\nAgente \nAcciones \nEntorno \n\n\n\nInterprete \nEstado \nRecompensa    \n\n\n\n\n\n\nDentro de la inteligencia artificial, un buen candidato para esta situación son los algoritmos de aprendizaje por refuerzo.\nEstos algoritmos se basan en la interacción de un agente con un entorno. El agente realiza acciones en el entorno que pueden ser interpretadas y evaluadas según va cambiando el estado del entorno. estos cambios en el entorno pueden ser representados en una recompensa que se utiliza para aprender a elegir acciones cada vez mejores.\nEn el caso de estacionamiento, el agente sería el vehículo, las acciones serían las maniobras que puede realizar el vehículo, acelerar, frenar, girar. El entorno sería el estacionamiento. El intérprete sería un sistema que analice los datos de los sensores del vehículo, como la cámara. El estado podría ser la pose del vehículo con respecto al estacionamiento. La recompensa podría ser una función que premie las acciones que resulten favorables y penalice las desfavorables.\npero… ¿Qué haría falta para implementar un algoritmo así? Pues el agente, las acciones y el entorno nos lo puede proveer un simulador. Y el intérprete, el estado y la recompensa lo podemos estimar con soluciones de visión computacional."
+  },
+  {
+    "objectID": "docs/index.html#visión-computacional",
+    "href": "docs/index.html#visión-computacional",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
+    "section": "Visión Computacional",
+    "text": "Visión Computacional\n \n\n\n\n\n\ndonde podemos procesar los datos de los sensores del vehículo como la camara y representar matematicamete la posicion del vehículo con respecto al estacionamiento.\nSi a través de visión computacional lograsemos representar este modelo y evaluarlo, seria suficiente para que cualquier algoritmo de aprendizaje por refuerzo pueda aprender a estacionar un vehículo."
+  },
+  {
+    "objectID": "docs/index.html#entorno-de-simulación",
+    "href": "docs/index.html#entorno-de-simulación",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
+    "section": "Entorno de simulación",
+    "text": "Entorno de simulación"
+  },
+  {
+    "objectID": "docs/index.html#representación-de-la-posición-relativa-al-estacionamiento",
+    "href": "docs/index.html#representación-de-la-posición-relativa-al-estacionamiento",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
+    "section": "Representación de la posición relativa al estacionamiento",
+    "text": "Representación de la posición relativa al estacionamiento"
+  },
+  {
+    "objectID": "docs/index.html#objetivo-general",
+    "href": "docs/index.html#objetivo-general",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
+    "section": "Objetivo general:",
+    "text": "Objetivo general:\nDesarrollar un sistema de estimación de la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores para parqueo automático."
+  },
+  {
+    "objectID": "docs/index.html#objetivos-específicos",
+    "href": "docs/index.html#objetivos-específicos",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
+    "section": "Objetivos específicos:",
+    "text": "Objetivos específicos:\n\nModelar un ambiente de simulación de un vehículo y estacionamiento.\nObtener datos de los sensores del vehículo en simulación.\nInterpretar los datos de los sensores mediante técnicas de visión computacional.\nProcesar los datos y estimar la posición del vehículo con respecto al estacionamiento.\nUtilizar la posición estimada para lograr un sistema de parqueo automático en simulación."
+  },
+  {
+    "objectID": "docs/index.html#calendario",
+    "href": "docs/index.html#calendario",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
+    "section": "Calendario",
+    "text": "Calendario"
   }
 ]
