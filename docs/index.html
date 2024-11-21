@@ -357,23 +357,23 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Ing. Rubén Martínez González 
-</div>
-<div class="quarto-title-author-email">
-<a href="mailto:rubenmartinezgonzalez94@gmail.com">rubenmartinezgonzalez94@gmail.com</a>
-</div>
-</div>
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
 Dr.&nbsp;Arturo Espinosa Romero 
 </div>
 <div class="quarto-title-author-email">
 <a href="mailto:eromero@correo.uady.mx">eromero@correo.uady.mx</a>
 </div>
 </div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Ing. Rubén Martínez González 
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:rubenmartinezgonzalez94@gmail.com">rubenmartinezgonzalez94@gmail.com</a>
+</div>
+</div>
 </div>
 
-  <p class="date">Jun, 2024</p>
+  <p class="date">Dec, 2024</p>
 </section><section id="TOC">
 <nav role="doc-toc"> 
 <h2 id="toc-title">Contenido</h2>
@@ -390,6 +390,7 @@ Dr.&nbsp;Arturo Espinosa Romero
 <ul>
 <li><a href="#/entorno-de-simulación" id="/toc-entorno-de-simulación">Entorno de simulación</a></li>
 <li><a href="#/representación-de-la-posición-relativa-al-estacionamiento" id="/toc-representación-de-la-posición-relativa-al-estacionamiento">Representación de la posición relativa al estacionamiento</a></li>
+<li><a href="#/cálculo-de-distancias" id="/toc-cálculo-de-distancias">Cálculo de distancias</a></li>
 </ul></li>
 <li><a href="#/preguntas-de-investigación" id="/toc-preguntas-de-investigación">Preguntas de investigación</a></li>
 <li><a href="#/hipótesis" id="/toc-hipótesis">Hipótesis</a></li>
@@ -397,7 +398,7 @@ Dr.&nbsp;Arturo Espinosa Romero
 <ul>
 <li><a href="#/objetivo-general" id="/toc-objetivo-general">Objetivo general:</a></li>
 <li><a href="#/objetivos-específicos" id="/toc-objetivos-específicos">Objetivos específicos:</a></li>
-<li><a href="#/calendario" id="/toc-calendario">Calendario</a></li>
+<li><a href="#/calendario-de-actividades" id="/toc-calendario-de-actividades">Calendario de Actividades</a></li>
 </ul></li>
 <li><a href="#/referencias" id="/toc-referencias">Referencias</a></li>
 </ul>
@@ -526,14 +527,15 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 
 <section id="visión-computacional" class="title-slide slide level2 center">
 <h2>Visión Computacional</h2>
-<p><img src="./img/up.png" alt=""> <img src="./img/front.png" alt=""></p>
+<p><img src="./img/line_detection/lines.png" alt=""> <img src="./img/line_detection/lines_only.png" alt=""></p>
+<p><img src="./img/line_detection/povs.png" alt=""> <img src="./img/up.png" alt=""> <img src="./img/front.png" alt=""></p>
 <div class="footer">
 
 </div>
 <aside class="notes">
 <ul>
-<li>donde podemos procesar los datos de los sensores del vehículo como la camara y representar matematicamete la posicion del vehículo con respecto al estacionamiento.</li>
-<li>Si a través de visión computacional lograsemos representar este modelo y evaluarlo, seria suficiente para que cualquier algoritmo de aprendizaje por refuerzo pueda aprender a estacionar un vehículo.</li>
+<li><p>donde podemos procesar los datos de los sensores del vehículo como la camara y representar matematicamete la posicion del vehículo con respecto al estacionamiento.</p></li>
+<li><p>y en construir este sistema de vision computacional es en lo que nos estamos enfocando en este trabajo. y para demostrar su aplicacion práctica, junto a la simulacion lo probaremos en algoritmos de aprendizaje por refuerzo.</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -639,7 +641,7 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 <aside class="notes">
 <ul>
 <li><p>Se han revisado trabajos relacionados con este contexto donde se utilizan camaras y sensores para resolver el problemas de la conducción autónoma como el estacionamiento.</p></li>
-<li><p>Pero esto no es precisamente lo que queremos proponer en este trabajo. Queremos proponer un sistema de visión computacional que permita modelar la posición del vehículo con respecto al estacionamiento y utilizar este modelo delegar la solución del estacionamiento a un algoritmo de aprendizaje automático.</p></li>
+<li><p>Pero esto no es precisamente lo que queremos proponer en este trabajo. Queremos proponer un sistema de visión computacional que permita modelar la posición del vehículo con respecto al estacionamiento y utilizar este modelo para delegar la solución del estacionamiento a un algoritmo de aprendizaje automático.</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -688,8 +690,9 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 <li><p>Ciudades, carreteras, estacionamientos</p></li>
 <li><p>Vehículos, peatones, semáforos, sensores</p></li>
 <li><p>Api Python</p></li>
-<li><p><img class="my-list-s" src="./img/intel.png" alt=""> <img class="my-list-s" src="./img/tri.png" alt=""> <img class="my-list-s" src="./img/compvisioncenter.png" alt=""> <img class="my-list-s" src="./img/UnrealEngine.svg" alt=""></p></li>
+<li><p><img class="my-list-s" src="./img/intel.png" alt=""></p></li>
 </ul>
+<p><img class="my-list-s" src="./img/tri.png" alt=""> <img class="my-list-s" src="./img/compvisioncenter.png" alt=""> <img class="my-list-s" src="./img/UnrealEngine.svg" alt=""></p>
 </div>
 </div>
 <div class="footer">
@@ -741,100 +744,6 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 <h2>Representación de la posición relativa al estacionamiento</h2>
 
 </section>
-<section id="origen-del-sistema-de-coordenadas" class="slide level3 center">
-<h3>Origen del sistema de coordenadas</h3>
-<div class="columns">
-<div class="column" style="width:40%;">
-<p><img class="my-h" src="./img/distances_ubi_11.png" alt=""> <img class="my-h" src="./img/distances_ubi_12.png" alt=""></p>
-</div><div class="column" style="width:60%;">
-<ul>
-<li>Eje z se define como la altura conocida de la camara con respecto al suelo.</li>
-<li>Eje x se define como la orientación del vehículo</li>
-<li>Eje y se define como la orientación lateral del vehículo</li>
-</ul>
-</div>
-</div>
-<aside class="notes">
-<ul>
-<li>Para representar esta posición del vehículo con respecto al estacionamiento, se propone un sistema de coordenadas con origen en la camara del vehículo.</li>
-<li>donde el eje z representa la altura conocida de la camara con respecto al suelo.</li>
-<li>el eje x representa la orientación de dirección del vehículo.</li>
-<li>y el eje y representa una orientación lateral del vehículo.</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="puntos-de-referencia" class="slide level3 center">
-<h3>Puntos de referencia</h3>
-<div class="columns">
-<div class="column" style="width:40%;">
-<p><img class="my-h" src="./img/distances_ubi_21.png" alt=""> <img class="my-h" src="./img/distances_ubi_22.png" alt=""></p>
-</div><div class="column" style="width:60%;">
-<ul>
-<li>Punto 1: Esquina superior izquierda.</li>
-<li>Punto 2: Esquina superior derecha.</li>
-<li>Punto 3: Esquina inferior izquierda.</li>
-<li>Punto 4: Esquina inferior derecha.</li>
-</ul>
-</div>
-</div>
-<aside class="notes">
-<ul>
-<li>se utilizara como referencia 4 puntos ubicaos en las esquinas del estacionamiento</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="coordenadas-cilíndricas" class="slide level3 center">
-<h3>Coordenadas cilíndricas</h3>
-<div class="columns">
-<div class="column" style="width:40%;">
-<p><img class="my-h" src="./img/distances_ubi_31.png" alt=""> <img class="my-h" src="./img/distances_ubi_32.png" alt=""></p>
-</div><div class="column" style="width:60%;">
-<ul>
-<li><span class="math inline">\(\rho\)</span> : Distancia entre la cámara y un punto de referencia.</li>
-<li><span class="math inline">\(\theta\)</span>: Ángulo de orientación del vehículo.</li>
-<li><span class="math inline">\(Z\)</span>: Altura conocida de la camara.</li>
-</ul>
-</div>
-</div>
-<aside class="notes">
-<ul>
-<li>Para representar esta posición del vehículo con respecto al estacionamiento, se propone un sistema de coordenadas cilíndricas de 4 vectores</li>
-<li>donde <span class="math inline">\(\rho\)</span> 1 2 3 4 seran las distancias entre la cámara y los puntos de referencia.</li>
-<li><span class="math inline">\(\theta\)</span> 1 2 3 4 seran los ángulos de orientación entre estos vectores distancia y el eje x.</li>
-<li>y z sera la altura conocida de la camara.</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
 <section id="posición-relativa" class="slide level3 center">
 <h3>Posición relativa</h3>
 <iframe src="https://www.geogebra.org/classic/a8pwjzyk?embed" width="100%" height="600" allowfullscreen="" style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0">
@@ -858,6 +767,77 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+
+<section id="cálculo-de-distancias" class="title-slide slide level2 center">
+<h2>Cálculo de distancias</h2>
+
+</section>
+<section id="detección-de-líneas-paralelas" class="slide level3 center">
+<h3>Detección de líneas paralelas</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="./img/line_detection/lines.png" alt=""></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Umbralización</li>
+<li>Detección de contornos (Algoritmo de Canny)</li>
+<li>Lineas paralelas (Transformada de Hough)</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="ecuaciones-de-las-rectas-de-las-líneas" class="slide level3 center">
+<h3>Ecuaciones de las rectas de las líneas</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><span class="math inline">\(a x + b y + c = 0\)</span> <span class="math display">\[
+\begin{aligned}
+\left[\begin{array}{ccc}
+x_1 &amp; y_1 &amp; 1 \\
+x_2 &amp; y_2 &amp; 1
+\end{array}\right]
+\begin{bmatrix}
+a \\
+b \\
+c
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\
+0
+\end{bmatrix}
+\end{aligned}
+\]</span></p>
+</div><div class="column" style="width:40%;">
+<ul>
+<li>Calculamos el espacio nulo (a,b,c) de cada recta</li>
+<li>SVD (Descomposición en valores singulares)</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="ubicación-de-puntos-de-fuga" class="slide level3 center">
+<h3>Ubicación de puntos de fuga</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img src="./img/line_detection/povs.png" alt=""></p>
+</div><div class="column" style="width:40%;">
+<ul>
+<li>Intersección de las rectas (producto cruz de todas las rectas)</li>
+<li>Detección de cúmulos de puntos (K-means)</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="posición-de-la-retícula-del-estacionamiento" class="slide level3 center">
+<h3>Posición de la retícula del estacionamiento</h3>
+<iframe src="https://www.geogebra.org/classic/fmbj5sj3?embed" width="100%" height="600" allowfullscreen="" style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0">
+</iframe>
+</section>
+<section id="predicción-de-distancias" class="slide level3 center">
+<h3>Predicción de distancias</h3>
+<p>Predicción de distancias</p>
 </section>
 </section>
 <section id="preguntas-de-investigación" class="title-slide slide level1 center">
@@ -895,10 +875,267 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
 </ul>
 </section>
 
-<section id="calendario" class="title-slide slide level2 center">
-<h2>Calendario</h2>
-
-<img src="./img/calend.png" alt="" class="r-stretch"></section>
+<section id="calendario-de-actividades" class="title-slide slide level2 center">
+<h2>Calendario de Actividades</h2>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Actividad</strong></th>
+<th>Ene</th>
+<th>Feb</th>
+<th>Mar</th>
+<th>Abr</th>
+<th>May</th>
+<th>Jun</th>
+<th>Jul</th>
+<th>Ago</th>
+<th>Sep</th>
+<th>Oct</th>
+<th>Nov</th>
+<th>Dic</th>
+<th>Ene</th>
+<th>Feb</th>
+<th>Mar</th>
+<th>Abr</th>
+<th>May</th>
+<th>Jun</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Investigación y revisión bibliográfica</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Diseño y Configuración del Entorno Simulado</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Adquisición y pre-procesamiento de Datos</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Interpretar los datos de los sensores</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Estimación de la posición de la retícula</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Predicción de distancias</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Desarrollo y Entrenamiento de Algoritmos</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr class="even">
+<td>Evaluación y Ajuste del Sistema</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr class="odd">
+<td>Documentación y Análisis de Resultados</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr class="even">
+<td>Redacción y Revisión del documento de tesis</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+<td>x</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="referencias" class="title-slide slide level1 smaller scrollable">
 <h1>Referencias</h1>

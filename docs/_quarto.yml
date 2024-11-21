@@ -3,14 +3,15 @@ project:
   output-dir: docs
 
 title: "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación"
-date: 06/25/2024
+date: 12/9/2024
 date-format: "MMM, YYYY"
 authors:
 
-  - name: Ing. Rubén Martínez González
-    email: rubenmartinezgonzalez94@gmail.com
+
   - name: Dr. Arturo Espinosa Romero
     email: eromero@correo.uady.mx
+  - name: Ing. Rubén Martínez González
+    email: rubenmartinezgonzalez94@gmail.com
 
 format:
   revealjs:

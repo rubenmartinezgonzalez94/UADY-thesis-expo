@@ -25,7 +25,7 @@
     "href": "index.html#visión-computacional",
     "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
     "section": "Visión Computacional",
-    "text": "Visión Computacional\n \n\n\n\n\n\ndonde podemos procesar los datos de los sensores del vehículo como la camara y representar matematicamete la posicion del vehículo con respecto al estacionamiento.\nSi a través de visión computacional lograsemos representar este modelo y evaluarlo, seria suficiente para que cualquier algoritmo de aprendizaje por refuerzo pueda aprender a estacionar un vehículo."
+    "text": "Visión Computacional\n \n  \n\n\n\n\n\ndonde podemos procesar los datos de los sensores del vehículo como la camara y representar matematicamete la posicion del vehículo con respecto al estacionamiento.\ny en construir este sistema de vision computacional es en lo que nos estamos enfocando en este trabajo. y para demostrar su aplicacion práctica, junto a la simulacion lo probaremos en algoritmos de aprendizaje por refuerzo."
   },
   {
     "objectID": "index.html#entorno-de-simulación",
@@ -81,14 +81,14 @@
     "href": "docs/index.html#aprendizaje-por-refuerzo",
     "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
     "section": "Aprendizaje por Refuerzo",
-    "text": "Aprendizaje por Refuerzo\n\n\n\n\n\n\nAgente \nAcciones \nEntorno \n\n\n\nInterprete \nEstado \nRecompensa    \n\n\n\n\n\n\nDentro de la inteligencia artificial, un buen candidato para esta situación son los algoritmos de aprendizaje por refuerzo.\nEstos algoritmos se basan en la interacción de un agente con un entorno. El agente realiza acciones en el entorno que pueden ser interpretadas y evaluadas según va cambiando el estado del entorno. estos cambios en el entorno pueden ser representados en una recompensa que se utiliza para aprender a elegir acciones cada vez mejores.\nEn el caso de estacionamiento, el agente sería el vehículo, las acciones serían las maniobras que puede realizar el vehículo, acelerar, frenar, girar. El entorno sería el estacionamiento. El intérprete sería un sistema que analice los datos de los sensores del vehículo, como la cámara. El estado podría ser la pose del vehículo con respecto al estacionamiento. La recompensa podría ser una función que premie las acciones que resulten favorables y penalice las desfavorables.\npero… ¿Qué haría falta para implementar un algoritmo así? Pues el agente, las acciones y el entorno nos lo puede proveer un simulador. Y el intérprete, el estado y la recompensa lo podemos estimar con soluciones de visión computacional."
+    "text": "Aprendizaje por Refuerzo\n\n\n\n\n\n\nAgente \nAcciones \nEntorno \n\n\n\nInterprete \nEstado \nRecompensa"
   },
   {
     "objectID": "docs/index.html#visión-computacional",
     "href": "docs/index.html#visión-computacional",
     "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
     "section": "Visión Computacional",
-    "text": "Visión Computacional\n \n\n\n\n\n\ndonde podemos procesar los datos de los sensores del vehículo como la camara y representar matematicamete la posicion del vehículo con respecto al estacionamiento.\nSi a través de visión computacional lograsemos representar este modelo y evaluarlo, seria suficiente para que cualquier algoritmo de aprendizaje por refuerzo pueda aprender a estacionar un vehículo."
+    "text": "Visión Computacional\n \n  \n\n\n\n\n\ndonde podemos procesar los datos de los sensores del vehículo como la camara y representar matematicamete la posicion del vehículo con respecto al estacionamiento.\ny en construir este sistema de vision computacional es en lo que nos estamos enfocando en este trabajo. y para demostrar su aplicacion práctica, junto a la simulacion lo probaremos en algoritmos de aprendizaje por refuerzo."
   },
   {
     "objectID": "docs/index.html#entorno-de-simulación",
@@ -124,5 +124,33 @@
     "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
     "section": "Calendario",
     "text": "Calendario"
+  },
+  {
+    "objectID": "index.html#cálculo-de-distancias",
+    "href": "index.html#cálculo-de-distancias",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
+    "section": "Cálculo de distancias",
+    "text": "Cálculo de distancias"
+  },
+  {
+    "objectID": "docs/index.html#cálculo-de-distancias",
+    "href": "docs/index.html#cálculo-de-distancias",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
+    "section": "Cálculo de distancias",
+    "text": "Cálculo de distancias"
+  },
+  {
+    "objectID": "index.html#calendario-de-actividades",
+    "href": "index.html#calendario-de-actividades",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
+    "section": "Calendario de Actividades",
+    "text": "Calendario de Actividades\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nActividad\nEne\nFeb\nMar\nAbr\nMay\nJun\nJul\nAgo\nSep\nOct\nNov\nDic\nEne\nFeb\nMar\nAbr\nMay\nJun\n\n\n\n\nInvestigación y revisión bibliográfica\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\n\n\n\n\n\n\n\nDiseño y Configuración del Entorno Simulado\nx\nx\nx\nx\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdquisición y pre-procesamiento de Datos\n\n\n\n\nx\nx\nx\n\n\n\n\n\n\n\n\n\n\n\n\n\nInterpretar los datos de los sensores\n\n\n\n\n\n\nx\nx\nx\n\n\n\n\n\n\n\n\n\n\n\nEstimación de la posición de la retícula\n\n\n\n\n\n\n\nx\nx\nx\nx\n\n\n\n\n\n\n\n\n\nPredicción de distancias\n\n\n\n\n\n\n\n\n\n\nx\nx\nx\n\n\n\n\n\n\n\nDesarrollo y Entrenamiento de Algoritmos\n\n\n\n\n\n\n\n\n\n\n\n\nx\nx\nx\nx\nx\nx\n\n\nEvaluación y Ajuste del Sistema\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nx\nx\nx\n\n\nDocumentación y Análisis de Resultados\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\n\n\nRedacción y Revisión del documento de tesis\n\n\n\n\n\n\n\n\n\n\n\n\n\nx\nx\nx\nx\nx"
+  },
+  {
+    "objectID": "docs/index.html#calendario-de-actividades",
+    "href": "docs/index.html#calendario-de-actividades",
+    "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático",
+    "section": "Calendario de Actividades",
+    "text": "Calendario de Actividades\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nActividad\nEne\nFeb\nMar\nAbr\nMay\nJun\nJul\nAgo\nSep\nOct\nNov\nDic\nEne\nFeb\nMar\nAbr\nMay\nJun\n\n\n\n\nInvestigación y revisión bibliográfica\nx\nx\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDiseño y Configuración del Entorno Simulado\n\nx\nx\nx\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdquisición y pre-procesamiento de Datos\n\n\n\n\nx\nx\nx\n\n\n\n\n\n\n\n\n\n\n\n\n\nInterpretar los datos de los sensores\n\n\n\n\n\n\nx\nx\nx\n\n\n\n\n\n\n\n\n\n\n\nEstimación de la posición de la retícula\n\n\n\n\n\n\n\nx\nx\nx\nx\n\n\n\n\n\n\n\n\n\nPredicción de distancias\n\n\n\n\n\n\n\n\n\n\nx\nx\nx\n\n\n\n\n\n\n\nDesarrollo y Entrenamiento de Algoritmos\n\n\n\n\n\n\n\n\n\n\n\n\nx\nx\nx\nx\nx\nx\n\n\nEvaluación y Ajuste del Sistema\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nx\nx\n\n\nDocumentación y Análisis de Resultados\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\n\n\nRedacción y Revisión del documento de tesis\n\n\n\n\n\n\n\n\n\n\n\n\n\nx\nx\nx\nx\nx"
   }
 ]
