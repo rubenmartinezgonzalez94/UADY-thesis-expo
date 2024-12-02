@@ -88,9 +88,9 @@ div.reveal-header {
 }
 
 img.my-h {
-    width: auto;
-    height: 6.5em;
-    margin: 0;
+    width: auto !important;
+    height: 6.5em !important;
+    margin: 0 !important;
 }
 
 .my-list-s {
