@@ -14,24 +14,30 @@ la metodología que se propone
 y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 -->
 ::: {.notes}
-- Haciendo introducción al tema, podemos repasar algunas preguntas como:
+- Haciendo introducción al tema, podemos debatir algunas cuesitones sobre el estacionamiento como:
 :::
 
 ## Estacionamiento
 
-- ¿Qué es el estacionamiento?
-- ¿Por qué es importante?
-- ¿Qué problemas presenta?
-- ¿Cómo se puede minimizar?
+:::: {.columns}
+::: {.column width="40%"}
 
-![](/img/estfull.png)
+- Importancia
+- Problemas
+- Soluciones
+
+:::
+
+::: {.column width="60%"}
+<img src="/img/estfull.png" alt=""/>
+:::
+::::
+
 
 ::: {.notes}
 
-- El estacionamiento es el acto de dejar un vehículo en reposo en un espacio destinado para esto.
-
-- Es importante porque permite a los conductores dejar sus vehículos de forma segura mientras realizan otras
-  actividades.
+- Es importante porque permite a los conductores dejar sus vehículos de forma segura en estos espacios
+mientras realizan otras actividades.
 
 - En lugares concurridos, puede ser complicado encontrar un lugar
   o incluso si ya encontraste un lugar, la maniobra para posicionar el vehículo dentro del espacio
@@ -60,7 +66,7 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
   sobre la distancia a objetos cercanos y orientacion del vehículo.
 
 - Una solución eficaz que puede contribuir a la mejora de estos sistemas es la inteligencia artificial.
-  Si una red neuronal aprendiera a estacionar un vehículo en un ambiente controlado,
+  Si una IA aprendiera a estacionar un vehículo en un ambiente controlado,
   con este conocimiento podría retornar información de utilidad para cumplir esta tarea.
 
 :::
@@ -122,20 +128,11 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 
 ## Visión Computacional
 
-[//]: # (<img src="/img/back.png" alt=""/> )
-
-[//]: # (<img src="/img/up.png" alt=""/> )
-
-[//]: # (<img src="/img/front.png" alt=""/> )
-
-<img src="/img/line_detection/lines.png" alt=""/>
-<img src="/img/line_detection/lines_only.png" alt=""/>
-
-<img src="/img/line_detection/povs.png" alt=""/>
-<img src="/img/up.png" alt=""/> 
-<img src="/img/front.png" alt=""/>
-
-
+<img class="my-h" src="/img/line_detection/lines.png" alt=""/>
+<img class="my-h" src="/img/line_detection/lines_only.png" alt=""/>
+<img class="my-h" src="/img/line_detection/povs.png" alt=""/>
+<img class="my-h" src="/img/front.png" alt=""/>
+<img class="my-h" src="/img/up.png" alt=""/>
 
 :::footer
 :::
@@ -200,7 +197,6 @@ esta situación lo mas realista posible.
 - Api Python
 
 - <img class="my-list-s" src="/img/intel.png" alt=""/>
-
 <img class="my-list-s" src="/img/tri.png" alt=""/>
 <img class="my-list-s" src="/img/compvisioncenter.png" alt=""/>
 <img class="my-list-s" src="/img/UnrealEngine.svg" alt=""/>
@@ -238,24 +234,48 @@ Proponemos: Carla (Car learning to act) pssei.
 - y las imagenes de abajo son ejemplos de los datos capturados por la camara
 :::
 
-## Representación de la posición relativa al estacionamiento
+## Detección de la retícula de estacionamiento
 
-### Posición relativa
-
-<iframe src="https://www.geogebra.org/classic/a8pwjzyk?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
-
-<!-- 
-$(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(\rho_4, \theta_4, z)$
--->
-:::footer
-:::
 
 ::: {.notes}
-entonces habiendo estimado estas 4 $\rho$ y 4 $\theta$ podemos representar la posición del vehículo que nos
-servira como modelo del estado del entorno.
+una vez que tengamos los datos de la camara captados en el entorno de sumulacion
+podemos procesarlos para detectar la retícula del estacionamiento
+:::
+### Proyección de la imagen en el plano de la cámara
+<img class="my-h" src="/img/line_detection/paralel_lines.png" alt=""/>
+<img class="my-h" src="/img/line_detection/pov.png" alt=""/>
+
+::: {.notes}
+Cuando proyectamos un escenario del mundo real en 3 dimensiones como un estacionamiento a un plano
+de 2 dimensiones como el lente de una camara, se produce una distorsion en la imagen. Esta distorsion
+provoca que las lıneas paralelas en el mundo real, al proyectarse en el plano de la camara, se interseten en
+un punto de fuga.
 :::
 
-## Cálculo de distancias
+### Geometría del estacionamiento
+
+<img  src="/img/line_detection/pov_reticule.png" alt=""/>
+
+::: {.notes}
+Dado que las lıneas de los cajones de estacionamiento son paralelas por su geometrıa, forman patrones en
+una retıcula de paralelogramos. 
+:::
+
+### Geometría del estacionamiento
+<img  src="/img/line_detection/pov_reticule_layer.png" alt=""/>
+
+::: {.notes}
+Esto permite utilizar tecnicas de deteccion de lıneas para identificar los
+puntos de fuga y estimar la posicion de la retıcula de estacionamiento.
+:::
+
+### Geometría del estacionamiento
+<iframe src="https://www.geogebra.org/classic/zy5pkjvg?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+::: {.notes}
+ya que conociendo la ubicacion de los puntos de fuga y las equaciones de las lıneas
+podriamos calcular la ubicacion de cualquier punto de interes en la reticula.
+:::
 
 ### Detección de líneas paralelas
 
@@ -272,6 +292,17 @@ servira como modelo del estado del entorno.
 - Lineas paralelas (Transformada de Hough)
 :::
 ::::
+
+::: {.notes}
+Para detectar las lıneas paralelas de interes en la imagen, primero se hace un 
+preprocesamiento del area debajo del horizonte de la imagen donde estara el estacionamiento.
+
+luego se utiliza el algorithmo de Canny para detectar los bordes de las figuras resaltadas en la umbraizacion.
+
+y sobre estos contornos encontrados se aplica la transformada de Hough para detectar coordenadas de inicio y fin
+de las lıneas resultantes
+
+:::
 
 ### Ecuaciones de las rectas de las líneas
 
@@ -305,6 +336,14 @@ $$
 :::
 ::::
 
+::: {.notes}
+Una vez obtenidas las coordenadas de inicio y fin de cada lınea paralela, podemos utilizar la ecuacion
+general de la recta ax+by+c=0 ,para formular un sistema de ecuaciones de esta forma matricial
+donde x1,y1 y x2,y2 son las coordenadas de inicio y fin de cada recta 
+y abc son los coeficientes que podemos resolver con la descomposicion en valores singulares.
+
+:::
+
 ### Ubicación de puntos de fuga
 
 :::: {.columns}
@@ -318,26 +357,59 @@ $$
 :::
 ::::
 
-### Posición de la retícula del estacionamiento
+::: {.notes}
+Dado que ya se tendrian las ecuaciones de todas las lıneas en el plano de la camara, se
+pueden calcular las intersecciones de estas lıneas realizando un producto cruz entre las ecuaciones
+homogeneas [A,B,C] de todos los pares de lıneas
 
-<iframe src="https://www.geogebra.org/classic/fmbj5sj3?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+y evidentemente, la mayor cantidad de intersecciones se encontraran en los puntos de fuga principales
+y para determinarlos se realiza un agrupaiento con el algoritmo de K-means.
+:::
 
-### Predicción de distancias
+[//]: # (### Predicción de distancias)
+[//]: # (Predicción de distancias)
 
-Predicción de distancias
+## Representación de la posición relativa al estacionamiento
 
-# Preguntas de investigación
+::: {.notes}
+una vez que tengamos la retícula del estacionamiento, podemos representar la posición del vehículo
+con respecto a uno de los cajones de estacionamiento.
+:::
+
+### Posición relativa
+
+<iframe src="https://www.geogebra.org/classic/a8pwjzyk?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+<!-- 
+$(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(\rho_4, \theta_4, z)$
+-->
+:::footer
+:::
+
+::: {.notes}
+para esto utilizaremos 4 vectores de distancias $\rho$ desde la camara a las 4 esquinas de uno 
+de los cajones de estacionamiento ubicados en la reticula.
+y 4 angulos $\theta$ que serian los angulos de orientacion entre los vectores de distancias y el eje de la camara.
+y de esta forma tendriamos 4 vectores de coordenadas polares que junto a la altura conocida de la camara z
+serian coordenadas cilindricas que representan la posicion del vehiculo con respecto al cajon de estacionamiento.
+
+y estos vectores de coordenadas seran los que usaremos como modelo del estado del sistema.
+:::
+
+# Marco Teórico
+::: {.notes}
+entonces Como parte del marco teorico de la investigacion definimos
+:::
+## Preguntas de investigación
 
 - ¿Cómo se puede representar la posición de un vehículo con respecto a su espacio de estacionamiento?
 - ¿Cómo se puede estimar esta posición utilizando las cámaras y sensores del vehículo?
 - ¿Cómo usar esta posición estimada para que el vehículo se estacione automáticamente?
 
-# Hipótesis
+## Hipótesis
 
 “Estimando la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores,
 y utilizando esta posición, se puede lograr un sistema de parqueo automático en simulación.”
-
-# Objetivos
 
 ## Objetivo general:
 

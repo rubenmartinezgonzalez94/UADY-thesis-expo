@@ -389,13 +389,13 @@ Ing. Rubén Martínez González
 <li><a href="#/metodología" id="/toc-metodología">Metodología</a>
 <ul>
 <li><a href="#/entorno-de-simulación" id="/toc-entorno-de-simulación">Entorno de simulación</a></li>
+<li><a href="#/detección-de-la-retícula-de-estacionamiento" id="/toc-detección-de-la-retícula-de-estacionamiento">Detección de la retícula de estacionamiento</a></li>
 <li><a href="#/representación-de-la-posición-relativa-al-estacionamiento" id="/toc-representación-de-la-posición-relativa-al-estacionamiento">Representación de la posición relativa al estacionamiento</a></li>
-<li><a href="#/cálculo-de-distancias" id="/toc-cálculo-de-distancias">Cálculo de distancias</a></li>
 </ul></li>
+<li><a href="#/marco-teórico" id="/toc-marco-teórico">Marco Teórico</a>
+<ul>
 <li><a href="#/preguntas-de-investigación" id="/toc-preguntas-de-investigación">Preguntas de investigación</a></li>
 <li><a href="#/hipótesis" id="/toc-hipótesis">Hipótesis</a></li>
-<li><a href="#/objetivos" id="/toc-objetivos">Objetivos</a>
-<ul>
 <li><a href="#/objetivo-general" id="/toc-objetivo-general">Objetivo general:</a></li>
 <li><a href="#/objetivos-específicos" id="/toc-objetivos-específicos">Objetivos específicos:</a></li>
 <li><a href="#/calendario-de-actividades" id="/toc-calendario-de-actividades">Calendario de Actividades</a></li>
@@ -419,7 +419,7 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 -->
 <aside class="notes">
 <ul>
-<li>Haciendo introducción al tema, podemos repasar algunas preguntas como:</li>
+<li>Haciendo introducción al tema, podemos debatir algunas cuesitones sobre el estacionamiento como:</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -435,17 +435,20 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 </section>
 <section id="estacionamiento" class="title-slide slide level2 center">
 <h2>Estacionamiento</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
 <ul>
-<li>¿Qué es el estacionamiento?</li>
-<li>¿Por qué es importante?</li>
-<li>¿Qué problemas presenta?</li>
-<li>¿Cómo se puede minimizar?</li>
+<li>Importancia</li>
+<li>Problemas</li>
+<li>Soluciones</li>
 </ul>
-
-<img data-src=".\img/estfull.png" class="r-stretch"><aside class="notes">
+</div><div class="column" style="width:60%;">
+<p><img src="./img/estfull.png" alt=""></p>
+</div>
+</div>
+<aside class="notes">
 <ul>
-<li><p>El estacionamiento es el acto de dejar un vehículo en reposo en un espacio destinado para esto.</p></li>
-<li><p>Es importante porque permite a los conductores dejar sus vehículos de forma segura mientras realizan otras actividades.</p></li>
+<li><p>Es importante porque permite a los conductores dejar sus vehículos de forma segura en estos espacios mientras realizan otras actividades.</p></li>
 <li><p>En lugares concurridos, puede ser complicado encontrar un lugar o incluso si ya encontraste un lugar, la maniobra para posicionar el vehículo dentro del espacio se puede entorpecer por obstaculos o falta de visibilidad o inexperiencia del conductor. o incluso conductores habilidosos pueden fallar cuando es necesario una serie de maniobras que dependen unas de otras y si calculas mal en alguna , en la siguiente maniobra se tendria rectificar esta equivocación.</p></li>
 <li><p>Con la ayuda de sistemas de asistencia al conductor.</p></li>
 </ul>
@@ -469,7 +472,7 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 <ul>
 <li><p>Los sistemas de asistencia al conductor son programas informáticos que proporcionan información sobre el entorno del vehículo.</p></li>
 <li><p>Algunos son tan avanzados que pueden estacionar el vehículo de forma autónoma y otros más simples que solo proporcionan información sobre la distancia a objetos cercanos y orientacion del vehículo.</p></li>
-<li><p>Una solución eficaz que puede contribuir a la mejora de estos sistemas es la inteligencia artificial. Si una red neuronal aprendiera a estacionar un vehículo en un ambiente controlado, con este conocimiento podría retornar información de utilidad para cumplir esta tarea.</p></li>
+<li><p>Una solución eficaz que puede contribuir a la mejora de estos sistemas es la inteligencia artificial. Si una IA aprendiera a estacionar un vehículo en un ambiente controlado, con este conocimiento podría retornar información de utilidad para cumplir esta tarea.</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -527,8 +530,7 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 
 <section id="visión-computacional" class="title-slide slide level2 center">
 <h2>Visión Computacional</h2>
-<p><img src="./img/line_detection/lines.png" alt=""> <img src="./img/line_detection/lines_only.png" alt=""></p>
-<p><img src="./img/line_detection/povs.png" alt=""> <img src="./img/up.png" alt=""> <img src="./img/front.png" alt=""></p>
+<p><img class="my-h" src="./img/line_detection/lines.png" alt=""> <img class="my-h" src="./img/line_detection/lines_only.png" alt=""> <img class="my-h" src="./img/line_detection/povs.png" alt=""> <img class="my-h" src="./img/front.png" alt=""> <img class="my-h" src="./img/up.png" alt=""></p>
 <div class="footer">
 
 </div>
@@ -690,9 +692,8 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 <li><p>Ciudades, carreteras, estacionamientos</p></li>
 <li><p>Vehículos, peatones, semáforos, sensores</p></li>
 <li><p>Api Python</p></li>
-<li><p><img class="my-list-s" src="./img/intel.png" alt=""></p></li>
+<li><p><img class="my-list-s" src="./img/intel.png" alt=""> <img class="my-list-s" src="./img/tri.png" alt=""> <img class="my-list-s" src="./img/compvisioncenter.png" alt=""> <img class="my-list-s" src="./img/UnrealEngine.svg" alt=""></p></li>
 </ul>
-<p><img class="my-list-s" src="./img/tri.png" alt=""> <img class="my-list-s" src="./img/compvisioncenter.png" alt=""> <img class="my-list-s" src="./img/UnrealEngine.svg" alt=""></p>
 </div>
 </div>
 <div class="footer">
@@ -740,22 +741,10 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
       }</style></aside>
 </section>
 
-<section id="representación-de-la-posición-relativa-al-estacionamiento" class="title-slide slide level2 center">
-<h2>Representación de la posición relativa al estacionamiento</h2>
-
-</section>
-<section id="posición-relativa" class="slide level3 center">
-<h3>Posición relativa</h3>
-<iframe src="https://www.geogebra.org/classic/a8pwjzyk?embed" width="100%" height="600" allowfullscreen="" style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0">
-</iframe>
-<!-- 
-$(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(\rho_4, \theta_4, z)$
--->
-<div class="footer">
-
-</div>
+<section id="detección-de-la-retícula-de-estacionamiento" class="title-slide slide level2 center">
+<h2>Detección de la retícula de estacionamiento</h2>
 <aside class="notes">
-<p>entonces habiendo estimado estas 4 <span class="math inline">\(\rho\)</span> y 4 <span class="math inline">\(\theta\)</span> podemos representar la posición del vehículo que nos servira como modelo del estado del entorno.</p>
+<p>una vez que tengamos los datos de la camara captados en el entorno de sumulacion podemos procesarlos para detectar la retícula del estacionamiento</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -768,10 +757,74 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
           display:block!important;
       }</style></aside>
 </section>
+<section id="proyección-de-la-imagen-en-el-plano-de-la-cámara" class="slide level3 center">
+<h3>Proyección de la imagen en el plano de la cámara</h3>
+<p><img class="my-h" src="./img/line_detection/paralel_lines.png" alt=""> <img class="my-h" src="./img/line_detection/pov.png" alt=""></p>
+<aside class="notes">
+<p>Cuando proyectamos un escenario del mundo real en 3 dimensiones como un estacionamiento a un plano de 2 dimensiones como el lente de una camara, se produce una distorsion en la imagen. Esta distorsion provoca que las lıneas paralelas en el mundo real, al proyectarse en el plano de la camara, se interseten en un punto de fuga.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="geometría-del-estacionamiento" class="slide level3 center">
+<h3>Geometría del estacionamiento</h3>
 
-<section id="cálculo-de-distancias" class="title-slide slide level2 center">
-<h2>Cálculo de distancias</h2>
+<img src="./img/line_detection/pov_reticule.png" alt="" class="r-stretch"><aside class="notes">
+<p>Dado que las lıneas de los cajones de estacionamiento son paralelas por su geometrıa, forman patrones en una retıcula de paralelogramos.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="geometría-del-estacionamiento-1" class="slide level3 center">
+<h3>Geometría del estacionamiento</h3>
 
+<img src="./img/line_detection/pov_reticule_layer.png" alt="" class="r-stretch"><aside class="notes">
+<p>Esto permite utilizar tecnicas de deteccion de lıneas para identificar los puntos de fuga y estimar la posicion de la retıcula de estacionamiento.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="geometría-del-estacionamiento-2" class="slide level3 center">
+<h3>Geometría del estacionamiento</h3>
+<iframe src="https://www.geogebra.org/classic/zy5pkjvg?embed" width="100%" height="600" allowfullscreen="" style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0">
+</iframe>
+<aside class="notes">
+<p>ya que conociendo la ubicacion de los puntos de fuga y las equaciones de las lıneas podriamos calcular la ubicacion de cualquier punto de interes en la reticula.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="detección-de-líneas-paralelas" class="slide level3 center">
 <h3>Detección de líneas paralelas</h3>
@@ -786,6 +839,21 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
 </ul>
 </div>
 </div>
+<aside class="notes">
+<p>Para detectar las lıneas paralelas de interes en la imagen, primero se hace un preprocesamiento del area debajo del horizonte de la imagen donde estara el estacionamiento.</p>
+<p>luego se utiliza el algorithmo de Canny para detectar los bordes de las figuras resaltadas en la umbraizacion.</p>
+<p>y sobre estos contornos encontrados se aplica la transformada de Hough para detectar coordenadas de inicio y fin de las lıneas resultantes</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="ecuaciones-de-las-rectas-de-las-líneas" class="slide level3 center">
 <h3>Ecuaciones de las rectas de las líneas</h3>
@@ -816,6 +884,19 @@ c
 </ul>
 </div>
 </div>
+<aside class="notes">
+<p>Una vez obtenidas las coordenadas de inicio y fin de cada lınea paralela, podemos utilizar la ecuacion general de la recta ax+by+c=0 ,para formular un sistema de ecuaciones de esta forma matricial donde x1,y1 y x2,y2 son las coordenadas de inicio y fin de cada recta y abc son los coeficientes que podemos resolver con la descomposicion en valores singulares.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="ubicación-de-puntos-de-fuga" class="slide level3 center">
 <h3>Ubicación de puntos de fuga</h3>
@@ -829,19 +910,83 @@ c
 </ul>
 </div>
 </div>
+<aside class="notes">
+<p>Dado que ya se tendrian las ecuaciones de todas las lıneas en el plano de la camara, se pueden calcular las intersecciones de estas lıneas realizando un producto cruz entre las ecuaciones homogeneas [A,B,C] de todos los pares de lıneas</p>
+<p>y evidentemente, la mayor cantidad de intersecciones se encontraran en los puntos de fuga principales y para determinarlos se realiza un agrupaiento con el algoritmo de K-means.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="posición-de-la-retícula-del-estacionamiento" class="slide level3 center">
-<h3>Posición de la retícula del estacionamiento</h3>
-<iframe src="https://www.geogebra.org/classic/fmbj5sj3?embed" width="100%" height="600" allowfullscreen="" style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0">
+
+<section id="representación-de-la-posición-relativa-al-estacionamiento" class="title-slide slide level2 center">
+<h2>Representación de la posición relativa al estacionamiento</h2>
+<aside class="notes">
+<p>una vez que tengamos la retícula del estacionamiento, podemos representar la posición del vehículo con respecto a uno de los cajones de estacionamiento.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="posición-relativa" class="slide level3 center">
+<h3>Posición relativa</h3>
+<iframe src="https://www.geogebra.org/classic/a8pwjzyk?embed" width="100%" height="600" allowfullscreen="" style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0">
 </iframe>
+<!-- 
+$(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(\rho_4, \theta_4, z)$
+-->
+<div class="footer">
+
+</div>
+<aside class="notes">
+<p>para esto utilizaremos 4 vectores de distancias <span class="math inline">\(\rho\)</span> desde la camara a las 4 esquinas de uno de los cajones de estacionamiento ubicados en la reticula. y 4 angulos <span class="math inline">\(\theta\)</span> que serian los angulos de orientacion entre los vectores de distancias y el eje de la camara. y de esta forma tendriamos 4 vectores de coordenadas polares que junto a la altura conocida de la camara z serian coordenadas cilindricas que representan la posicion del vehiculo con respecto al cajon de estacionamiento.</p>
+<p>y estos vectores de coordenadas seran los que usaremos como modelo del estado del sistema.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="predicción-de-distancias" class="slide level3 center">
-<h3>Predicción de distancias</h3>
-<p>Predicción de distancias</p>
 </section>
+<section>
+<section id="marco-teórico" class="title-slide slide level1 center">
+<h1>Marco Teórico</h1>
+<aside class="notes">
+<p>entonces Como parte del marco teorico de la investigacion definimos</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="preguntas-de-investigación" class="title-slide slide level1 center">
-<h1>Preguntas de investigación</h1>
+<section id="preguntas-de-investigación" class="title-slide slide level2 center">
+<h2>Preguntas de investigación</h2>
 <ul>
 <li>¿Cómo se puede representar la posición de un vehículo con respecto a su espacio de estacionamiento?</li>
 <li>¿Cómo se puede estimar esta posición utilizando las cámaras y sensores del vehículo?</li>
@@ -849,16 +994,11 @@ c
 </ul>
 </section>
 
-<section id="hipótesis" class="title-slide slide level1 center">
-<h1>Hipótesis</h1>
+<section id="hipótesis" class="title-slide slide level2 center">
+<h2>Hipótesis</h2>
 <p>“Estimando la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores, y utilizando esta posición, se puede lograr un sistema de parqueo automático en simulación.”</p>
 </section>
 
-<section>
-<section id="objetivos" class="title-slide slide level1 center">
-<h1>Objetivos</h1>
-
-</section>
 <section id="objetivo-general" class="title-slide slide level2 center">
 <h2>Objetivo general:</h2>
 <p>Desarrollar un sistema de estimación de la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores para parqueo automático.</p>

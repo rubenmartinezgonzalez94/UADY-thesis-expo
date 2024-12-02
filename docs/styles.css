@@ -74,28 +74,23 @@ div.reveal-header {
 #visión-computacional {
     img {
         width: auto;
-        height: 6em;
+        height: 15em;
     }
 }
 
 #carla,
 #puntos-de-referencia,
 #origen-del-sistema-de-coordenadas,
-#ecuaciones-de-las-rectas-de-las-líneas {
-    .MathJax_Display {
-        text-align: left !important;
-    }
-}
-#calendario-de-actividades {
-    div.g {
-        background-color:lightgray
+#coordenadas-cilíndricas {
+    li {
+        font-size: .8em
     }
 }
 
 img.my-h {
-    width: auto;
-    height: 6.5em;
-    margin: 0;
+    width: auto !important;
+    height: 6.5em !important;
+    margin: 0 !important;
 }
 
 .my-list-s {
