@@ -31,7 +31,7 @@ format:
     progress: true
     history: true
     logo: /img/uady.svg
-    toc: true
+    toc: false
     toc-depth: 2
     toc-title: "Contenido"
     toc-icon: "toc"

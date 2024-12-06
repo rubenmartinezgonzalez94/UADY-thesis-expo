@@ -1,11 +1,12 @@
 [//]: # (# Avances de tesis.)
 
+
 # Introducción
 
 <!--
 Buen dia, les habla ing Ruben mg y a continuación les presentaré
-los avances de mi tesis titulada "Estimación ...".
-asesorada por los doctores Arturo E y Victor U.
+los avances en mi investigacion titulada "Estimación ...".
+asesorada por los doctores Arturo E
 -->
 
 <!--
@@ -36,7 +37,7 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 
 ::: {.notes}
 
-- Es importante porque permite a los conductores dejar sus vehículos de forma segura en estos espacios
+- Su importancia permite a los conductores dejar sus vehículos de forma segura en estos espacios
 mientras realizan otras actividades.
 
 - En lugares concurridos, puede ser complicado encontrar un lugar
@@ -118,8 +119,7 @@ mientras realizan otras actividades.
   El entorno sería el estacionamiento.
   El intérprete sería un sistema que analice los datos de los sensores del vehículo, como la cámara.
   El estado podría ser la pose del vehículo con respecto al estacionamiento.
-  La recompensa podría ser una función que premie las acciones que resulten favorables
-  y penalice las desfavorables.
+  La recompensa podría ser una función que evalue que tan bien esta este estado.
 
 - pero... ¿Qué haría falta para implementar un algoritmo así?
   Pues el agente, las acciones y el entorno nos lo puede proveer un simulador.
@@ -142,34 +142,32 @@ mientras realizan otras actividades.
 - donde podemos procesar los datos de los sensores del vehículo como la camara
   y representar matematicamete la posicion del vehículo con respecto al estacionamiento.
 
-- y en construir este sistema de vision computacional es en lo que nos estamos enfocando en este trabajo.
-  y para demostrar su aplicacion práctica, junto a la simulacion lo probaremos en algoritmos de aprendizaje por
-  refuerzo.
+- y en construir este sistema de vision computacional es en lo que nos estamos enfocando en esta investigacion.
+
+[//]: # (  y para demostrar su aplicacion práctica, junto a la simulacion lo probaremos en algoritmos de aprendizaje por)
+
+[//]: # (  refuerzo.)
 :::
 
-# Trabajos relacionados
-
-| **Características / Trabajos relacionados**         | **Propia** | **Autonomous Driving Architectures** [@bachute2021autonomous] | **Vision-based Autonomous Car Racing** [@cai2021vision] | **Model-based Probabilistic Collision Detection** [@althoff2009model] | **Cost-effective Vehicle Detection System** [@alam2022cost] |
-|-----------------------------------------------------|------------|---------------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------------------------|-------------------------------------------------------------|
-| Utilización de cámaras RGB y sensores               | X          | X                                                             | X                                                       | X                                                                     | X                                                           |
-| Algoritmos de Aprendizaje Automático                | X          | X                                                             | X                                                       | X                                                                     | X                                                           |
-| Modelar la pose del vehiculo en el estacionamiento  | X          |                                                               |                                                         |                                                                       |                                                             |
-| Maniobras de estacionamiento                        |            | X                                                             |                                                         |                                                                       |                                                             |
-| Análisis de tareas en la conducción autónoma        |            | X                                                             |                                                         | X                                                                     |                                                             |
-| Detección de vehículos en conducción autónoma       | X          |                                                               |                                                         |                                                                       | X                                                           |
-| Predicción estocástica de ocupación de la carretera |            |                                                               |                                                         | X                                                                     |                                                             |
-| Aprendizaje por refuerzo imitativo                  |            |                                                               | X                                                       |                                                                       |                                                             |
-
+# Marco Teórico
 ::: {.notes}
-
-- Se han revisado trabajos relacionados con este contexto donde se utilizan camaras y sensores
-  para resolver el problemas de la conducción autónoma como el estacionamiento.
-
-- Pero esto no es precisamente lo que queremos proponer en este trabajo.
-  Queremos proponer un sistema de visión computacional que permita modelar la posición del vehículo
-  con respecto al estacionamiento y utilizar este modelo para delegar la solución del estacionamiento
-  a un algoritmo de aprendizaje automático.
+por lo que podemos definir el marco teorico de la investigacion como:
 :::
+## Hipótesis
+
+“Estimando la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores,
+y utilizando esta posición, se puede lograr un sistema de estacionamiento automático en simulación.”
+
+## Objetivo general
+
+Desarrollar un sistema de estimación de la posición relativa al estacionamiento de un vehículo
+mediante cámaras y sensores para estacionamiento automático
+
+## Preguntas de investigación
+
+- ¿Cómo se puede representar la posición de un vehículo con respecto a su espacio de estacionamiento?
+- ¿Cómo se puede estimar esta posición utilizando las cámaras y sensores del vehículo?
+- ¿Cómo usar esta posición estimada para que el vehículo se estacione automáticamente?
 
 # Metodología
 
@@ -234,20 +232,21 @@ Proponemos: Carla (Car learning to act) pssei.
 - y las imagenes de abajo son ejemplos de los datos capturados por la camara
 :::
 
-## Detección de la retícula de estacionamiento
+## Detección del estacionamiento
 
 
 ::: {.notes}
 una vez que tengamos los datos de la camara captados en el entorno de sumulacion
-podemos procesarlos para detectar la retícula del estacionamiento
+podemos procesarlos para detectar la ubicacion estacionamiento
 :::
+
 ### Proyección de la imagen en el plano de la cámara
 <img class="my-h" src="/img/line_detection/paralel_lines.png" alt=""/>
 <img class="my-h" src="/img/line_detection/pov.png" alt=""/>
 
 ::: {.notes}
 Cuando proyectamos un escenario del mundo real en 3 dimensiones como un estacionamiento a un plano
-de 2 dimensiones como el lente de una camara, se produce una distorsion en la imagen. Esta distorsion
+de 2 dimensiones como el sensor de una camara, se produce una transformacion en la imagen. Esta transformacion
 provoca que las lıneas paralelas en el mundo real, al proyectarse en el plano de la camara, se interseten en
 un punto de fuga.
 :::
@@ -257,8 +256,8 @@ un punto de fuga.
 <img  src="/img/line_detection/pov_reticule.png" alt=""/>
 
 ::: {.notes}
-Dado que las lıneas de los cajones de estacionamiento son paralelas por su geometrıa, forman patrones en
-una retıcula de paralelogramos. 
+Dado que las lıneas de los cajones de estacionamiento son paralelas por su geometrıa, se forman patrones en
+una retıcula de paralelogramos. esta reticula esta definida por los puntos de fuga.
 :::
 
 ### Geometría del estacionamiento
@@ -296,6 +295,7 @@ podriamos calcular la ubicacion de cualquier punto de interes en la reticula.
 ::: {.notes}
 Para detectar las lıneas paralelas de interes en la imagen, primero se hace un 
 preprocesamiento del area debajo del horizonte de la imagen donde estara el estacionamiento.
+donde se resaltan las lineas claras mediante umbralizacion
 
 luego se utiliza el algorithmo de Canny para detectar los bordes de las figuras resaltadas en la umbraizacion.
 
@@ -348,12 +348,12 @@ y abc son los coeficientes que podemos resolver con la descomposicion en valores
 
 :::: {.columns}
 ::: {.column width="60%"}
-<img src="/img/line_detection/povs.png" alt=""/>
+<img src="/img/line_detection/povs_s.png" alt=""/>
 :::
 ::: {.column width="40%"}
-
-- Intersección de las rectas (producto cruz de todas las rectas)
-- Detección de cúmulos de puntos (K-means)
+- Intersección de las rectas
+- $P= l_1 \times l_2$
+- Detección de cúmulos de puntos 
 :::
 ::::
 
@@ -363,7 +363,7 @@ pueden calcular las intersecciones de estas lıneas realizando un producto cruz 
 homogeneas [A,B,C] de todos los pares de lıneas
 
 y evidentemente, la mayor cantidad de intersecciones se encontraran en los puntos de fuga principales
-y para determinarlos se realiza un agrupaiento con el algoritmo de K-means.
+y para determinarlos se realizan tecnicas de clustering 
 :::
 
 [//]: # (### Predicción de distancias)
@@ -396,25 +396,29 @@ serian coordenadas cilindricas que representan la posicion del vehiculo con resp
 y estos vectores de coordenadas seran los que usaremos como modelo del estado del sistema.
 :::
 
-# Marco Teórico
-::: {.notes}
-entonces Como parte del marco teorico de la investigacion definimos
-:::
-## Preguntas de investigación
 
-- ¿Cómo se puede representar la posición de un vehículo con respecto a su espacio de estacionamiento?
-- ¿Cómo se puede estimar esta posición utilizando las cámaras y sensores del vehículo?
-- ¿Cómo usar esta posición estimada para que el vehículo se estacione automáticamente?
 
-## Hipótesis
+# Avances y Aspiraciones
 
-“Estimando la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores,
-y utilizando esta posición, se puede lograr un sistema de parqueo automático en simulación.”
+| **Actividad**                               | Ene | Feb | Mar | Abr | May | Jun | Jul | Ago | Sep | Oct | Nov | Dic | Ene | Feb | Mar | Abr | May | Jun |
+|---------------------------------------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| Investigación y revisión bibliográfica      | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   |     |     |     |     |     |     |     |
+| Diseño y Configuración del Entorno Simulado | ✅   | ✅   | ✅   | ✅   | ✅   |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| Adquisición y pre-procesamiento de Datos    |     |     |     |     | ✅   | ✅   | ✅   | ✅   |     |     |     |     |     |     |     |     |     |     |
+| Interpretar los datos de los sensores       |     |     |     |     |     |     | ✅   | ✅   | ✅   |     |     |     |     |     |     |     |     |     |
+| Obtención de mediciones en la imagen        |     |     |     |     |     |     |     |     | ✅   | ✅   |     |     |     |     |     |     |     |     |
+| Detección de lineas y puntos de fuga        |     |     |     |     |     |     |     |     |     | ✅   | ✅   | ✅   |     |     |     |     |     |     |
+| Estimación de la posición de la retícula    |     |     |     |     |     |     |     |     |     |     |     | ✅   | ⏳   | ⏳   |     |     |     |     | 
+| Predicción de distancias                    |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   |     |     |     |
+| Estimación de la posición relativa          |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   |     |     |
+| Evaluación de resultados                    |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   | ⏳   |
+| Documentación y Análisis de Resultados      | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   |
+| Redacción y Revisión del documento de tesis |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   |  
 
-## Objetivo general:
+# Fin
+Gracias por su atención...
 
-Desarrollar un sistema de estimación de la posición relativa al estacionamiento de un vehículo
-mediante cámaras y sensores para parqueo automático.
+# Extras
 
 ## Objetivos específicos:
 
@@ -424,21 +428,31 @@ mediante cámaras y sensores para parqueo automático.
 - Procesar los datos y estimar la posición del vehículo con respecto al estacionamiento.
 - Utilizar la posición estimada para lograr un sistema de parqueo automático en simulación.
 
-## Calendario de Actividades
+## Trabajos relacionados
 
-| **Actividad**                               | Ene | Feb | Mar | Abr | May | Jun | Jul | Ago | Sep | Oct | Nov | Dic | Ene | Feb | Mar | Abr | May | Jun |
-|---------------------------------------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| Investigación y revisión bibliográfica      | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   |     |     |     |     |     |
-| Diseño y Configuración del Entorno Simulado | x   | x   | x   | x   |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| Adquisición y pre-procesamiento de Datos    |     |     |     |     | x   | x   | x   |     |     |     |     |     |     |     |     |     |     |     |
-| Interpretar los datos de los sensores       |     |     |     |     |     |     | x   | x   | x   |     |     |     |     |     |     |     |     |     |
-| Estimación de la posición de la retícula    |     |     |     |     |     |     |     | x   | x   | x   | x   |     |     |     |     |     |     |     | 
-| Predicción de distancias                    |     |     |     |     |     |     |     |     |     |     | x   | x   | x   |     |     |     |     |     |
-| Desarrollo y Entrenamiento de Algoritmos    |     |     |     |     |     |     |     |     |     |     |     |     | x   | x   | x   | x   | x   | x   |
-| Evaluación y Ajuste del Sistema             |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     | x   | x   | x   |
-| Documentación y Análisis de Resultados      | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   |
-| Redacción y Revisión del documento de tesis |     |     |     |     |     |     |     |     |     |     |     |     |     | x   | x   | x   | x   | x   |  
+| **Características / Trabajos relacionados**         | **Propia** | **Autonomous Driving Architectures** [@bachute2021autonomous] | **Vision-based Autonomous Car Racing** [@cai2021vision] | **Model-based Probabilistic Collision Detection** [@althoff2009model] | **Cost-effective Vehicle Detection System** [@alam2022cost] |
+|-----------------------------------------------------|------------|---------------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------------------------|-------------------------------------------------------------|
+| Utilización de cámaras RGB y sensores               | X          | X                                                             | X                                                       | X                                                                     | X                                                           |
+| Algoritmos de Aprendizaje Automático                | X          | X                                                             | X                                                       | X                                                                     | X                                                           |
+| Modelar la pose del vehiculo en el estacionamiento  | X          |                                                               |                                                         |                                                                       |                                                             |
+| Maniobras de estacionamiento                        |            | X                                                             |                                                         |                                                                       |                                                             |
+| Análisis de tareas en la conducción autónoma        |            | X                                                             |                                                         | X                                                                     |                                                             |
+| Detección de vehículos en conducción autónoma       | X          |                                                               |                                                         |                                                                       | X                                                           |
+| Predicción estocástica de ocupación de la carretera |            |                                                               |                                                         | X                                                                     |                                                             |
+| Aprendizaje por refuerzo imitativo                  |            |                                                               | X                                                       |                                                                       |                                                             |
 
-# Referencias
+::: {.notes}
 
+- Se han revisado trabajos relacionados con este contexto donde se utilizan camaras y sensores
+  para resolver el problema de la conducción autónoma como el estacionamiento.
 
+- Pero esto no es precisamente lo que queremos proponer en este trabajo.
+  Queremos proponer un sistema de visión computacional que permita modelar la posición del vehículo
+  con respecto al estacionamiento y utilizar este modelo para delegar la solución del estacionamiento
+  a un algoritmo de aprendizaje automático.
+:::
+
+## Referencias
+
+::: {#refs}
+:::
