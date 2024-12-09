@@ -412,7 +412,7 @@ y estos vectores de coordenadas seran los que usaremos como modelo del estado de
 | Mejorar la retícula usando filtro de kalman |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   |     |     |     |
 | Estimación de distancias                    |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   |     |     |
 | Estimación de la posición relativa          |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   |     |     |
-| Utilizar la posición en algoritmos de RL    |     |     |     |     |     |     |     |     |     |     |     |     |     |     |  ⏳   | ⏳   | ⏳   |    |
+| Utilizar la posición en algoritmos de RL    |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   | ⏳   |     |
 | Documentación y Análisis de Resultados      | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   |
 | Redacción y Revisión del documento de tesis |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   |  
 
