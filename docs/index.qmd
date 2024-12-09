@@ -398,7 +398,7 @@ y estos vectores de coordenadas seran los que usaremos como modelo del estado de
 
 
 
-# Avances y Aspiraciones
+# Avances y Planificación
 
 | **Actividad**                               | Ene | Feb | Mar | Abr | May | Jun | Jul | Ago | Sep | Oct | Nov | Dic | Ene | Feb | Mar | Abr | May | Jun |
 |---------------------------------------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
@@ -409,9 +409,10 @@ y estos vectores de coordenadas seran los que usaremos como modelo del estado de
 | Obtención de mediciones en la imagen        |     |     |     |     |     |     |     |     | ✅   | ✅   |     |     |     |     |     |     |     |     |
 | Detección de lineas y puntos de fuga        |     |     |     |     |     |     |     |     |     | ✅   | ✅   | ✅   |     |     |     |     |     |     |
 | Estimación de la posición de la retícula    |     |     |     |     |     |     |     |     |     |     |     | ✅   | ⏳   | ⏳   |     |     |     |     | 
-| Predicción de distancias                    |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   |     |     |     |
+| Mejorar la retícula usando filtro de kalman |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   |     |     |     |
+| Estimación de distancias                    |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   |     |     |
 | Estimación de la posición relativa          |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   |     |     |
-| Evaluación de resultados                    |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   | ⏳   |
+| Utilizar la posición en algoritmos de RL    |     |     |     |     |     |     |     |     |     |     |     |     |     |     |  ⏳   | ⏳   | ⏳   |    |
 | Documentación y Análisis de Resultados      | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   |
 | Redacción y Revisión del documento de tesis |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   |  
 
@@ -419,6 +420,41 @@ y estos vectores de coordenadas seran los que usaremos como modelo del estado de
 Gracias por su atención...
 
 # Extras
+
+## Propiedades de la representación homogénea de lineas y puntos
+:::: {.columns}
+::: {.column width="50%"}
+si $l_1$ y $l_2$ son la representación homogénea de dos lineas en el plano
+el punto donde se intersectan esta dado por:
+$$
+P = l_1 \times l_2
+$$
+:::
+::: {.column width="50%"}
+si $p_1$ y $p_2$ son la representación homogénea de dos puntos en el plano
+la linea que pasa por estos puntos esta dado por:
+$$
+l = p_1 \times p_2
+$$
+:::
+::::
+
+Hartley, R., & Zisserman, A. (2003). Multiple view geometry in computer vision. Cambridge university press.
+
+:::footer
+:::
+## Intersección de n líneas
+La intersección de n líneas (bajo un criterio de mínimos cuadrados) esta dado por
+el eigen vector asociado al eigen valor más pequeño de la matriz $M$ donde:
+$$
+M = \sum_{i=1}^{n} w_i l_i l_i^T
+$$
+donde $w_i$ es un peso asociado a la linea $l_i$ y $l_i$ es la representación homogénea de la linea $i$.
+ 
+Kanatani, K. (1998). Statistical optimization for geometric computation: theory and practice. Elsevier.
+
+:::footer
+:::
 
 ## Objetivos específicos:
 

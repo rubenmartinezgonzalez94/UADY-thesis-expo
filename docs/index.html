@@ -870,8 +870,8 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
       }</style></aside>
 </section>
 </section>
-<section id="avances-y-aspiraciones" class="title-slide slide level1 center">
-<h1>Avances y Aspiraciones</h1>
+<section id="avances-y-planificación" class="title-slide slide level1 center">
+<h1>Avances y Planificación</h1>
 <table class="caption-top" style="width:100%;">
 <colgroup>
 <col style="width: 33%">
@@ -1066,7 +1066,7 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
 <td></td>
 </tr>
 <tr class="even">
-<td>Predicción de distancias</td>
+<td>Mejorar la retícula usando filtro de kalman</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1087,6 +1087,27 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
 <td></td>
 </tr>
 <tr class="odd">
+<td>Estimación de distancias</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>⏳</td>
+<td>⏳</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
 <td>Estimación de la posición relativa</td>
 <td></td>
 <td></td>
@@ -1107,28 +1128,28 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
 <td></td>
 <td></td>
 </tr>
-<tr class="even">
-<td>Evaluación de resultados</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>⏳</td>
-<td>⏳</td>
-<td>⏳</td>
-</tr>
 <tr class="odd">
+<td>Utilizar la posición en algoritmos de RL</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>⏳</td>
+<td>⏳</td>
+<td>⏳</td>
+<td></td>
+</tr>
+<tr class="even">
 <td>Documentación y Análisis de Resultados</td>
 <td>✅</td>
 <td>✅</td>
@@ -1149,7 +1170,7 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
 <td>⏳</td>
 <td>⏳</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Redacción y Revisión del documento de tesis</td>
 <td></td>
 <td></td>
@@ -1184,6 +1205,36 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
 <h1>Extras</h1>
 
 </section>
+<section id="propiedades-de-la-representación-homogénea-de-lineas-y-puntos" class="title-slide slide level2 center">
+<h2>Propiedades de la representación homogénea de lineas y puntos</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>si <span class="math inline">\(l_1\)</span> y <span class="math inline">\(l_2\)</span> son la representación homogénea de dos lineas en el plano el punto donde se intersectan esta dado por: <span class="math display">\[
+P = l_1 \times l_2
+\]</span></p>
+</div><div class="column" style="width:50%;">
+<p>si <span class="math inline">\(p_1\)</span> y <span class="math inline">\(p_2\)</span> son la representación homogénea de dos puntos en el plano la linea que pasa por estos puntos esta dado por: <span class="math display">\[
+l = p_1 \times p_2
+\]</span></p>
+</div>
+</div>
+<p>Hartley, R., &amp; Zisserman, A. (2003). Multiple view geometry in computer vision. Cambridge university press.</p>
+<div class="footer">
+
+</div>
+</section>
+
+<section id="intersección-de-n-líneas" class="title-slide slide level2 center">
+<h2>Intersección de n líneas</h2>
+<p>La intersección de n líneas (bajo un criterio de mínimos cuadrados) esta dado por el eigen vector asociado al eigen valor más pequeño de la matriz <span class="math inline">\(M\)</span> donde: <span class="math display">\[
+M = \sum_{i=1}^{n} w_i l_i l_i^T
+\]</span> donde <span class="math inline">\(w_i\)</span> es un peso asociado a la linea <span class="math inline">\(l_i\)</span> y <span class="math inline">\(l_i\)</span> es la representación homogénea de la linea <span class="math inline">\(i\)</span>.</p>
+<p>Kanatani, K. (1998). Statistical optimization for geometric computation: theory and practice. Elsevier.</p>
+<div class="footer">
+
+</div>
+</section>
+
 <section id="objetivos-específicos" class="title-slide slide level2 center">
 <h2>Objetivos específicos:</h2>
 <ul>
