@@ -66,7 +66,7 @@ mientras realizan otras actividades.
   y otros más simples que solo proporcionan información
   sobre la distancia a objetos cercanos y orientacion del vehículo.
 
-- Una solución eficaz que puede contribuir a la mejora de estos sistemas es la inteligencia artificial.
+- Una solución que puede contribuir a la mejora de estos sistemas es la inteligencia artificial.
   Si una IA aprendiera a estacionar un vehículo en un ambiente controlado,
   con este conocimiento podría retornar información de utilidad para cumplir esta tarea.
 
@@ -123,7 +123,8 @@ mientras realizan otras actividades.
 
 - pero... ¿Qué haría falta para implementar un algoritmo así?
   Pues el agente, las acciones y el entorno nos lo puede proveer un simulador.
-  Y el intérprete, el estado y la recompensa lo podemos estimar con soluciones de visión computacional.
+  Y el intérprete para obtener el estado y que tanmbien esta este estado lo podemos implementar
+  con un sistema de visión computacional.
 :::
 
 ## Visión Computacional
@@ -138,11 +139,15 @@ mientras realizan otras actividades.
 :::
 
 ::: {.notes}
+- y en construir este sistema de vision computacional sera nuesto objetivo en esta investigacion.
 
-- donde podemos procesar los datos de los sensores del vehículo como la camara
-  y representar matematicamete la posicion del vehículo con respecto al estacionamiento.
+- donde podemos procesar los datos de la camara
+  y representar la posicion del vehículo con respecto al estacionamiento.
 
-- y en construir este sistema de vision computacional es en lo que nos estamos enfocando en esta investigacion.
+- Para representar esta posición el mayor desafio es detectar los cajones de estacionamiento
+ a partir de las imagenes capturadas por la camara del vehiculo ya que el poder ubicar los cajones
+  de estacionamientoes fundamental en la planeacion de movimiento
+
 
 [//]: # (  y para demostrar su aplicacion práctica, junto a la simulacion lo probaremos en algoritmos de aprendizaje por)
 
@@ -239,6 +244,17 @@ Proponemos: Carla (Car learning to act) pssei.
 una vez que tengamos los datos de la camara captados en el entorno de sumulacion
 podemos procesarlos para detectar la ubicacion estacionamiento
 :::
+### Propiedades
+
+- Los estacionamientos suelen formar estructuras regulares,
+organizada como una retícula de paralelogramos.
+- Los paralelogramos al proyectarse en la cámara pueden
+intersectarse en los “puntos de fuga”.
+
+::: {.notes}
+Hay dos propiedades que podemos aprovechar para plantear el mé-
+todo:
+:::
 
 ### Proyección de la imagen en el plano de la cámara
 <img class="my-h" src="/img/line_detection/paralel_lines.png" alt=""/>
@@ -269,7 +285,8 @@ puntos de fuga y estimar la posicion de la retıcula de estacionamiento.
 :::
 
 ### Geometría del estacionamiento
-<iframe src="https://www.geogebra.org/classic/zy5pkjvg?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+<iframe src="https://www.geogebra.org/classic/kczwvjn3?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
 
 ::: {.notes}
 ya que conociendo la ubicacion de los puntos de fuga y las equaciones de las lıneas
@@ -348,7 +365,7 @@ y abc son los coeficientes que podemos resolver con la descomposicion en valores
 
 :::: {.columns}
 ::: {.column width="60%"}
-<img src="/img/line_detection/povs_s.png" alt=""/>
+<img src="/img/line_detection/Intersecciones_6.png" alt=""/>
 :::
 ::: {.column width="40%"}
 - Intersección de las rectas
@@ -363,11 +380,50 @@ pueden calcular las intersecciones de estas lıneas realizando un producto cruz 
 homogeneas [A,B,C] de todos los pares de lıneas
 
 y evidentemente, la mayor cantidad de intersecciones se encontraran en los puntos de fuga principales
-y para determinarlos se realizan tecnicas de clustering 
+y para determinarlos se realizan tecnicas de AgglomerativeClustering 
 :::
 
 [//]: # (### Predicción de distancias)
 [//]: # (Predicción de distancias)
+
+### Intersección de n líneas
+La intersección de n líneas homogéneas esta dado por
+el eigen vector asociado al eigen valor más pequeño de la matriz $M$ donde:
+$$
+M = \sum_{i=1}^{n} w_i l_i l_i^T
+$$
+donde $w_i$ es un peso asociado a la linea $l_i$ .
+ 
+Kanatani, K. (1998). Statistical optimization for geometric computation: theory and practice. Elsevier.
+
+:::footer
+:::
+
+### Lineas que concurren en los puntos de fuga
+
+:::: {.columns}
+
+::: {.column width="50%"}
+<img src="/img/line_detection/2vp.png" alt=""/>
+:::
+
+::: {.column width="50%"}
+<img src="/img/line_detection/lineasFinales.png" alt=""/>
+:::
+::::
+
+## Ajuste de la retícula
+
+:::: {.columns}
+
+::: {.column width="50%"}
+<img src="/img/line_detection/transformacion.png" alt=""/>
+:::
+
+::: {.column width="50%"}
+<img src="/img/line_detection/tenasf_reticule.png" alt=""/>
+:::
+::::
 
 ## Representación de la posición relativa al estacionamiento
 
@@ -375,6 +431,8 @@ y para determinarlos se realizan tecnicas de clustering
 una vez que tengamos la retícula del estacionamiento, podemos representar la posición del vehículo
 con respecto a uno de los cajones de estacionamiento.
 :::
+
+
 
 ### Posición relativa
 
@@ -443,18 +501,7 @@ Hartley, R., & Zisserman, A. (2003). Multiple view geometry in computer vision. 
 
 :::footer
 :::
-## Intersección de n líneas
-La intersección de n líneas (bajo un criterio de mínimos cuadrados) esta dado por
-el eigen vector asociado al eigen valor más pequeño de la matriz $M$ donde:
-$$
-M = \sum_{i=1}^{n} w_i l_i l_i^T
-$$
-donde $w_i$ es un peso asociado a la linea $l_i$ y $l_i$ es la representación homogénea de la linea $i$.
- 
-Kanatani, K. (1998). Statistical optimization for geometric computation: theory and practice. Elsevier.
 
-:::footer
-:::
 
 ## Objetivos específicos:
 

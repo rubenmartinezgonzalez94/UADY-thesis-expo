@@ -2,12 +2,10 @@ project:
   type: website
   output-dir: docs
 
-title: "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación"
-date: 12/9/2024
+title: "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación"
+date: 05/30/2025
 date-format: "MMM, YYYY"
 authors:
-
-
   - name: Dr. Arturo Espinosa Romero
     email: eromero@correo.uady.mx
   - name: Ing. Rubén Martínez González
@@ -15,7 +13,7 @@ authors:
 
 format:
   revealjs:
-    title: "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático"
+    title: "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación"
     subtitle: "Protocolo de tesis"
     bibliography: references.bib
 #    header: "Protocolo de tesis"
@@ -41,10 +39,6 @@ format:
     sc-sb-title: true
 #    incremental: true
 css: styles.css
-filters:
-  - reveal-header
-revealjs-plugins:
-  - pointer
 slide-level: 3
 number-sections: false
 
