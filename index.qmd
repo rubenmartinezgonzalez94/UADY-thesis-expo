@@ -37,17 +37,17 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 
 ::: {.notes}
 
-- Su importancia permite a los conductores dejar sus vehículos de forma segura en estos espacios
+- Su importancia ya permite a los conductores dejar sus vehículos de forma segura en estos espacios
 mientras realizan otras actividades.
 
-- En lugares concurridos, puede ser complicado encontrar un lugar
+- y cual es el problema con esto , pues En lugares concurridos, puede ser complicado encontrar un lugar
   o incluso si ya encontraste un lugar, la maniobra para posicionar el vehículo dentro del espacio
   se puede entorpecer por obstaculos o falta de visibilidad o inexperiencia del conductor.
   o incluso conductores habilidosos pueden fallar cuando es necesario una serie de maniobras
   que dependen unas de otras y si calculas mal en alguna ,
   en la siguiente maniobra se tendria rectificar esta equivocación.
 
-- Con la ayuda de sistemas de asistencia al conductor.
+- que ayuda a solucionar este problema , pues Con la ayuda de sistemas de asistencia al conductor.
 
 :::
 
@@ -110,7 +110,7 @@ mientras realizan otras actividades.
 - Estos algoritmos se basan en la interacción de un agente con un entorno.
   El agente realiza acciones en el entorno que pueden ser interpretadas y evaluadas
   según va cambiando el estado del entorno.
-  estos cambios en el entorno pueden ser representados en una recompensa que se
+  estos cambios en el entorno pueden ser evaluados con una recompensa que el agente
   utiliza para aprender a elegir acciones cada vez mejores.
 
 
@@ -146,7 +146,7 @@ mientras realizan otras actividades.
 
 - Para representar esta posición el mayor desafio es detectar los cajones de estacionamiento
  a partir de las imagenes capturadas por la camara del vehiculo ya que el poder ubicar los cajones
-  de estacionamientoes fundamental en la planeacion de movimiento
+  de estacionamientoes fundamental en cualquier tarea de planeacion de movimiento
 
 
 [//]: # (  y para demostrar su aplicacion práctica, junto a la simulacion lo probaremos en algoritmos de aprendizaje por)
@@ -248,7 +248,7 @@ podemos procesarlos para detectar la ubicacion estacionamiento
 
 - Los estacionamientos suelen formar estructuras regulares,
 organizada como una retícula de paralelogramos.
-- Los paralelogramos al proyectarse en la cámara pueden
+- Las líneas de los paralelogramos al proyectarse en la cámara pueden
 intersectarse en los “puntos de fuga”.
 
 ::: {.notes}
@@ -261,9 +261,10 @@ todo:
 <img class="my-h" src="/img/line_detection/pov.png" alt=""/>
 
 ::: {.notes}
+Y estos puntos de fuga son una propiedad muy interesante ya que
 Cuando proyectamos un escenario del mundo real en 3 dimensiones como un estacionamiento a un plano
 de 2 dimensiones como el sensor de una camara, se produce una transformacion en la imagen. Esta transformacion
-provoca que las lıneas paralelas en el mundo real, al proyectarse en el plano de la camara, se interseten en
+provoca que las líneas paralelas en el mundo real, al proyectarse en el plano de la camara, se interseten en
 un punto de fuga.
 :::
 
@@ -272,16 +273,16 @@ un punto de fuga.
 <img  src="/img/line_detection/pov_reticule.png" alt=""/>
 
 ::: {.notes}
-Dado que las lıneas de los cajones de estacionamiento son paralelas por su geometrıa, se forman patrones en
-una retıcula de paralelogramos. esta reticula esta definida por los puntos de fuga.
+Dado que las líneas de los cajones de estacionamiento son paralelas por su geometría, se forman patrones en
+una retícula de paralelogramos. esta reticula esta definida por los puntos de fuga.
 :::
 
 ### Geometría del estacionamiento
 <img  src="/img/line_detection/pov_reticule_layer.png" alt=""/>
 
 ::: {.notes}
-Esto permite utilizar tecnicas de deteccion de lıneas para identificar los
-puntos de fuga y estimar la posicion de la retıcula de estacionamiento.
+Esto permite utilizar tecnicas de deteccion de líneas para identificar los
+puntos de fuga y estimar la posicion de la retícula de estacionamiento.
 :::
 
 ### Geometría del estacionamiento
@@ -289,7 +290,7 @@ puntos de fuga y estimar la posicion de la retıcula de estacionamiento.
 <iframe src="https://www.geogebra.org/classic/kczwvjn3?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
 
 ::: {.notes}
-ya que conociendo la ubicacion de los puntos de fuga y las equaciones de las lıneas
+ya que conociendo la ubicacion de los puntos de fuga y las equaciones de las líneas
 podriamos calcular la ubicacion de cualquier punto de interes en la reticula.
 :::
 
@@ -310,14 +311,14 @@ podriamos calcular la ubicacion de cualquier punto de interes en la reticula.
 ::::
 
 ::: {.notes}
-Para detectar las lıneas paralelas de interes en la imagen, primero se hace un 
+Para detectar las líneas paralelas de interes en la imagen, primero se hace un 
 preprocesamiento del area debajo del horizonte de la imagen donde estara el estacionamiento.
 donde se resaltan las lineas claras mediante umbralizacion
 
 luego se utiliza el algorithmo de Canny para detectar los bordes de las figuras resaltadas en la umbraizacion.
 
 y sobre estos contornos encontrados se aplica la transformada de Hough para detectar coordenadas de inicio y fin
-de las lıneas resultantes
+de las líneas resultantes
 
 :::
 
@@ -354,7 +355,7 @@ $$
 ::::
 
 ::: {.notes}
-Una vez obtenidas las coordenadas de inicio y fin de cada lınea paralela, podemos utilizar la ecuacion
+Una vez obtenidas las coordenadas de inicio y fin de cada línea paralela, podemos utilizar la ecuacion
 general de la recta ax+by+c=0 ,para formular un sistema de ecuaciones de esta forma matricial
 donde x1,y1 y x2,y2 son las coordenadas de inicio y fin de cada recta 
 y abc son los coeficientes que podemos resolver con la descomposicion en valores singulares.
@@ -375,9 +376,9 @@ y abc son los coeficientes que podemos resolver con la descomposicion en valores
 ::::
 
 ::: {.notes}
-Dado que ya se tendrian las ecuaciones de todas las lıneas en el plano de la camara, se
-pueden calcular las intersecciones de estas lıneas realizando un producto cruz entre las ecuaciones
-homogeneas [A,B,C] de todos los pares de lıneas
+Dado que ya se tendrian las ecuaciones de todas las líneas en el plano de la camara, se
+pueden calcular las intersecciones de estas líneas realizando un producto cruz entre las ecuaciones
+homogeneas [A,B,C] de todos los pares de líneas
 
 y evidentemente, la mayor cantidad de intersecciones se encontraran en los puntos de fuga principales
 y para determinarlos se realizan tecnicas de AgglomerativeClustering 
@@ -393,8 +394,11 @@ $$
 M = \sum_{i=1}^{n} w_i l_i l_i^T
 $$
 donde $w_i$ es un peso asociado a la linea $l_i$ .
- 
-Kanatani, K. (1998). Statistical optimization for geometric computation: theory and practice. Elsevier.
+
+<span style="font-size:0.6em">
+Geometric Computation for Machine Vision 
+[@kanatani1993geometric]
+</span>
 
 :::footer
 :::
@@ -412,6 +416,25 @@ Kanatani, K. (1998). Statistical optimization for geometric computation: theory 
 :::
 ::::
 
+### Experimentación y ajuste de parámetros
+<iframe src="https://www.youtube.com/embed/wckOQT7v0VI?autoplay=1&mute=1&loop=1&playlist=wckOQT7v0VI" width="100%" height="500">
+</iframe>
+
+
+## Ajuste de la retícula (RANSAC)
+
+:::: {.columns}
+
+::: {.column width="40%"}
+<img src="/img/line_detection/ransac.png" alt=""/>
+:::
+
+::: {.column width="60%"}
+- RANdom SAmple Consensus
+- Es un algoritmo iterativo utilizado para ajustar modelos a datos con muchos valores atípicos (outliers)
+:::
+::::
+
 ## Ajuste de la retícula
 
 :::: {.columns}
@@ -425,16 +448,43 @@ Kanatani, K. (1998). Statistical optimization for geometric computation: theory 
 :::
 ::::
 
-## Representación de la posición relativa al estacionamiento
+## mediciones en la retícula
 
-::: {.notes}
-una vez que tengamos la retícula del estacionamiento, podemos representar la posición del vehículo
-con respecto a uno de los cajones de estacionamiento.
+:::: {.columns}
+
+::: {.column width="50%"}
+<img src="/img/line_detection/distances.png" alt=""/>
 :::
 
+::: {.column width="50%"}
 
+- 
+  $$
+  \mathbf{p}_1 = [x_1, y_1, 1]^T  ,
+  \mathbf{p}_2 = [x_2, y_2, 1]^T 
+  $$
+- 
+$$
+\mathbf{P}_1 = \mathbf{H} \cdot \mathbf{p}_1,\quad
+\mathbf{P}_2 = \mathbf{H} \cdot \mathbf{p}_2
+$$
 
-### Posición relativa
+- 
+$$
+d = \sqrt{(X_2 - X_1)^2 + (Y_2 - Y_1)^2}
+$$
+
+:::
+::::
+::: {.notes}
+- Teniendo la matriz de homografía $H$ que mapea el plano de la cámara al espacio del estacionamiento:
+- Sean dos puntos en la imagen: 
+- Convertimos los puntos de imagen a coordenadas reales en el plano: 
+- Calculamos la distancia euclidiana en el espacio:
+- Esto permite medir **distancias reales** usando solo la imagen y la homografía.
+:::
+
+## Posición relativa
 
 <iframe src="https://www.geogebra.org/classic/a8pwjzyk?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
 
@@ -455,29 +505,108 @@ y estos vectores de coordenadas seran los que usaremos como modelo del estado de
 :::
 
 
+# Aplicación en ambiente de RL
+## Gymnasium 
+
+- Provee un API para crear y compartir entornos de aprendizaje por refuerzo [@gym].
+- Permite evaluar agentes en diversos entornos estandarizados.
+- El núcleo de Gym es Env, una clase de Python de alto nivel representando los procesos de decisión de Markov (MDP)
+- La clase proporciona a los usuarios la capacidad de generar un estado inicial, realizar la transición a nuevos estados dada una acción y observar el entorno.
+
+:::footer
+:::
+
+## Stable-baselines 3
+- Implementaciones confiables de algoritmos de aprendizaje por refuerzo en PyTorch. [@baselines3]
+- API de Gymnasium para interactuar con los entornos.
+- Interfaz sencilla para entrenar y evaluar agentes de RL.
+- Admite algoritmos populares como 
+  - DQN (DeepQ-Network)
+  - PPO (Proximal Policy Optimization)
+  - SAC (Soft Actor-Critic)
+  - A2C (Advantage Actor-Critic)
+
+:::footer
+:::
+
+## Highway-env
+- Colección de entornos para tareas de conducción autónoma y toma de decisiones tácticas [@highway-env]
+<img class="my-h" src="/img/rl/parking-env.gif" alt=""/>
+<img class="my-h" src="/img/rl/intersection-env.gif" alt=""/>
+<img class="my-h" src="/img/rl/racetrack-env.gif" alt=""/>
+<img class="my-h" src="/img/rl/roundabout-env.gif" alt=""/>
+
+:::footer
+:::
+
+## Parking-env
+
+- **Acciones**: espacio continuo  
+  `Box([-1, -1], [1, 1]) → [aceleración, dirección]`
+- **Observación**: vector continuo de 6 elementos:  
+  `[x, y, vx, vy, cos(θ), sin(θ)]`  
+- **Objetivo**: alcanzar una posición objetivo (`Landmark`) con orientación deseada.
+- **Recompensa**: basada en la distancia al objetivo y penalizaciones por colisiones y acciones:
+$$
+  r = -|g - s| - α·|a|
+$$
+
+::: {.notes}
+g: posición del goal (desired_goal)
+s: estado actual (achieved_goal)
+a: acción tomada
+α: regularizador factor de penalización a acciones extremas
+:::
+
+:::footer
+:::
+
+## Parking-env (Nuestra versión)
+
+
+:::: {.columns}
+
+::: {.column width="70%"}
+<iframe src="https://www.youtube.com/embed/B-4LIVjxhZ0?autoplay=1&mute=1&loop=1&playlist=B-4LIVjxhZ0" width="100%" height="500"></iframe>
+:::
+
+::: {.column width="30%"}
+
+- Initialization Wrapper
+- Observation Wrapper
+- Action Wrapper
+:::
+:::: 
+
+
 
 # Avances y Planificación
 
 | **Actividad**                               | Ene | Feb | Mar | Abr | May | Jun | Jul | Ago | Sep | Oct | Nov | Dic | Ene | Feb | Mar | Abr | May | Jun |
 |---------------------------------------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| Investigación y revisión bibliográfica      | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   |     |     |     |     |     |     |     |
-| Diseño y Configuración del Entorno Simulado | ✅   | ✅   | ✅   | ✅   | ✅   |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| Adquisición y pre-procesamiento de Datos    |     |     |     |     | ✅   | ✅   | ✅   | ✅   |     |     |     |     |     |     |     |     |     |     |
-| Interpretar los datos de los sensores       |     |     |     |     |     |     | ✅   | ✅   | ✅   |     |     |     |     |     |     |     |     |     |
-| Obtención de mediciones en la imagen        |     |     |     |     |     |     |     |     | ✅   | ✅   |     |     |     |     |     |     |     |     |
-| Detección de lineas y puntos de fuga        |     |     |     |     |     |     |     |     |     | ✅   | ✅   | ✅   |     |     |     |     |     |     |
-| Estimación de la posición de la retícula    |     |     |     |     |     |     |     |     |     |     |     | ✅   | ⏳   | ⏳   |     |     |     |     | 
-| Mejorar la retícula usando filtro de kalman |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   |     |     |     |
-| Estimación de distancias                    |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   |     |     |
-| Estimación de la posición relativa          |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   |     |     |
-| Utilizar la posición en algoritmos de RL    |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   | ⏳   |     |
-| Documentación y Análisis de Resultados      | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ✅   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   |
-| Redacción y Revisión del documento de tesis |     |     |     |     |     |     |     |     |     |     |     | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   | ⏳   |  
+| Investigación y revisión bibliográfica      | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |     |     |     |     |     |     |     |
+| Diseño y Configuración del Entorno Simulado | ✅  | ✅  | ✅  | ✅  | ✅  |     |     |     |     |     |     |     |     |     |     |     |     |     |
+| Adquisición y pre-procesamiento de Datos    |     |     |     |     | ✅  | ✅  | ✅  | ✅  |     |     |     |     |     |     |     |     |     |     |
+| Interpretar los datos de los sensores       |     |     |     |     |     |     | ✅  | ✅  | ✅  |     |     |     |     |     |     |     |     |     |
+| Obtención de mediciones en la imagen        |     |     |     |     |     |     |     |     | ✅  | ✅  |     |     |     |     |     |     |     |     |
+| Detección de lineas y puntos de fuga        |     |     |     |     |     |     |     |     |     | ✅  | ✅  | ✅  |     |     |     |     |     |     |
+| Estimación de la posición de la retícula    |     |     |     |     |     |     |     |     |     |     |     | ✅  | ✅  | ✅  |     |     |     |     |
+| Establecer los límites de la retícula       |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |  ⏳ | 
+| Estimación de distancias                    |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ✅  | ✅  |     |     |
+| Estimación de la posición relativa          |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ✅  | ✅  |     |     |
+| Utilizar la posición en algoritmos de RL    |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ✅  | ✅  | ⏳  |
+| Documentación y Análisis de Resultados      | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅ | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ⏳  |
+| Redacción y Revisión del documento de tesis |     |     |     |     |     |     |     |     |     |     |     | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ⏳  |  
 
 # Fin
 Gracias por su atención...
 
 # Extras
+
+## Recomendaciones
+- Utilizar patrones de retículas mas complejas
+- Fusionar información de la retícula de cada frame para construir un mapa con memoria de frames pasados
+- Detectar estacionamientos ocupados para exluirlos de la retícula
 
 ## Propiedades de la representación homogénea de lineas y puntos
 :::: {.columns}

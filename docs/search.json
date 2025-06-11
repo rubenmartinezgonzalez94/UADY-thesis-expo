@@ -4,7 +4,7 @@
     "href": "index.html#estacionamiento",
     "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
     "section": "Estacionamiento",
-    "text": "Estacionamiento\n\n\n\nImportancia\nProblemas\nSoluciones\n\n\n\n\n\n\nSu importancia permite a los conductores dejar sus vehículos de forma segura en estos espacios mientras realizan otras actividades.\nEn lugares concurridos, puede ser complicado encontrar un lugar o incluso si ya encontraste un lugar, la maniobra para posicionar el vehículo dentro del espacio se puede entorpecer por obstaculos o falta de visibilidad o inexperiencia del conductor. o incluso conductores habilidosos pueden fallar cuando es necesario una serie de maniobras que dependen unas de otras y si calculas mal en alguna , en la siguiente maniobra se tendria rectificar esta equivocación.\nCon la ayuda de sistemas de asistencia al conductor."
+    "text": "Estacionamiento\n\n\n\nImportancia\nProblemas\nSoluciones\n\n\n\n\n\n\nSu importancia ya permite a los conductores dejar sus vehículos de forma segura en estos espacios mientras realizan otras actividades.\ny cual es el problema con esto , pues En lugares concurridos, puede ser complicado encontrar un lugar o incluso si ya encontraste un lugar, la maniobra para posicionar el vehículo dentro del espacio se puede entorpecer por obstaculos o falta de visibilidad o inexperiencia del conductor. o incluso conductores habilidosos pueden fallar cuando es necesario una serie de maniobras que dependen unas de otras y si calculas mal en alguna , en la siguiente maniobra se tendria rectificar esta equivocación.\nque ayuda a solucionar este problema , pues Con la ayuda de sistemas de asistencia al conductor."
   },
   {
     "objectID": "index.html#sistemas-de-asistencia-al-conductor",
@@ -18,14 +18,14 @@
     "href": "index.html#aprendizaje-por-refuerzo",
     "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
     "section": "Aprendizaje por Refuerzo",
-    "text": "Aprendizaje por Refuerzo\n\n\n\n\n\nAgente \nAcciones \nEntorno \n\n\n\nInterprete \nEstado \nRecompensa    \n\n\n\n\nDentro de la inteligencia artificial, un buen candidato para esta situación son los algoritmos de aprendizaje por refuerzo.\nEstos algoritmos se basan en la interacción de un agente con un entorno. El agente realiza acciones en el entorno que pueden ser interpretadas y evaluadas según va cambiando el estado del entorno. estos cambios en el entorno pueden ser representados en una recompensa que se utiliza para aprender a elegir acciones cada vez mejores.\nEn el caso de estacionamiento, el agente sería el vehículo, las acciones serían las maniobras que puede realizar el vehículo, acelerar, frenar, girar. El entorno sería el estacionamiento. El intérprete sería un sistema que analice los datos de los sensores del vehículo, como la cámara. El estado podría ser la pose del vehículo con respecto al estacionamiento. La recompensa podría ser una función que evalue que tan bien esta este estado.\npero… ¿Qué haría falta para implementar un algoritmo así? Pues el agente, las acciones y el entorno nos lo puede proveer un simulador. Y el intérprete para obtener el estado y que tanmbien esta este estado lo podemos implementar con un sistema de visión computacional."
+    "text": "Aprendizaje por Refuerzo\n\n\n\n\n\nAgente \nAcciones \nEntorno \n\n\n\nInterprete \nEstado \nRecompensa    \n\n\n\n\nDentro de la inteligencia artificial, un buen candidato para esta situación son los algoritmos de aprendizaje por refuerzo.\nEstos algoritmos se basan en la interacción de un agente con un entorno. El agente realiza acciones en el entorno que pueden ser interpretadas y evaluadas según va cambiando el estado del entorno. estos cambios en el entorno pueden ser evaluados con una recompensa que el agente utiliza para aprender a elegir acciones cada vez mejores.\nEn el caso de estacionamiento, el agente sería el vehículo, las acciones serían las maniobras que puede realizar el vehículo, acelerar, frenar, girar. El entorno sería el estacionamiento. El intérprete sería un sistema que analice los datos de los sensores del vehículo, como la cámara. El estado podría ser la pose del vehículo con respecto al estacionamiento. La recompensa podría ser una función que evalue que tan bien esta este estado.\npero… ¿Qué haría falta para implementar un algoritmo así? Pues el agente, las acciones y el entorno nos lo puede proveer un simulador. Y el intérprete para obtener el estado y que tanmbien esta este estado lo podemos implementar con un sistema de visión computacional."
   },
   {
     "objectID": "index.html#visión-computacional",
     "href": "index.html#visión-computacional",
     "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
     "section": "Visión Computacional",
-    "text": "Visión Computacional\n    \n\n\n\n\n\ny en construir este sistema de vision computacional sera nuesto objetivo en esta investigacion.\ndonde podemos procesar los datos de la camara y representar la posicion del vehículo con respecto al estacionamiento.\nPara representar esta posición el mayor desafio es detectar los cajones de estacionamiento a partir de las imagenes capturadas por la camara del vehiculo ya que el poder ubicar los cajones de estacionamientoes fundamental en la planeacion de movimiento"
+    "text": "Visión Computacional\n    \n\n\n\n\n\ny en construir este sistema de vision computacional sera nuesto objetivo en esta investigacion.\ndonde podemos procesar los datos de la camara y representar la posicion del vehículo con respecto al estacionamiento.\nPara representar esta posición el mayor desafio es detectar los cajones de estacionamiento a partir de las imagenes capturadas por la camara del vehiculo ya que el poder ubicar los cajones de estacionamientoes fundamental en cualquier tarea de planeacion de movimiento"
   },
   {
     "objectID": "index.html#hipótesis",
@@ -63,6 +63,13 @@
     "text": "Detección del estacionamiento\n\nuna vez que tengamos los datos de la camara captados en el entorno de sumulacion podemos procesarlos para detectar la ubicacion estacionamiento"
   },
   {
+    "objectID": "index.html#ajuste-de-la-retícula-ransac",
+    "href": "index.html#ajuste-de-la-retícula-ransac",
+    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
+    "section": "Ajuste de la retícula (RANSAC)",
+    "text": "Ajuste de la retícula (RANSAC)\n\n\n\n\n\nRANdom SAmple Consensus\nEs un algoritmo iterativo utilizado para ajustar modelos a datos con muchos valores atípicos (outliers)"
+  },
+  {
     "objectID": "index.html#ajuste-de-la-retícula",
     "href": "index.html#ajuste-de-la-retícula",
     "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
@@ -70,11 +77,60 @@
     "text": "Ajuste de la retícula"
   },
   {
-    "objectID": "index.html#representación-de-la-posición-relativa-al-estacionamiento",
-    "href": "index.html#representación-de-la-posición-relativa-al-estacionamiento",
+    "objectID": "index.html#mediciones-en-la-retícula",
+    "href": "index.html#mediciones-en-la-retícula",
     "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
-    "section": "Representación de la posición relativa al estacionamiento",
-    "text": "Representación de la posición relativa al estacionamiento\n\nuna vez que tengamos la retícula del estacionamiento, podemos representar la posición del vehículo con respecto a uno de los cajones de estacionamiento."
+    "section": "mediciones en la retícula",
+    "text": "mediciones en la retícula\n\n\n\n\n\n\\[\n\\mathbf{p}_1 = [x_1, y_1, 1]^T  ,\n\\mathbf{p}_2 = [x_2, y_2, 1]^T\n\\]\n\\[\n\\mathbf{P}_1 = \\mathbf{H} \\cdot \\mathbf{p}_1,\\quad\n\\mathbf{P}_2 = \\mathbf{H} \\cdot \\mathbf{p}_2\n\\]\n\\[\nd = \\sqrt{(X_2 - X_1)^2 + (Y_2 - Y_1)^2}\n\\]\n\n\n\n\nTeniendo la matriz de homografía \\(H\\) que mapea el plano de la cámara al espacio del estacionamiento:\nSean dos puntos en la imagen:\nConvertimos los puntos de imagen a coordenadas reales en el plano:\nCalculamos la distancia euclidiana en el espacio:\nEsto permite medir distancias reales usando solo la imagen y la homografía."
+  },
+  {
+    "objectID": "index.html#posición-relativa",
+    "href": "index.html#posición-relativa",
+    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
+    "section": "Posición relativa",
+    "text": "Posición relativa\n\n\n\n\n\n\n\npara esto utilizaremos 4 vectores de distancias \\(\\rho\\) desde la camara a las 4 esquinas de uno de los cajones de estacionamiento ubicados en la reticula. y 4 angulos \\(\\theta\\) que serian los angulos de orientacion entre los vectores de distancias y el eje de la camara. y de esta forma tendriamos 4 vectores de coordenadas polares que junto a la altura conocida de la camara z serian coordenadas cilindricas que representan la posicion del vehiculo con respecto al cajon de estacionamiento.\ny estos vectores de coordenadas seran los que usaremos como modelo del estado del sistema."
+  },
+  {
+    "objectID": "index.html#gymnasium",
+    "href": "index.html#gymnasium",
+    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
+    "section": "Gymnasium",
+    "text": "Gymnasium\n\nProvee un API para crear y compartir entornos de aprendizaje por refuerzo (Towers et al. 2024).\nPermite evaluar agentes en diversos entornos estandarizados.\nEl núcleo de Gym es Env, una clase de Python de alto nivel representando los procesos de decisión de Markov (MDP)\nLa clase proporciona a los usuarios la capacidad de generar un estado inicial, realizar la transición a nuevos estados dada una acción y observar el entorno."
+  },
+  {
+    "objectID": "index.html#stable-baselines-3",
+    "href": "index.html#stable-baselines-3",
+    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
+    "section": "Stable-baselines 3",
+    "text": "Stable-baselines 3\n\nImplementaciones confiables de algoritmos de aprendizaje por refuerzo en PyTorch. (Raffin et al. 2021)\nAPI de Gymnasium para interactuar con los entornos.\nInterfaz sencilla para entrenar y evaluar agentes de RL.\nAdmite algoritmos populares como\n\nDQN (DeepQ-Network)\nPPO (Proximal Policy Optimization)\nSAC (Soft Actor-Critic)\nA2C (Advantage Actor-Critic)"
+  },
+  {
+    "objectID": "index.html#highway-env",
+    "href": "index.html#highway-env",
+    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
+    "section": "Highway-env",
+    "text": "Highway-env\n\nColección de entornos para tareas de conducción autónoma y toma de decisiones tácticas (Leurent 2018)"
+  },
+  {
+    "objectID": "index.html#parking-env",
+    "href": "index.html#parking-env",
+    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
+    "section": "Parking-env",
+    "text": "Parking-env\n\nAcciones: espacio continuo\nBox([-1, -1], [1, 1]) → [aceleración, dirección]\nObservación: vector continuo de 6 elementos:\n[x, y, vx, vy, cos(θ), sin(θ)]\n\nObjetivo: alcanzar una posición objetivo (Landmark) con orientación deseada.\nRecompensa: basada en la distancia al objetivo y penalizaciones por colisiones y acciones: \\[\nr = -|g - s| - α·|a|\n\\]\n\n\ng: posición del goal (desired_goal) s: estado actual (achieved_goal) a: acción tomada α: regularizador factor de penalización a acciones extremas"
+  },
+  {
+    "objectID": "index.html#parking-env-nuestra-versión",
+    "href": "index.html#parking-env-nuestra-versión",
+    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
+    "section": "Parking-env (Nuestra versión)",
+    "text": "Parking-env (Nuestra versión)\n\n\n\n\n\n\nInitialization Wrapper\nObservation Wrapper\nAction Wrapper"
+  },
+  {
+    "objectID": "index.html#recomendaciones",
+    "href": "index.html#recomendaciones",
+    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
+    "section": "Recomendaciones",
+    "text": "Recomendaciones\n\nUtilizar patrones de retículas mas complejas\nFusionar información de la retícula de cada frame para construir un mapa con memoria de frames pasados\nDetectar estacionamientos ocupados para exluirlos de la retícula"
   },
   {
     "objectID": "index.html#propiedades-de-la-representación-homogénea-de-lineas-y-puntos",
@@ -102,6 +158,6 @@
     "href": "index.html#referencias",
     "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
     "section": "Referencias",
-    "text": "Referencias\n\n\nAlam, Altaf, Zainul Abdin Jaffery, and Himanshu Sharma. 2022. “A Cost-Effective Computer Vision-Based Vehicle Detection System.” Concurrent Engineering 30 (2): 148–58. https://journals.sagepub.com/doi/abs/10.1177/1063293X211069193.\n\n\nAlthoff, Matthias, Olaf Stursberg, and Martin Buss. 2009. “Model-Based Probabilistic Collision Detection in Autonomous Driving.” IEEE Transactions on Intelligent Transportation Systems 10 (2): 299–310. https://ieeexplore.ieee.org/abstract/document/4895669.\n\n\nBachute, Mrinal R, and Javed M Subhedar. 2021. “Autonomous Driving Architectures: Insights of Machine Learning and Deep Learning Algorithms.” Machine Learning with Applications 6: 100164. https://www.sciencedirect.com/science/article/pii/S2666827021000827.\n\n\nCai, Peide, Hengli Wang, Huaiyang Huang, Yuxuan Liu, and Ming Liu. 2021. “Vision-Based Autonomous Car Racing Using Deep Imitative Reinforcement Learning.” IEEE Robotics and Automation Letters 6 (4): 7262–69. https://ieeexplore.ieee.org/abstract/document/9488179.\n\n\nDosovitskiy, Alexey, German Ros, Felipe Codevilla, Antonio Lopez, and Vladlen Koltun. 2017. “CARLA: An Open Urban Driving Simulator,” 1–16. https://ieeexplore.ieee.org/abstract/document/9488179."
+    "text": "Referencias\n\n\nAlam, Altaf, Zainul Abdin Jaffery, and Himanshu Sharma. 2022. “A Cost-Effective Computer Vision-Based Vehicle Detection System.” Concurrent Engineering 30 (2): 148–58. https://journals.sagepub.com/doi/abs/10.1177/1063293X211069193.\n\n\nAlthoff, Matthias, Olaf Stursberg, and Martin Buss. 2009. “Model-Based Probabilistic Collision Detection in Autonomous Driving.” IEEE Transactions on Intelligent Transportation Systems 10 (2): 299–310. https://ieeexplore.ieee.org/abstract/document/4895669.\n\n\nBachute, Mrinal R, and Javed M Subhedar. 2021. “Autonomous Driving Architectures: Insights of Machine Learning and Deep Learning Algorithms.” Machine Learning with Applications 6: 100164. https://www.sciencedirect.com/science/article/pii/S2666827021000827.\n\n\nCai, Peide, Hengli Wang, Huaiyang Huang, Yuxuan Liu, and Ming Liu. 2021. “Vision-Based Autonomous Car Racing Using Deep Imitative Reinforcement Learning.” IEEE Robotics and Automation Letters 6 (4): 7262–69. https://ieeexplore.ieee.org/abstract/document/9488179.\n\n\nDosovitskiy, Alexey, German Ros, Felipe Codevilla, Antonio Lopez, and Vladlen Koltun. 2017. “CARLA: An Open Urban Driving Simulator,” 1–16. https://ieeexplore.ieee.org/abstract/document/9488179.\n\n\nKanatani, Kenichi. 1993. Geometric Computation for Machine Vision. Oxford university press.\n\n\nLeurent, Edouard. 2018. “An Environment for Autonomous Driving Decision-Making.” GitHub Repository. https://github.com/eleurent/highway-env; GitHub.\n\n\nRaffin, Antonin, Ashley Hill, Adam Gleave, Anssi Kanervisto, Maximilian Ernestus, and Noah Dormann. 2021. “Stable-Baselines3: Reliable Reinforcement Learning Implementations.” Journal of Machine Learning Research 22 (268): 1–8. http://jmlr.org/papers/v22/20-1364.html.\n\n\nTowers, Mark, Ariel Kwiatkowski, Jordan Terry, John U. Balis, Gianluca De Cola, Tristan Deleu, Manuel Goulão, et al. 2024. “Gymnasium: A Standard Interface for Reinforcement Learning Environments.” https://arxiv.org/abs/2407.17032."
   }
 ]

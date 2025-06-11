@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 title: "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación"
-date: 05/30/2025
+date: 06/16/2025
 date-format: "MMM, YYYY"
 authors:
   - name: Dr. Arturo Espinosa Romero

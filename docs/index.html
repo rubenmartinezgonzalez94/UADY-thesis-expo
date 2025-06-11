@@ -169,7 +169,7 @@ Ing. Rubén Martínez González
 </div>
 </div>
 
-  <p class="date">May, 2025</p>
+  <p class="date">Jun, 2025</p>
 </section>
 <section>
 <section id="introducción" class="title-slide slide level1 center">
@@ -214,9 +214,9 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 </div></div>
 <aside class="notes">
 <ul>
-<li><p>Su importancia permite a los conductores dejar sus vehículos de forma segura en estos espacios mientras realizan otras actividades.</p></li>
-<li><p>En lugares concurridos, puede ser complicado encontrar un lugar o incluso si ya encontraste un lugar, la maniobra para posicionar el vehículo dentro del espacio se puede entorpecer por obstaculos o falta de visibilidad o inexperiencia del conductor. o incluso conductores habilidosos pueden fallar cuando es necesario una serie de maniobras que dependen unas de otras y si calculas mal en alguna , en la siguiente maniobra se tendria rectificar esta equivocación.</p></li>
-<li><p>Con la ayuda de sistemas de asistencia al conductor.</p></li>
+<li><p>Su importancia ya permite a los conductores dejar sus vehículos de forma segura en estos espacios mientras realizan otras actividades.</p></li>
+<li><p>y cual es el problema con esto , pues En lugares concurridos, puede ser complicado encontrar un lugar o incluso si ya encontraste un lugar, la maniobra para posicionar el vehículo dentro del espacio se puede entorpecer por obstaculos o falta de visibilidad o inexperiencia del conductor. o incluso conductores habilidosos pueden fallar cuando es necesario una serie de maniobras que dependen unas de otras y si calculas mal en alguna , en la siguiente maniobra se tendria rectificar esta equivocación.</p></li>
+<li><p>que ayuda a solucionar este problema , pues Con la ayuda de sistemas de asistencia al conductor.</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -274,7 +274,7 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 <aside class="notes">
 <ul>
 <li><p>Dentro de la inteligencia artificial, un buen candidato para esta situación son los algoritmos de aprendizaje por refuerzo.</p></li>
-<li><p>Estos algoritmos se basan en la interacción de un agente con un entorno. El agente realiza acciones en el entorno que pueden ser interpretadas y evaluadas según va cambiando el estado del entorno. estos cambios en el entorno pueden ser representados en una recompensa que se utiliza para aprender a elegir acciones cada vez mejores.</p></li>
+<li><p>Estos algoritmos se basan en la interacción de un agente con un entorno. El agente realiza acciones en el entorno que pueden ser interpretadas y evaluadas según va cambiando el estado del entorno. estos cambios en el entorno pueden ser evaluados con una recompensa que el agente utiliza para aprender a elegir acciones cada vez mejores.</p></li>
 <li><p>En el caso de estacionamiento, el agente sería el vehículo, las acciones serían las maniobras que puede realizar el vehículo, acelerar, frenar, girar. El entorno sería el estacionamiento. El intérprete sería un sistema que analice los datos de los sensores del vehículo, como la cámara. El estado podría ser la pose del vehículo con respecto al estacionamiento. La recompensa podría ser una función que evalue que tan bien esta este estado.</p></li>
 <li><p>pero… ¿Qué haría falta para implementar un algoritmo así? Pues el agente, las acciones y el entorno nos lo puede proveer un simulador. Y el intérprete para obtener el estado y que tanmbien esta este estado lo podemos implementar con un sistema de visión computacional.</p></li>
 </ul>
@@ -301,7 +301,7 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 <ul>
 <li><p>y en construir este sistema de vision computacional sera nuesto objetivo en esta investigacion.</p></li>
 <li><p>donde podemos procesar los datos de la camara y representar la posicion del vehículo con respecto al estacionamiento.</p></li>
-<li><p>Para representar esta posición el mayor desafio es detectar los cajones de estacionamiento a partir de las imagenes capturadas por la camara del vehiculo ya que el poder ubicar los cajones de estacionamientoes fundamental en la planeacion de movimiento</p></li>
+<li><p>Para representar esta posición el mayor desafio es detectar los cajones de estacionamiento a partir de las imagenes capturadas por la camara del vehiculo ya que el poder ubicar los cajones de estacionamientoes fundamental en cualquier tarea de planeacion de movimiento</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -454,7 +454,7 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 <h3>Propiedades</h3>
 <ul>
 <li>Los estacionamientos suelen formar estructuras regulares, organizada como una retícula de paralelogramos.</li>
-<li>Los paralelogramos al proyectarse en la cámara pueden intersectarse en los “puntos de fuga”.</li>
+<li>Las líneas de los paralelogramos al proyectarse en la cámara pueden intersectarse en los “puntos de fuga”.</li>
 </ul>
 <aside class="notes">
 <p>Hay dos propiedades que podemos aprovechar para plantear el mé- todo:</p>
@@ -474,7 +474,7 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 <h3>Proyección de la imagen en el plano de la cámara</h3>
 <p><img class="my-h" src="./img/line_detection/paralel_lines.png" alt=""> <img class="my-h" src="./img/line_detection/pov.png" alt=""></p>
 <aside class="notes">
-<p>Cuando proyectamos un escenario del mundo real en 3 dimensiones como un estacionamiento a un plano de 2 dimensiones como el sensor de una camara, se produce una transformacion en la imagen. Esta transformacion provoca que las lıneas paralelas en el mundo real, al proyectarse en el plano de la camara, se interseten en un punto de fuga.</p>
+<p>Y estos puntos de fuga son una propiedad muy interesante ya que Cuando proyectamos un escenario del mundo real en 3 dimensiones como un estacionamiento a un plano de 2 dimensiones como el sensor de una camara, se produce una transformacion en la imagen. Esta transformacion provoca que las líneas paralelas en el mundo real, al proyectarse en el plano de la camara, se interseten en un punto de fuga.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -491,7 +491,7 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 <h3>Geometría del estacionamiento</h3>
 
 <img src="./img/line_detection/pov_reticule.png" alt="" class="r-stretch"><aside class="notes">
-<p>Dado que las lıneas de los cajones de estacionamiento son paralelas por su geometrıa, se forman patrones en una retıcula de paralelogramos. esta reticula esta definida por los puntos de fuga.</p>
+<p>Dado que las líneas de los cajones de estacionamiento son paralelas por su geometría, se forman patrones en una retícula de paralelogramos. esta reticula esta definida por los puntos de fuga.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -508,7 +508,7 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 <h3>Geometría del estacionamiento</h3>
 
 <img src="./img/line_detection/pov_reticule_layer.png" alt="" class="r-stretch"><aside class="notes">
-<p>Esto permite utilizar tecnicas de deteccion de lıneas para identificar los puntos de fuga y estimar la posicion de la retıcula de estacionamiento.</p>
+<p>Esto permite utilizar tecnicas de deteccion de líneas para identificar los puntos de fuga y estimar la posicion de la retícula de estacionamiento.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -526,7 +526,7 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 <iframe src="https://www.geogebra.org/classic/kczwvjn3?embed" width="100%" height="600" allowfullscreen="" style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0">
 </iframe>
 <aside class="notes">
-<p>ya que conociendo la ubicacion de los puntos de fuga y las equaciones de las lıneas podriamos calcular la ubicacion de cualquier punto de interes en la reticula.</p>
+<p>ya que conociendo la ubicacion de los puntos de fuga y las equaciones de las líneas podriamos calcular la ubicacion de cualquier punto de interes en la reticula.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -552,9 +552,9 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 </ul>
 </div></div>
 <aside class="notes">
-<p>Para detectar las lıneas paralelas de interes en la imagen, primero se hace un preprocesamiento del area debajo del horizonte de la imagen donde estara el estacionamiento. donde se resaltan las lineas claras mediante umbralizacion</p>
+<p>Para detectar las líneas paralelas de interes en la imagen, primero se hace un preprocesamiento del area debajo del horizonte de la imagen donde estara el estacionamiento. donde se resaltan las lineas claras mediante umbralizacion</p>
 <p>luego se utiliza el algorithmo de Canny para detectar los bordes de las figuras resaltadas en la umbraizacion.</p>
-<p>y sobre estos contornos encontrados se aplica la transformada de Hough para detectar coordenadas de inicio y fin de las lıneas resultantes</p>
+<p>y sobre estos contornos encontrados se aplica la transformada de Hough para detectar coordenadas de inicio y fin de las líneas resultantes</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -596,7 +596,7 @@ c
 </ul>
 </div></div>
 <aside class="notes">
-<p>Una vez obtenidas las coordenadas de inicio y fin de cada lınea paralela, podemos utilizar la ecuacion general de la recta ax+by+c=0 ,para formular un sistema de ecuaciones de esta forma matricial donde x1,y1 y x2,y2 son las coordenadas de inicio y fin de cada recta y abc son los coeficientes que podemos resolver con la descomposicion en valores singulares.</p>
+<p>Una vez obtenidas las coordenadas de inicio y fin de cada línea paralela, podemos utilizar la ecuacion general de la recta ax+by+c=0 ,para formular un sistema de ecuaciones de esta forma matricial donde x1,y1 y x2,y2 son las coordenadas de inicio y fin de cada recta y abc son los coeficientes que podemos resolver con la descomposicion en valores singulares.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -622,7 +622,7 @@ c
 </ul>
 </div></div>
 <aside class="notes">
-<p>Dado que ya se tendrian las ecuaciones de todas las lıneas en el plano de la camara, se pueden calcular las intersecciones de estas lıneas realizando un producto cruz entre las ecuaciones homogeneas [A,B,C] de todos los pares de lıneas</p>
+<p>Dado que ya se tendrian las ecuaciones de todas las líneas en el plano de la camara, se pueden calcular las intersecciones de estas líneas realizando un producto cruz entre las ecuaciones homogeneas [A,B,C] de todos los pares de líneas</p>
 <p>y evidentemente, la mayor cantidad de intersecciones se encontraran en los puntos de fuga principales y para determinarlos se realizan tecnicas de AgglomerativeClustering</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -641,7 +641,7 @@ c
 <p>La intersección de n líneas homogéneas esta dado por el eigen vector asociado al eigen valor más pequeño de la matriz <span class="math inline">\(M\)</span> donde: <span class="math display">\[
 M = \sum_{i=1}^{n} w_i l_i l_i^T
 \]</span> donde <span class="math inline">\(w_i\)</span> es un peso asociado a la linea <span class="math inline">\(l_i\)</span> .</p>
-<p>Kanatani, K. (1998). Statistical optimization for geometric computation: theory and practice. Elsevier.</p>
+<p><span style="font-size:0.6em"> Geometric Computation for Machine Vision <span class="citation" data-cites="kanatani1993geometric">(<a href="#/referencias" role="doc-biblioref" onclick="">Kanatani 1993</a>)</span> </span></p>
 <div class="footer">
 
 </div>
@@ -655,6 +655,24 @@ M = \sum_{i=1}^{n} w_i l_i l_i^T
 <p><img src="./img/line_detection/lineasFinales.png" alt=""></p>
 </div></div>
 </section>
+<section id="experimentación-y-ajuste-de-parámetros" class="slide level3 center">
+<h3>Experimentación y ajuste de parámetros</h3>
+<iframe src="https://www.youtube.com/embed/wckOQT7v0VI?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=wckOQT7v0VI" width="100%" height="500">
+</iframe>
+</section>
+
+<section id="ajuste-de-la-retícula-ransac" class="title-slide slide level2 center">
+<h2>Ajuste de la retícula (RANSAC)</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img src="./img/line_detection/ransac.png" alt=""></p>
+</div><div class="column" style="width:60%;">
+<ul>
+<li>RANdom SAmple Consensus</li>
+<li>Es un algoritmo iterativo utilizado para ajustar modelos a datos con muchos valores atípicos (outliers)</li>
+</ul>
+</div></div>
+</section>
 
 <section id="ajuste-de-la-retícula" class="title-slide slide level2 center">
 <h2>Ajuste de la retícula</h2>
@@ -666,10 +684,34 @@ M = \sum_{i=1}^{n} w_i l_i l_i^T
 </div></div>
 </section>
 
-<section id="representación-de-la-posición-relativa-al-estacionamiento" class="title-slide slide level2 center">
-<h2>Representación de la posición relativa al estacionamiento</h2>
+<section id="mediciones-en-la-retícula" class="title-slide slide level2 center">
+<h2>mediciones en la retícula</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="./img/line_detection/distances.png" alt=""></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p><span class="math display">\[
+\mathbf{p}_1 = [x_1, y_1, 1]^T  ,
+\mathbf{p}_2 = [x_2, y_2, 1]^T
+\]</span></p></li>
+<li><p><span class="math display">\[
+\mathbf{P}_1 = \mathbf{H} \cdot \mathbf{p}_1,\quad
+\mathbf{P}_2 = \mathbf{H} \cdot \mathbf{p}_2
+\]</span></p></li>
+<li><p><span class="math display">\[
+d = \sqrt{(X_2 - X_1)^2 + (Y_2 - Y_1)^2}
+\]</span></p></li>
+</ul>
+</div></div>
 <aside class="notes">
-<p>una vez que tengamos la retícula del estacionamiento, podemos representar la posición del vehículo con respecto a uno de los cajones de estacionamiento.</p>
+<ul>
+<li>Teniendo la matriz de homografía <span class="math inline">\(H\)</span> que mapea el plano de la cámara al espacio del estacionamiento:</li>
+<li>Sean dos puntos en la imagen:</li>
+<li>Convertimos los puntos de imagen a coordenadas reales en el plano:</li>
+<li>Calculamos la distancia euclidiana en el espacio:</li>
+<li>Esto permite medir <strong>distancias reales</strong> usando solo la imagen y la homografía.</li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -682,8 +724,9 @@ M = \sum_{i=1}^{n} w_i l_i l_i^T
           display:block!important;
       }</style></aside>
 </section>
-<section id="posición-relativa" class="slide level3 center">
-<h3>Posición relativa</h3>
+
+<section id="posición-relativa" class="title-slide slide level2 center">
+<h2>Posición relativa</h2>
 <iframe src="https://www.geogebra.org/classic/a8pwjzyk?embed" width="100%" height="600" allowfullscreen="" style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0">
 </iframe>
 <!-- 
@@ -706,6 +749,99 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+</section>
+<section>
+<section id="aplicación-en-ambiente-de-rl" class="title-slide slide level1 center">
+<h1>Aplicación en ambiente de RL</h1>
+
+</section>
+<section id="gymnasium" class="title-slide slide level2 center">
+<h2>Gymnasium</h2>
+<ul>
+<li>Provee un API para crear y compartir entornos de aprendizaje por refuerzo <span class="citation" data-cites="gym">(<a href="#/referencias" role="doc-biblioref" onclick="">Towers et al. 2024</a>)</span>.</li>
+<li>Permite evaluar agentes en diversos entornos estandarizados.</li>
+<li>El núcleo de Gym es Env, una clase de Python de alto nivel representando los procesos de decisión de Markov (MDP)</li>
+<li>La clase proporciona a los usuarios la capacidad de generar un estado inicial, realizar la transición a nuevos estados dada una acción y observar el entorno.</li>
+</ul>
+<div class="footer">
+
+</div>
+</section>
+
+<section id="stable-baselines-3" class="title-slide slide level2 center">
+<h2>Stable-baselines 3</h2>
+<ul>
+<li>Implementaciones confiables de algoritmos de aprendizaje por refuerzo en PyTorch. <span class="citation" data-cites="baselines3">(<a href="#/referencias" role="doc-biblioref" onclick="">Raffin et al. 2021</a>)</span></li>
+<li>API de Gymnasium para interactuar con los entornos.</li>
+<li>Interfaz sencilla para entrenar y evaluar agentes de RL.</li>
+<li>Admite algoritmos populares como
+<ul>
+<li>DQN (DeepQ-Network)</li>
+<li>PPO (Proximal Policy Optimization)</li>
+<li>SAC (Soft Actor-Critic)</li>
+<li>A2C (Advantage Actor-Critic)</li>
+</ul></li>
+</ul>
+<div class="footer">
+
+</div>
+</section>
+
+<section id="highway-env" class="title-slide slide level2 center">
+<h2>Highway-env</h2>
+<ul>
+<li>Colección de entornos para tareas de conducción autónoma y toma de decisiones tácticas <span class="citation" data-cites="highway-env">(<a href="#/referencias" role="doc-biblioref" onclick="">Leurent 2018</a>)</span> <img class="my-h" src="./img/rl/parking-env.gif" alt=""> <img class="my-h" src="./img/rl/intersection-env.gif" alt=""> <img class="my-h" src="./img/rl/racetrack-env.gif" alt=""> <img class="my-h" src="./img/rl/roundabout-env.gif" alt=""></li>
+</ul>
+<div class="footer">
+
+</div>
+</section>
+
+<section id="parking-env" class="title-slide slide level2 center">
+<h2>Parking-env</h2>
+<ul>
+<li><strong>Acciones</strong>: espacio continuo<br>
+<code>Box([-1, -1], [1, 1]) → [aceleración, dirección]</code></li>
+<li><strong>Observación</strong>: vector continuo de 6 elementos:<br>
+<code>[x, y, vx, vy, cos(θ), sin(θ)]</code><br>
+</li>
+<li><strong>Objetivo</strong>: alcanzar una posición objetivo (<code>Landmark</code>) con orientación deseada.</li>
+<li><strong>Recompensa</strong>: basada en la distancia al objetivo y penalizaciones por colisiones y acciones: <span class="math display">\[
+r = -|g - s| - α·|a|
+\]</span></li>
+</ul>
+<aside class="notes">
+<p>g: posición del goal (desired_goal) s: estado actual (achieved_goal) a: acción tomada α: regularizador factor de penalización a acciones extremas</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="footer">
+
+</div>
+</section>
+
+<section id="parking-env-nuestra-versión" class="title-slide slide level2 center">
+<h2>Parking-env (Nuestra versión)</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<iframe src="https://www.youtube.com/embed/B-4LIVjxhZ0?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=B-4LIVjxhZ0" width="100%" height="500">
+</iframe>
+</div><div class="column" style="width:30%;">
+<ul>
+<li>Initialization Wrapper</li>
+<li>Observation Wrapper</li>
+<li>Action Wrapper</li>
+</ul>
+</div></div>
 </section>
 </section>
 <section id="avances-y-planificación" class="title-slide slide level1 center">
@@ -896,15 +1032,19 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
 <td></td>
 <td></td>
 <td>✅</td>
-<td>⏳</td>
-<td>⏳</td>
+<td>✅</td>
+<td>✅</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Mejorar la retícula usando filtro de kalman</td>
+<td>Establecer los límites de la retícula</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -919,10 +1059,6 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
 <td></td>
 <td></td>
 <td>⏳</td>
-<td>⏳</td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr class="odd">
 <td>Estimación de distancias</td>
@@ -940,8 +1076,8 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
 <td></td>
 <td></td>
 <td></td>
-<td>⏳</td>
-<td>⏳</td>
+<td>✅</td>
+<td>✅</td>
 <td></td>
 <td></td>
 </tr>
@@ -961,8 +1097,8 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
 <td></td>
 <td></td>
 <td></td>
-<td>⏳</td>
-<td>⏳</td>
+<td>✅</td>
+<td>✅</td>
 <td></td>
 <td></td>
 </tr>
@@ -982,10 +1118,10 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
 <td></td>
 <td></td>
 <td></td>
-<td>⏳</td>
-<td>⏳</td>
-<td>⏳</td>
 <td></td>
+<td>✅</td>
+<td>✅</td>
+<td>⏳</td>
 </tr>
 <tr class="even">
 <td>Documentación y Análisis de Resultados</td>
@@ -1000,12 +1136,12 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
-<td>⏳</td>
-<td>⏳</td>
-<td>⏳</td>
-<td>⏳</td>
-<td>⏳</td>
-<td>⏳</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
 <td>⏳</td>
 </tr>
 <tr class="odd">
@@ -1021,12 +1157,12 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
 <td></td>
 <td></td>
 <td></td>
-<td>⏳</td>
-<td>⏳</td>
-<td>⏳</td>
-<td>⏳</td>
-<td>⏳</td>
-<td>⏳</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
 <td>⏳</td>
 </tr>
 </tbody>
@@ -1043,6 +1179,15 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
 <h1>Extras</h1>
 
 </section>
+<section id="recomendaciones" class="title-slide slide level2 center">
+<h2>Recomendaciones</h2>
+<ul>
+<li>Utilizar patrones de retículas mas complejas</li>
+<li>Fusionar información de la retícula de cada frame para construir un mapa con memoria de frames pasados</li>
+<li>Detectar estacionamientos ocupados para exluirlos de la retícula</li>
+</ul>
+</section>
+
 <section id="propiedades-de-la-representación-homogénea-de-lineas-y-puntos" class="title-slide slide level2 center">
 <h2>Propiedades de la representación homogénea de lineas y puntos</h2>
 <div class="columns">
@@ -1195,6 +1340,18 @@ Cai, Peide, Hengli Wang, Huaiyang Huang, Yuxuan Liu, and Ming Liu. 2021. <span>�
 </div>
 <div id="ref-dosovitskiy2017carla" class="csl-entry" role="listitem">
 Dosovitskiy, Alexey, German Ros, Felipe Codevilla, Antonio Lopez, and Vladlen Koltun. 2017. <span>“<span>CARLA</span>: <span>An</span> Open Urban Driving Simulator,”</span> 1–16. <a href="https://ieeexplore.ieee.org/abstract/document/9488179">https://ieeexplore.ieee.org/abstract/document/9488179</a>.
+</div>
+<div id="ref-kanatani1993geometric" class="csl-entry" role="listitem">
+Kanatani, Kenichi. 1993. <em>Geometric Computation for Machine Vision</em>. Oxford university press.
+</div>
+<div id="ref-highway-env" class="csl-entry" role="listitem">
+Leurent, Edouard. 2018. <span>“An Environment for Autonomous Driving Decision-Making.”</span> <em>GitHub Repository</em>. <a href="https://github.com/eleurent/highway-env" class="uri">https://github.com/eleurent/highway-env</a>; GitHub.
+</div>
+<div id="ref-baselines3" class="csl-entry" role="listitem">
+Raffin, Antonin, Ashley Hill, Adam Gleave, Anssi Kanervisto, Maximilian Ernestus, and Noah Dormann. 2021. <span>“Stable-Baselines3: Reliable Reinforcement Learning Implementations.”</span> <em>Journal of Machine Learning Research</em> 22 (268): 1–8. <a href="http://jmlr.org/papers/v22/20-1364.html">http://jmlr.org/papers/v22/20-1364.html</a>.
+</div>
+<div id="ref-gym" class="csl-entry" role="listitem">
+Towers, Mark, Ariel Kwiatkowski, Jordan Terry, John U. Balis, Gianluca De Cola, Tristan Deleu, Manuel Goulão, et al. 2024. <span>“Gymnasium: A Standard Interface for Reinforcement Learning Environments.”</span> <a href="https://arxiv.org/abs/2407.17032">https://arxiv.org/abs/2407.17032</a>.
 </div>
 </div>
 
