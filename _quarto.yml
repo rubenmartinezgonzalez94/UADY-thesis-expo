@@ -6,15 +6,17 @@ title: "Estimación de la pose de un vehículo respecto a su estacionamiento en 
 date: 06/16/2025
 date-format: "MMM, YYYY"
 authors:
+  - name: Rubén Martínez González
+    email: rubenmartinezgonzalez94@gmail.com
+    affiliation: "Autor"
   - name: Dr. Arturo Espinosa Romero
     email: eromero@correo.uady.mx
-  - name: Ing. Rubén Martínez González
-    email: rubenmartinezgonzalez94@gmail.com
+    affiliation: "Asesor"
 
 format:
   revealjs:
     title: "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación"
-    subtitle: "Protocolo de tesis"
+    subtitle: "Proyecto de tesis"
     bibliography: references.bib
 #    header: "Protocolo de tesis"
     footer: Facultad de Matemáticas</br>Universidad Autónoma de Yucatán

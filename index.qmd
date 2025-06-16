@@ -149,9 +149,6 @@ mientras realizan otras actividades.
   de estacionamientoes fundamental en cualquier tarea de planeacion de movimiento
 
 
-[//]: # (  y para demostrar su aplicacion práctica, junto a la simulacion lo probaremos en algoritmos de aprendizaje por)
-
-[//]: # (  refuerzo.)
 :::
 
 # Marco Teórico
@@ -376,16 +373,18 @@ y abc son los coeficientes que podemos resolver con la descomposicion en valores
 ::::
 
 ::: {.notes}
-Dado que ya se tendrian las ecuaciones de todas las líneas en el plano de la camara, se
-pueden calcular las intersecciones de estas líneas realizando un producto cruz entre las ecuaciones
-homogeneas [A,B,C] de todos los pares de líneas
+Dado que ya se tendrian las ecuaciones de todas las líneas en el plano de la camara,
+podemos calcular todas las interscciones de cada par de líneas realizando el producto cruz
+entre las ecuaciones homogéneas de cada par de líneas.
 
-y evidentemente, la mayor cantidad de intersecciones se encontraran en los puntos de fuga principales
-y para determinarlos se realizan tecnicas de AgglomerativeClustering 
+y de las intersecciones oresultantes, podemos filtrar todas las que no esten cerca del horizonte de la imagen
+ya que conocemos que la camara del vehiculo esta orientada paralela al suelo hacia el horizonte
+
+y la mayor cantidad de estas intersecciones cercanas al horizonte, se aglomeraran en una zona cercana a los puntos de fuga
+y podemos determinar estas zonas usando algoritmos de agrupamiento de cumulos de puntos, espesificamente utilizamos
+AgglomerativeClustering de sklearn
+
 :::
-
-[//]: # (### Predicción de distancias)
-[//]: # (Predicción de distancias)
 
 ### Intersección de n líneas
 La intersección de n líneas homogéneas esta dado por
@@ -393,12 +392,25 @@ el eigen vector asociado al eigen valor más pequeño de la matriz $M$ donde:
 $$
 M = \sum_{i=1}^{n} w_i l_i l_i^T
 $$
-donde $w_i$ es un peso asociado a la linea $l_i$ .
+donde $w_i$ es una ponderación asociado a la linea $l_i$ .
 
 <span style="font-size:0.6em">
 Geometric Computation for Machine Vision 
 [@kanatani1993geometric]
 </span>
+
+::: {.notes}
+ teniendo identificadas estos cumulos de intersecciones donde sabemos que estan los puntos de fuga,
+ para saber la ubicacion del punto de fuga que mejor representa estas intersecciones,
+
+ podemos calcular el eigen vector asociado al eigen valor mas pequeño de la matriz M donde M es la 
+ suma de cada linea homogenea por su transpuesta y multiplicada por una ponderacion que calculamos en dependencia de
+ la longitud de cada linea
+
+ w - ponderacion
+
+:::
+
 
 :::footer
 :::
@@ -414,11 +426,29 @@ Geometric Computation for Machine Vision
 ::: {.column width="50%"}
 <img src="/img/line_detection/lineasFinales.png" alt=""/>
 :::
+
+::: {.notes}
+- y realizando esta operacion ya tendriamos la ubicacion de los puntos de fuga de la imagen
+- y podemos filtrar las lineas relevantes que los generaron 
+
+:::
+
 ::::
 
 ### Experimentación y ajuste de parámetros
-<iframe src="https://www.youtube.com/embed/wckOQT7v0VI?autoplay=1&mute=1&loop=1&playlist=wckOQT7v0VI" width="100%" height="500">
+<iframe src="https://www.youtube.com/embed/wckOQT7v0VI?autoplay=0&mute=1&loop=1&playlist=wckOQT7v0VI" width="100%" height="500">
 </iframe>
+
+::: {.notes}
+- debido a que es muy costoso en cuanto a hardweare tener el simulador abierto durante mucho tiempo,
+- grabamos secuencias de varias simulaciones y construimos una aplicacion en python 
+- para hacer la experimentacion de estos metodos vision computacional procesando estas secuencias.
+- durante la ejecucion de la aplicacion se pueden ajustar los parametros de cada etapa del procesamiento, como 
+los umbrales de canny, hough, clustering, cercania al horizonte, etc.
+- y se pueden ver los resultados de cada etapa del procesamiento en tiempo real presionando atajos de teclado.
+
+
+:::
 
 
 ## Ajuste de la retícula (RANSAC)
@@ -429,24 +459,51 @@ Geometric Computation for Machine Vision
 <img src="/img/line_detection/ransac.png" alt=""/>
 :::
 
+::: {.notes}
+- entonces una vez que tenemos estas lineas relevantes que representan la reticula de estacionamiento,
+- podemos ajustar una reticula a estas lineas utilizando el algoritmo RANSAC
+- que es un algoritmo iterativo que ajusta un modelo a los datos con muchos valores atípicos .
+- este es un caso tipico donde se utiliza para encontrar cual es la linea que mejor representa una nube de puntos
+
+:::
+
 ::: {.column width="60%"}
 - RANdom SAmple Consensus
 - Es un algoritmo iterativo utilizado para ajustar modelos a datos con muchos valores atípicos (outliers)
 :::
 ::::
 
-## Ajuste de la retícula
+## Ajuste de la retícula (RANSAC)
+
+
+<img src="/img/line_detection/ramsac_loop.svg" alt=""/>
+<img src="/img/line_detection/transformacion.png" alt=""/>
+
+::: {.notes}
+- en nuestro caso, utilizamos una variacion de RANSAC que ajusta el modelo una reticula de n x n  a las lineas detectadas
+- para esto el algoritomo ...
+
+:::
+
+:::footer
+:::
+
+## Ajuste de la retícula (RANSAC)
 
 :::: {.columns}
 
-::: {.column width="50%"}
-<img src="/img/line_detection/transformacion.png" alt=""/>
-:::
-
-::: {.column width="50%"}
 <img src="/img/line_detection/tenasf_reticule.png" alt=""/>
-:::
+
 ::::
+
+::: {.notes}
+- y al final del algoritmo la homografia con menor error es una buena candidata para mapear la reticula regular
+a los cajones de estacionamiento. 
+- en este ejempo se ve como los cajones mas cercanos a la camara se ajustaron bastante bien
+- tambien se ve como un efecto espejo arriba del horizonte de la imagen debido a un trabajo pendiente que aun queda por hacer
+y es acotar los limites de la reticula que proyectamos.
+
+:::
 
 ## mediciones en la retícula
 
@@ -506,27 +563,13 @@ y estos vectores de coordenadas seran los que usaremos como modelo del estado de
 
 
 # Aplicación en ambiente de RL
-## Gymnasium 
 
-- Provee un API para crear y compartir entornos de aprendizaje por refuerzo [@gym].
-- Permite evaluar agentes en diversos entornos estandarizados.
-- El núcleo de Gym es Env, una clase de Python de alto nivel representando los procesos de decisión de Markov (MDP)
-- La clase proporciona a los usuarios la capacidad de generar un estado inicial, realizar la transición a nuevos estados dada una acción y observar el entorno.
+::: {.notes}
+- y hasta aqui ya tendriamos cumplido el objetivo de la investigacion, que es poder representar la posicion del vehiculo
+con respecto al estacionamiento a partir de las imagenes de la camara.
 
-:::footer
-:::
-
-## Stable-baselines 3
-- Implementaciones confiables de algoritmos de aprendizaje por refuerzo en PyTorch. [@baselines3]
-- API de Gymnasium para interactuar con los entornos.
-- Interfaz sencilla para entrenar y evaluar agentes de RL.
-- Admite algoritmos populares como 
-  - DQN (DeepQ-Network)
-  - PPO (Proximal Policy Optimization)
-  - SAC (Soft Actor-Critic)
-  - A2C (Advantage Actor-Critic)
-
-:::footer
+- pero para demostrar como se puede utilizar esta investigacion para entrenar un agente de aprendizaje por refuerzo
+hicimos una experimentacion extra de nuestro modelo en un ambiente de RL.
 :::
 
 ## Highway-env
@@ -535,6 +578,14 @@ y estos vectores de coordenadas seran los que usaremos como modelo del estado de
 <img class="my-h" src="/img/rl/intersection-env.gif" alt=""/>
 <img class="my-h" src="/img/rl/racetrack-env.gif" alt=""/>
 <img class="my-h" src="/img/rl/roundabout-env.gif" alt=""/>
+
+::: {.notes}
+- y para esto nos apoyamos en la librería highway-env que es una colección de entornos para tareas de conducción autónoma y toma de decisiones tácticas.
+- esta libreria disena sus environments utilizando la libreria gymnasium, muy popular para implementar entornos
+- y baseline3 para entrenar los agentes con implementaciones confiables de algoritmos de aprendizaje por refuerzo como
+deep Q-Network, Proximal Policy Optimization, Soft Actor-Critic, este último es el que utilizamos en nuestra experimentación.
+- aqui podemos ver algunos de los entornos que provee, rotondas, intersecciones, curvas, estacionamiento, etc.
+:::
 
 :::footer
 :::
@@ -552,10 +603,13 @@ $$
 $$
 
 ::: {.notes}
-g: posición del goal (desired_goal)
-s: estado actual (achieved_goal)
-a: acción tomada
-α: regularizador factor de penalización a acciones extremas
+este enviroment de estacionamiento se llama parking-env y es un entorno de estacionamiento
+
+- g: posición del goal (desired_goal)
+- s: estado actual (achieved_goal)
+- a: acción tomada
+- α: regularizador factor de penalización a acciones extremas
+
 :::
 
 :::footer
@@ -578,6 +632,72 @@ a: acción tomada
 :::
 :::: 
 
+## Entrenamiento del agente
+
+:::: {.columns}
+
+::: {.column width="33.3%"}
+| **Initial**          |           |
+|----------------------|-----------|
+| ep_len_mean          | 87.5      |
+| ep_rew_mean          | -51.8     |
+| success_rate         | 0         |
+| **time**             |           |
+| episodes             | 4         |
+| fps                  | 52        |
+| time_elapsed         | 6         |
+| total_timesteps      | 350       |
+| **train**            |           |
+| actor_loss           | -2.41     |
+| critic_loss          | 0.0353    |
+| ent_coef             | 0.78      |
+| ent_coef_loss        | -0.832    |
+| learning_rate        | 0.001     |
+| n_updates            | 249       |
+:::
+
+::: {.column width="33.3%"}
+| **Highway-env**      |           |
+|----------------------|-----------|
+| ep_len_mean          | 20.1      |
+| ep_rew_mean          | -6.92     |
+| success_rate         | 0.93      |
+| **time**             |           |
+| episodes             | 3292      |
+| fps                  | 36        |
+| time_elapsed         | 2758      |
+| total_timesteps      | 99957     |
+| **train**            |           |
+| actor_loss           | 1.44      |
+| critic_loss          | 0.00482   |
+| ent_coef             | 0.00608   |
+| ent_coef_loss        | 0.622     |
+| learning_rate        | 0.001     |
+| n_updates            | 99856     |
+:::
+
+::: {.column width="33.3%"}
+| **Our Wrapper**      |           |
+|----------------------|-----------|
+| ep_len_mean          | 92        |
+| ep_rew_mean          | -35.2     |
+| success_rate         | 0.18      |
+| **time**             |           |
+| episodes             | 101       |
+| fps                  | 12        |
+| time_elapsed         | 1520      |
+| total_timesteps      | 9210      |
+| **train**            |           |
+| actor_loss           | -0.76     |
+| critic_loss          | 0.041     |
+| ent_coef             | 0.62      |
+| ent_coef_loss        | -0.34     |
+| learning_rate        | 0.001     |
+| n_updates            | 8215      |
+:::
+
+::::
+
 
 
 # Avances y Planificación
@@ -591,9 +711,9 @@ a: acción tomada
 | Obtención de mediciones en la imagen        |     |     |     |     |     |     |     |     | ✅  | ✅  |     |     |     |     |     |     |     |     |
 | Detección de lineas y puntos de fuga        |     |     |     |     |     |     |     |     |     | ✅  | ✅  | ✅  |     |     |     |     |     |     |
 | Estimación de la posición de la retícula    |     |     |     |     |     |     |     |     |     |     |     | ✅  | ✅  | ✅  |     |     |     |     |
-| Establecer los límites de la retícula       |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |  ⏳ | 
 | Estimación de distancias                    |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ✅  | ✅  |     |     |
 | Estimación de la posición relativa          |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ✅  | ✅  |     |     |
+| Establecer los límites de la retícula       |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |  ⏳ | 
 | Utilizar la posición en algoritmos de RL    |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     | ✅  | ✅  | ⏳  |
 | Documentación y Análisis de Resultados      | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅ | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ⏳  |
 | Redacción y Revisión del documento de tesis |     |     |     |     |     |     |     |     |     |     |     | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ⏳  |  
@@ -607,6 +727,29 @@ Gracias por su atención...
 - Utilizar patrones de retículas mas complejas
 - Fusionar información de la retícula de cada frame para construir un mapa con memoria de frames pasados
 - Detectar estacionamientos ocupados para exluirlos de la retícula
+
+## Gymnasium 
+
+- Provee un API para crear y compartir entornos de aprendizaje por refuerzo [@gym].
+- Permite evaluar agentes en diversos entornos estandarizados.
+- El núcleo de Gym es Env, una clase de Python de alto nivel representando los procesos de decisión de Markov (MDP)
+- La clase proporciona a los usuarios la capacidad de generar un estado inicial, realizar la transición a nuevos estados dada una acción y observar el entorno.
+
+:::footer
+:::
+
+## Stable-baselines 3
+- Implementaciones confiables de algoritmos de aprendizaje por refuerzo en PyTorch. [@baselines3]
+- API de Gymnasium para interactuar con los entornos.
+- Interfaz sencilla para entrenar y evaluar agentes de RL.
+- Admite algoritmos populares como 
+  - DQN (DeepQ-Network)
+  - PPO (Proximal Policy Optimization)
+  - SAC (Soft Actor-Critic)
+  - A2C (Advantage Actor-Critic)
+
+:::footer
+:::
 
 ## Propiedades de la representación homogénea de lineas y puntos
 :::: {.columns}

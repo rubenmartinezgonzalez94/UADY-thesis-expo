@@ -67,14 +67,21 @@
     "href": "index.html#ajuste-de-la-retícula-ransac",
     "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
     "section": "Ajuste de la retícula (RANSAC)",
-    "text": "Ajuste de la retícula (RANSAC)\n\n\n\n\n\nRANdom SAmple Consensus\nEs un algoritmo iterativo utilizado para ajustar modelos a datos con muchos valores atípicos (outliers)"
+    "text": "Ajuste de la retícula (RANSAC)\n\n\n\n\n\nentonces una vez que tenemos estas lineas relevantes que representan la reticula de estacionamiento,\npodemos ajustar una reticula a estas lineas utilizando el algoritmo RANSAC\nque es un algoritmo iterativo que ajusta un modelo a los datos con muchos valores atípicos .\neste es un caso tipico donde se utiliza para encontrar cual es la linea que mejor representa una nube de puntos\n\n\n\nRANdom SAmple Consensus\nEs un algoritmo iterativo utilizado para ajustar modelos a datos con muchos valores atípicos (outliers)"
   },
   {
-    "objectID": "index.html#ajuste-de-la-retícula",
-    "href": "index.html#ajuste-de-la-retícula",
+    "objectID": "index.html#ajuste-de-la-retícula-ransac-1",
+    "href": "index.html#ajuste-de-la-retícula-ransac-1",
     "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
-    "section": "Ajuste de la retícula",
-    "text": "Ajuste de la retícula"
+    "section": "Ajuste de la retícula (RANSAC)",
+    "text": "Ajuste de la retícula (RANSAC)\n \n\n\nen nuestro caso, utilizamos una variacion de RANSAC que ajusta el modelo una reticula de n x n a las lineas detectadas\npara esto el algoritomo …"
+  },
+  {
+    "objectID": "index.html#ajuste-de-la-retícula-ransac-2",
+    "href": "index.html#ajuste-de-la-retícula-ransac-2",
+    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
+    "section": "Ajuste de la retícula (RANSAC)",
+    "text": "Ajuste de la retícula (RANSAC)\n\n\n\n\n\ny al final del algoritmo la homografia con menor error es una buena candidata para mapear la reticula regular a los cajones de estacionamiento.\nen este ejempo se ve como los cajones mas cercanos a la camara se ajustaron bastante bien\ntambien se ve como un efecto espejo arriba del horizonte de la imagen debido a un trabajo pendiente que aun queda por hacer y es acotar los limites de la reticula que proyectamos."
   },
   {
     "objectID": "index.html#mediciones-en-la-retícula",
@@ -91,6 +98,41 @@
     "text": "Posición relativa\n\n\n\n\n\n\n\npara esto utilizaremos 4 vectores de distancias \\(\\rho\\) desde la camara a las 4 esquinas de uno de los cajones de estacionamiento ubicados en la reticula. y 4 angulos \\(\\theta\\) que serian los angulos de orientacion entre los vectores de distancias y el eje de la camara. y de esta forma tendriamos 4 vectores de coordenadas polares que junto a la altura conocida de la camara z serian coordenadas cilindricas que representan la posicion del vehiculo con respecto al cajon de estacionamiento.\ny estos vectores de coordenadas seran los que usaremos como modelo del estado del sistema."
   },
   {
+    "objectID": "index.html#highway-env",
+    "href": "index.html#highway-env",
+    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
+    "section": "Highway-env",
+    "text": "Highway-env\n\nColección de entornos para tareas de conducción autónoma y toma de decisiones tácticas (Leurent 2018)    \n\n\n\ny para esto nos apoyamos en la librería highway-env que es una colección de entornos para tareas de conducción autónoma y toma de decisiones tácticas.\nesta libreria disena sus environments utilizando la libreria gymnasium, muy popular para implementar entornos\ny baseline3 para entrenar los agentes con implementaciones confiables de algoritmos de aprendizaje por refuerzo como deep Q-Network, Proximal Policy Optimization, Soft Actor-Critic, este último es el que utilizamos en nuestra experimentación.\naqui podemos ver algunos de los entornos que provee, rotondas, intersecciones, curvas, estacionamiento, etc."
+  },
+  {
+    "objectID": "index.html#parking-env",
+    "href": "index.html#parking-env",
+    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
+    "section": "Parking-env",
+    "text": "Parking-env\n\nAcciones: espacio continuo\nBox([-1, -1], [1, 1]) → [aceleración, dirección]\nObservación: vector continuo de 6 elementos:\n[x, y, vx, vy, cos(θ), sin(θ)]\n\nObjetivo: alcanzar una posición objetivo (Landmark) con orientación deseada.\nRecompensa: basada en la distancia al objetivo y penalizaciones por colisiones y acciones: \\[\nr = -|g - s| - α·|a|\n\\]\n\n\neste enviroment de estacionamiento se llama parking-env y es un entorno de estacionamiento\n\ng: posición del goal (desired_goal)\ns: estado actual (achieved_goal)\na: acción tomada\nα: regularizador factor de penalización a acciones extremas"
+  },
+  {
+    "objectID": "index.html#parking-env-nuestra-versión",
+    "href": "index.html#parking-env-nuestra-versión",
+    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
+    "section": "Parking-env (Nuestra versión)",
+    "text": "Parking-env (Nuestra versión)\n\n\n\n\n\n\nInitialization Wrapper\nObservation Wrapper\nAction Wrapper"
+  },
+  {
+    "objectID": "index.html#entrenamiento-del-agente",
+    "href": "index.html#entrenamiento-del-agente",
+    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
+    "section": "Entrenamiento del agente",
+    "text": "Entrenamiento del agente\n\n\n\n\n\nInitial\n\n\n\n\n\nep_len_mean\n87.5\n\n\nep_rew_mean\n-51.8\n\n\nsuccess_rate\n0\n\n\ntime\n\n\n\nepisodes\n4\n\n\nfps\n52\n\n\ntime_elapsed\n6\n\n\ntotal_timesteps\n350\n\n\ntrain\n\n\n\nactor_loss\n-2.41\n\n\ncritic_loss\n0.0353\n\n\nent_coef\n0.78\n\n\nent_coef_loss\n-0.832\n\n\nlearning_rate\n0.001\n\n\nn_updates\n249\n\n\n\n\n\n\n\nHighway-env\n\n\n\n\n\nep_len_mean\n20.1\n\n\nep_rew_mean\n-6.92\n\n\nsuccess_rate\n0.93\n\n\ntime\n\n\n\nepisodes\n3292\n\n\nfps\n36\n\n\ntime_elapsed\n2758\n\n\ntotal_timesteps\n99957\n\n\ntrain\n\n\n\nactor_loss\n1.44\n\n\ncritic_loss\n0.00482\n\n\nent_coef\n0.00608\n\n\nent_coef_loss\n0.622\n\n\nlearning_rate\n0.001\n\n\nn_updates\n99856\n\n\n\n\n\n\n\nOur Wrapper\n\n\n\n\n\nep_len_mean\n92\n\n\nep_rew_mean\n-35.2\n\n\nsuccess_rate\n0.18\n\n\ntime\n\n\n\nepisodes\n101\n\n\nfps\n12\n\n\ntime_elapsed\n1520\n\n\ntotal_timesteps\n9210\n\n\ntrain\n\n\n\nactor_loss\n-0.76\n\n\ncritic_loss\n0.041\n\n\nent_coef\n0.62\n\n\nent_coef_loss\n-0.34\n\n\nlearning_rate\n0.001\n\n\nn_updates\n8215"
+  },
+  {
+    "objectID": "index.html#recomendaciones",
+    "href": "index.html#recomendaciones",
+    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
+    "section": "Recomendaciones",
+    "text": "Recomendaciones\n\nUtilizar patrones de retículas mas complejas\nFusionar información de la retícula de cada frame para construir un mapa con memoria de frames pasados\nDetectar estacionamientos ocupados para exluirlos de la retícula"
+  },
+  {
     "objectID": "index.html#gymnasium",
     "href": "index.html#gymnasium",
     "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
@@ -103,34 +145,6 @@
     "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
     "section": "Stable-baselines 3",
     "text": "Stable-baselines 3\n\nImplementaciones confiables de algoritmos de aprendizaje por refuerzo en PyTorch. (Raffin et al. 2021)\nAPI de Gymnasium para interactuar con los entornos.\nInterfaz sencilla para entrenar y evaluar agentes de RL.\nAdmite algoritmos populares como\n\nDQN (DeepQ-Network)\nPPO (Proximal Policy Optimization)\nSAC (Soft Actor-Critic)\nA2C (Advantage Actor-Critic)"
-  },
-  {
-    "objectID": "index.html#highway-env",
-    "href": "index.html#highway-env",
-    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
-    "section": "Highway-env",
-    "text": "Highway-env\n\nColección de entornos para tareas de conducción autónoma y toma de decisiones tácticas (Leurent 2018)"
-  },
-  {
-    "objectID": "index.html#parking-env",
-    "href": "index.html#parking-env",
-    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
-    "section": "Parking-env",
-    "text": "Parking-env\n\nAcciones: espacio continuo\nBox([-1, -1], [1, 1]) → [aceleración, dirección]\nObservación: vector continuo de 6 elementos:\n[x, y, vx, vy, cos(θ), sin(θ)]\n\nObjetivo: alcanzar una posición objetivo (Landmark) con orientación deseada.\nRecompensa: basada en la distancia al objetivo y penalizaciones por colisiones y acciones: \\[\nr = -|g - s| - α·|a|\n\\]\n\n\ng: posición del goal (desired_goal) s: estado actual (achieved_goal) a: acción tomada α: regularizador factor de penalización a acciones extremas"
-  },
-  {
-    "objectID": "index.html#parking-env-nuestra-versión",
-    "href": "index.html#parking-env-nuestra-versión",
-    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
-    "section": "Parking-env (Nuestra versión)",
-    "text": "Parking-env (Nuestra versión)\n\n\n\n\n\n\nInitialization Wrapper\nObservation Wrapper\nAction Wrapper"
-  },
-  {
-    "objectID": "index.html#recomendaciones",
-    "href": "index.html#recomendaciones",
-    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
-    "section": "Recomendaciones",
-    "text": "Recomendaciones\n\nUtilizar patrones de retículas mas complejas\nFusionar información de la retícula de cada frame para construir un mapa con memoria de frames pasados\nDetectar estacionamientos ocupados para exluirlos de la retícula"
   },
   {
     "objectID": "index.html#propiedades-de-la-representación-homogénea-de-lineas-y-puntos",
