@@ -155,10 +155,6 @@ mientras realizan otras actividades.
 ::: {.notes}
 por lo que podemos definir el marco teorico de la investigacion como:
 :::
-## Hipótesis
-
-“Estimando la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores,
-y utilizando esta posición, se puede lograr un sistema de estacionamiento automático en simulación.”
 
 ## Objetivo general
 
@@ -773,6 +769,11 @@ Hartley, R., & Zisserman, A. (2003). Multiple view geometry in computer vision. 
 
 :::footer
 :::
+
+## Hipótesis
+
+“Estimando la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores,
+y utilizando esta posición, se puede lograr un sistema de estacionamiento automático en simulación.”
 
 
 ## Objetivos específicos:

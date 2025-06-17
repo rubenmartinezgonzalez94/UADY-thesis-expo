@@ -28,13 +28,6 @@
     "text": "Visión Computacional\n    \n\n\n\n\n\ny en construir este sistema de vision computacional sera nuesto objetivo en esta investigacion.\ndonde podemos procesar los datos de la camara y representar la posicion del vehículo con respecto al estacionamiento.\nPara representar esta posición el mayor desafio es detectar los cajones de estacionamiento a partir de las imagenes capturadas por la camara del vehiculo ya que el poder ubicar los cajones de estacionamientoes fundamental en cualquier tarea de planeacion de movimiento"
   },
   {
-    "objectID": "index.html#hipótesis",
-    "href": "index.html#hipótesis",
-    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
-    "section": "Hipótesis",
-    "text": "Hipótesis\n“Estimando la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores, y utilizando esta posición, se puede lograr un sistema de estacionamiento automático en simulación.”"
-  },
-  {
     "objectID": "index.html#objetivo-general",
     "href": "index.html#objetivo-general",
     "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
@@ -152,6 +145,13 @@
     "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
     "section": "Propiedades de la representación homogénea de líneas y puntos",
     "text": "Propiedades de la representación homogénea de líneas y puntos\n\n\nsi \\(l_1\\) y \\(l_2\\) son la representación homogénea de dos líneas en el plano el punto donde se intersectan esta dado por: \\[\nP = l_1 \\times l_2\n\\]\n\nsi \\(p_1\\) y \\(p_2\\) son la representación homogénea de dos puntos en el plano la línea que pasa por estos puntos esta dado por: \\[\nl = p_1 \\times p_2\n\\]\n\nHartley, R., & Zisserman, A. (2003). Multiple view geometry in computer vision. Cambridge university press."
+  },
+  {
+    "objectID": "index.html#hipótesis",
+    "href": "index.html#hipótesis",
+    "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
+    "section": "Hipótesis",
+    "text": "Hipótesis\n“Estimando la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores, y utilizando esta posición, se puede lograr un sistema de estacionamiento automático en simulación.”"
   },
   {
     "objectID": "index.html#objetivos-específicos",
