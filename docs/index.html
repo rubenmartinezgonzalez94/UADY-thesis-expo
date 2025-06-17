@@ -153,7 +153,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Rubén Martínez González 
+Ing. Rubén Martínez González 
 </div>
 <div class="quarto-title-author-email">
 <a href="mailto:rubenmartinezgonzalez94@gmail.com">rubenmartinezgonzalez94@gmail.com</a>
@@ -645,9 +645,9 @@ c
 </section>
 <section id="intersección-de-n-líneas" class="slide level3 center">
 <h3>Intersección de n líneas</h3>
-<p>La intersección de n líneas homogéneas esta dado por el eigen vector asociado al eigen valor más pequeño de la matriz <span class="math inline">\(M\)</span> donde: <span class="math display">\[
+<p>La intersección de n líneas homogéneas está dado por el eigen vector asociado al eigen valor más pequeño de la matriz <span class="math inline">\(M\)</span> donde: <span class="math display">\[
 M = \sum_{i=1}^{n} w_i l_i l_i^T
-\]</span> donde <span class="math inline">\(w_i\)</span> es una ponderación asociado a la linea <span class="math inline">\(l_i\)</span> .</p>
+\]</span> donde <span class="math inline">\(w_i\)</span> es una ponderación asociado a la línea <span class="math inline">\(l_i\)</span> .</p>
 <p><span style="font-size:0.6em"> Geometric Computation for Machine Vision <span class="citation" data-cites="kanatani1993geometric">(<a href="#/referencias" role="doc-biblioref" onclick="">Kanatani 1993</a>)</span> </span></p>
 <aside class="notes">
 <p>teniendo identificadas estos cumulos de intersecciones donde sabemos que estan los puntos de fuga, para saber la ubicacion del punto de fuga que mejor representa estas intersecciones,</p>
@@ -668,8 +668,8 @@ M = \sum_{i=1}^{n} w_i l_i l_i^T
 
 </div>
 </section>
-<section id="lineas-que-concurren-en-los-puntos-de-fuga" class="slide level3 center">
-<h3>Lineas que concurren en los puntos de fuga</h3>
+<section id="líneas-que-concurren-en-los-puntos-de-fuga" class="slide level3 center">
+<h3>líneas que concurren en los puntos de fuga</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><img src="./img/line_detection/2vp.png" alt=""></p>
@@ -920,7 +920,7 @@ $(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(
 <code>[x, y, vx, vy, cos(θ), sin(θ)]</code><br>
 </li>
 <li><strong>Objetivo</strong>: alcanzar una posición objetivo (<code>Landmark</code>) con orientación deseada.</li>
-<li><strong>Recompensa</strong>: basada en la distancia al objetivo y penalizaciones por colisiones y acciones: <span class="math display">\[
+<li><strong>Recompensa</strong>: basada en la distancia al objetivo y penalizaciones por acciones: <span class="math display">\[
 r = -|g - s| - α·|a|
 \]</span></li>
 </ul>
@@ -1558,15 +1558,15 @@ r = -|g - s| - α·|a|
 </div>
 </section>
 
-<section id="propiedades-de-la-representación-homogénea-de-lineas-y-puntos" class="title-slide slide level2 center">
-<h2>Propiedades de la representación homogénea de lineas y puntos</h2>
+<section id="propiedades-de-la-representación-homogénea-de-líneas-y-puntos" class="title-slide slide level2 center">
+<h2>Propiedades de la representación homogénea de líneas y puntos</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>si <span class="math inline">\(l_1\)</span> y <span class="math inline">\(l_2\)</span> son la representación homogénea de dos lineas en el plano el punto donde se intersectan esta dado por: <span class="math display">\[
+<p>si <span class="math inline">\(l_1\)</span> y <span class="math inline">\(l_2\)</span> son la representación homogénea de dos líneas en el plano el punto donde se intersectan esta dado por: <span class="math display">\[
 P = l_1 \times l_2
 \]</span></p>
 </div><div class="column" style="width:50%;">
-<p>si <span class="math inline">\(p_1\)</span> y <span class="math inline">\(p_2\)</span> son la representación homogénea de dos puntos en el plano la linea que pasa por estos puntos esta dado por: <span class="math display">\[
+<p>si <span class="math inline">\(p_1\)</span> y <span class="math inline">\(p_2\)</span> son la representación homogénea de dos puntos en el plano la línea que pasa por estos puntos esta dado por: <span class="math display">\[
 l = p_1 \times p_2
 \]</span></p>
 </div></div>

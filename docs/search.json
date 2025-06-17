@@ -109,7 +109,7 @@
     "href": "index.html#parking-env",
     "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
     "section": "Parking-env",
-    "text": "Parking-env\n\nAcciones: espacio continuo\nBox([-1, -1], [1, 1]) → [aceleración, dirección]\nObservación: vector continuo de 6 elementos:\n[x, y, vx, vy, cos(θ), sin(θ)]\n\nObjetivo: alcanzar una posición objetivo (Landmark) con orientación deseada.\nRecompensa: basada en la distancia al objetivo y penalizaciones por colisiones y acciones: \\[\nr = -|g - s| - α·|a|\n\\]\n\n\neste enviroment de estacionamiento se llama parking-env y es un entorno de estacionamiento\n\ng: posición del goal (desired_goal)\ns: estado actual (achieved_goal)\na: acción tomada\nα: regularizador factor de penalización a acciones extremas"
+    "text": "Parking-env\n\nAcciones: espacio continuo\nBox([-1, -1], [1, 1]) → [aceleración, dirección]\nObservación: vector continuo de 6 elementos:\n[x, y, vx, vy, cos(θ), sin(θ)]\n\nObjetivo: alcanzar una posición objetivo (Landmark) con orientación deseada.\nRecompensa: basada en la distancia al objetivo y penalizaciones por acciones: \\[\nr = -|g - s| - α·|a|\n\\]\n\n\neste enviroment de estacionamiento se llama parking-env y es un entorno de estacionamiento\n\ng: posición del goal (desired_goal)\ns: estado actual (achieved_goal)\na: acción tomada\nα: regularizador factor de penalización a acciones extremas"
   },
   {
     "objectID": "index.html#parking-env-nuestra-versión",
@@ -147,11 +147,11 @@
     "text": "Stable-baselines 3\n\nImplementaciones confiables de algoritmos de aprendizaje por refuerzo en PyTorch. (Raffin et al. 2021)\nAPI de Gymnasium para interactuar con los entornos.\nInterfaz sencilla para entrenar y evaluar agentes de RL.\nAdmite algoritmos populares como\n\nDQN (DeepQ-Network)\nPPO (Proximal Policy Optimization)\nSAC (Soft Actor-Critic)\nA2C (Advantage Actor-Critic)"
   },
   {
-    "objectID": "index.html#propiedades-de-la-representación-homogénea-de-lineas-y-puntos",
-    "href": "index.html#propiedades-de-la-representación-homogénea-de-lineas-y-puntos",
+    "objectID": "index.html#propiedades-de-la-representación-homogénea-de-líneas-y-puntos",
+    "href": "index.html#propiedades-de-la-representación-homogénea-de-líneas-y-puntos",
     "title": "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación",
-    "section": "Propiedades de la representación homogénea de lineas y puntos",
-    "text": "Propiedades de la representación homogénea de lineas y puntos\n\n\nsi \\(l_1\\) y \\(l_2\\) son la representación homogénea de dos lineas en el plano el punto donde se intersectan esta dado por: \\[\nP = l_1 \\times l_2\n\\]\n\nsi \\(p_1\\) y \\(p_2\\) son la representación homogénea de dos puntos en el plano la linea que pasa por estos puntos esta dado por: \\[\nl = p_1 \\times p_2\n\\]\n\nHartley, R., & Zisserman, A. (2003). Multiple view geometry in computer vision. Cambridge university press."
+    "section": "Propiedades de la representación homogénea de líneas y puntos",
+    "text": "Propiedades de la representación homogénea de líneas y puntos\n\n\nsi \\(l_1\\) y \\(l_2\\) son la representación homogénea de dos líneas en el plano el punto donde se intersectan esta dado por: \\[\nP = l_1 \\times l_2\n\\]\n\nsi \\(p_1\\) y \\(p_2\\) son la representación homogénea de dos puntos en el plano la línea que pasa por estos puntos esta dado por: \\[\nl = p_1 \\times p_2\n\\]\n\nHartley, R., & Zisserman, A. (2003). Multiple view geometry in computer vision. Cambridge university press."
   },
   {
     "objectID": "index.html#objetivos-específicos",

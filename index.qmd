@@ -387,12 +387,12 @@ AgglomerativeClustering de sklearn
 :::
 
 ### Intersección de n líneas
-La intersección de n líneas homogéneas esta dado por
+La intersección de n líneas homogéneas está dado por
 el eigen vector asociado al eigen valor más pequeño de la matriz $M$ donde:
 $$
 M = \sum_{i=1}^{n} w_i l_i l_i^T
 $$
-donde $w_i$ es una ponderación asociado a la linea $l_i$ .
+donde $w_i$ es una ponderación asociado a la línea $l_i$ .
 
 <span style="font-size:0.6em">
 Geometric Computation for Machine Vision 
@@ -415,7 +415,7 @@ Geometric Computation for Machine Vision
 :::footer
 :::
 
-### Lineas que concurren en los puntos de fuga
+### líneas que concurren en los puntos de fuga
 
 :::: {.columns}
 
@@ -597,7 +597,7 @@ deep Q-Network, Proximal Policy Optimization, Soft Actor-Critic, este último es
 - **Observación**: vector continuo de 6 elementos:  
   `[x, y, vx, vy, cos(θ), sin(θ)]`  
 - **Objetivo**: alcanzar una posición objetivo (`Landmark`) con orientación deseada.
-- **Recompensa**: basada en la distancia al objetivo y penalizaciones por colisiones y acciones:
+- **Recompensa**: basada en la distancia al objetivo y penalizaciones por acciones:
 $$
   r = -|g - s| - α·|a|
 $$
@@ -751,10 +751,10 @@ Gracias por su atención...
 :::footer
 :::
 
-## Propiedades de la representación homogénea de lineas y puntos
+## Propiedades de la representación homogénea de líneas y puntos
 :::: {.columns}
 ::: {.column width="50%"}
-si $l_1$ y $l_2$ son la representación homogénea de dos lineas en el plano
+si $l_1$ y $l_2$ son la representación homogénea de dos líneas en el plano
 el punto donde se intersectan esta dado por:
 $$
 P = l_1 \times l_2
@@ -762,7 +762,7 @@ $$
 :::
 ::: {.column width="50%"}
 si $p_1$ y $p_2$ son la representación homogénea de dos puntos en el plano
-la linea que pasa por estos puntos esta dado por:
+la línea que pasa por estos puntos esta dado por:
 $$
 l = p_1 \times p_2
 $$
