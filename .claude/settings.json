@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//home/ruben/w/UADY/masterThesisBib/content/2-marcoteo/**)",
+      "Bash(grep -n \"2do punto de fuga\\\\|Selección del\" /home/ruben/w/UADY/masterThesisBib/content/3-metodo/reticule.tex | head -10)",
+      "Read(//home/ruben/w/UADY/masterThesisBib/content/3-metodo/**)",
+      "Bash(ls -1 /home/ruben/w/UADY/masterThesisBib/content/4-result/)",
+      "Read(//home/ruben/w/UADY/masterThesisBib/content/4-result/**)"
+    ]
+  }
+}

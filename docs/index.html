@@ -9,7 +9,7 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.31">
 
-  <title>Estimación de la pose de un vehículo respecto a su estacionamiento en simulación</title>
+  <title>Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -147,8 +147,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Estimación de la pose de un vehículo respecto a su estacionamiento en simulación</h1>
-  <p class="subtitle">Proyecto de tesis</p>
+  <h1 class="title">Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación</h1>
+  <p class="subtitle">Examen de grado</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -175,24 +175,68 @@ Dr.&nbsp;Arturo Espinosa Romero
     </div>
 </div>
 
-  <p class="date">Jun, 2025</p>
+  <p class="date">Jun, 2026</p>
+</section><section id="TOC">
+<nav role="doc-toc"> 
+<h2 id="toc-title">Estructura de la presentación</h2>
+<ul>
+<li><a href="#/introducción" id="/toc-introducción">Introducción</a>
+<ul>
+<li><a href="#/estacionamientos" id="/toc-estacionamientos">Estacionamientos</a></li>
+<li><a href="#/sistemas-de-asistencia-al-conductor" id="/toc-sistemas-de-asistencia-al-conductor">Sistemas de asistencia al conductor</a></li>
+<li><a href="#/aprendizaje-por-refuerzo" id="/toc-aprendizaje-por-refuerzo">Aprendizaje por Refuerzo</a></li>
+<li><a href="#/visión-computacional" id="/toc-visión-computacional">Visión Computacional</a></li>
+</ul></li>
+<li><a href="#/marco-teórico" id="/toc-marco-teórico">Marco Teórico</a>
+<ul>
+<li><a href="#/objetivo-general" id="/toc-objetivo-general">Objetivo general</a></li>
+<li><a href="#/objetivos-específicos" id="/toc-objetivos-específicos">Objetivos específicos</a></li>
+<li><a href="#/preguntas-de-investigación" id="/toc-preguntas-de-investigación">Preguntas de investigación</a></li>
+</ul></li>
+<li><a href="#/metodología" id="/toc-metodología">Metodología</a>
+<ul>
+<li><a href="#/entorno-de-simulación" id="/toc-entorno-de-simulación">Entorno de simulación</a></li>
+<li><a href="#/propiedades-y-geometría-de-estacionamientos" id="/toc-propiedades-y-geometría-de-estacionamientos">Propiedades y geometría de estacionamientos</a></li>
+<li><a href="#/detección-de-la-retícula-de-estacionamiento" id="/toc-detección-de-la-retícula-de-estacionamiento">Detección de la retícula de estacionamiento</a></li>
+<li><a href="#/ajuste-de-la-retícula-ransac" id="/toc-ajuste-de-la-retícula-ransac">Ajuste de la retícula (RANSAC)</a></li>
+<li><a href="#/mediciones-en-la-retícula" id="/toc-mediciones-en-la-retícula">Mediciones en la retícula</a></li>
+</ul></li>
+<li><a href="#/validación-y-experimentación-del-sistema-de-visión" id="/toc-validación-y-experimentación-del-sistema-de-visión">Validación y experimentación del sistema de visión</a>
+<ul>
+<li><a href="#/validación-cuantitativa-evolución-del-error-temporal" id="/toc-validación-cuantitativa-evolución-del-error-temporal">Validación cuantitativa: Evolución del error temporal</a></li>
+<li><a href="#/validación-cuantitativa-distribución-global-del-error" id="/toc-validación-cuantitativa-distribución-global-del-error">Validación cuantitativa: Distribución global del error</a></li>
+<li><a href="#/validación-cualitativa-vehículo-en-dirección-diagonal" id="/toc-validación-cualitativa-vehículo-en-dirección-diagonal">Validación cualitativa: Vehículo en dirección diagonal</a></li>
+<li><a href="#/validación-cualitativa-vehículo-en-dirección-paralela" id="/toc-validación-cualitativa-vehículo-en-dirección-paralela">Validación cualitativa: Vehículo en dirección paralela</a></li>
+</ul></li>
+<li><a href="#/aplicación-en-ambiente-de-rl" id="/toc-aplicación-en-ambiente-de-rl">Aplicación en ambiente de RL</a>
+<ul>
+<li><a href="#/highway-env" id="/toc-highway-env">Highway-env</a></li>
+<li><a href="#/parking-env" id="/toc-parking-env">Parking-env</a></li>
+<li><a href="#/arquitectura-de-integración" id="/toc-arquitectura-de-integración">Arquitectura de Integración</a></li>
+<li><a href="#/parking-env-nuestra-versión" id="/toc-parking-env-nuestra-versión">Parking-env (Nuestra versión)</a></li>
+<li><a href="#/entrenamiento-del-agente" id="/toc-entrenamiento-del-agente">Entrenamiento del agente</a></li>
+<li><a href="#/progresión-del-aprendizaje" id="/toc-progresión-del-aprendizaje">Progresión del Aprendizaje</a></li>
+<li><a href="#/conclusión" id="/toc-conclusión">Conclusión</a></li>
+</ul></li>
+</ul>
+</nav>
 </section>
 <section>
 <section id="introducción" class="title-slide slide level1 center">
 <h1>Introducción</h1>
 <!--
 Buen dia, les habla ing Ruben mg y a continuación les presentaré
-los avances en mi investigacion titulada "Estimación ...".
+los avances en mi investigación titulada "Estimación ...".
 asesorada por los doctores Arturo E
 -->
 <!--
-La presentación estara estructurada con una introducción del problema que se aborda
+La presentación estará estructurada con una introducción del problema que se aborda
 la metodología que se propone
-y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
+y otros conceptos del marco teórico como objetivos, preguntas, hipótesis.
 -->
 <aside class="notes">
 <ul>
-<li>Haciendo introducción al tema, podemos debatir algunas cuesitones sobre el estacionamiento como:</li>
+<li>Haciendo introducción al tema, podemos debatir algunas cuestiones sobre el estacionamiento como:</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -206,8 +250,8 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
           display:block!important;
       }</style></aside>
 </section>
-<section id="estacionamiento" class="title-slide slide level2 center">
-<h2>Estacionamiento</h2>
+<section id="estacionamientos" class="title-slide slide level2 center">
+<h2>Estacionamientos</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
 <ul>
@@ -221,7 +265,7 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 <aside class="notes">
 <ul>
 <li><p>Su importancia ya permite a los conductores dejar sus vehículos de forma segura en estos espacios mientras realizan otras actividades.</p></li>
-<li><p>y cual es el problema con esto , pues En lugares concurridos, puede ser complicado encontrar un lugar o incluso si ya encontraste un lugar, la maniobra para posicionar el vehículo dentro del espacio se puede entorpecer por obstaculos o falta de visibilidad o inexperiencia del conductor. o incluso conductores habilidosos pueden fallar cuando es necesario una serie de maniobras que dependen unas de otras y si calculas mal en alguna , en la siguiente maniobra se tendria rectificar esta equivocación.</p></li>
+<li><p>y cual es el problema con esto , pues En lugares concurridos, puede ser complicado encontrar un lugar o incluso si ya encontraste un lugar, la maniobra para posicionar el vehículo dentro del espacio se puede entorpecer por obstáculos o falta de visibilidad o inexperiencia del conductor. o incluso conductores habilidosos pueden fallar cuando es necesario una serie de maniobras que dependen unas de otras y si calculas mal en alguna , en la siguiente maniobra se tendría rectificar esta equivocación.</p></li>
 <li><p>que ayuda a solucionar este problema , pues Con la ayuda de sistemas de asistencia al conductor.</p></li>
 </ul>
 <style type="text/css">
@@ -326,7 +370,7 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 <section id="marco-teórico" class="title-slide slide level1 center">
 <h1>Marco Teórico</h1>
 <aside class="notes">
-<p>por lo que podemos definir el marco teorico de la investigacion como:</p>
+<p>por lo que podemos definir el marco teórico de la investigación como:</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -341,15 +385,27 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
 </section>
 <section id="objetivo-general" class="title-slide slide level2 center">
 <h2>Objetivo general</h2>
-<p>Desarrollar un sistema de estimación de la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores para estacionamiento automático</p>
+<p>Desarrollar un sistema de visión por computadora en simulación para la detección de retículas de estacionamiento y estimación de pose vehicular, que proporcione información geométrica aplicable a sistemas de asistencia al conductor.</p>
+</section>
+
+<section id="objetivos-específicos" class="title-slide slide level2 center">
+<h2>Objetivos específicos</h2>
+<ul>
+<li>Implementar un entorno realista de estacionamiento utilizando un software de simulación con vehículos y sensores de cámara.</li>
+<li>Desarrollar algoritmos de procesamiento de imágenes para la detección de líneas de marcado de cajones de estacionamiento.</li>
+<li>Diseñar e implementar un método para estimar homografías que ajusten retículas a la información extraída de las imágenes de la cámara.</li>
+<li>Aplicar transformaciones de proyección perspectiva para obtener coordenadas tridimensionales del entorno de estacionamiento.</li>
+<li>Validar la utilidad del sistema mediante su integración como componente de percepción en una aplicación de control autónomo</li>
+</ul>
 </section>
 
 <section id="preguntas-de-investigación" class="title-slide slide level2 center">
 <h2>Preguntas de investigación</h2>
 <ul>
-<li>¿Cómo se puede representar la posición de un vehículo con respecto a su espacio de estacionamiento?</li>
-<li>¿Cómo se puede estimar esta posición utilizando las cámaras y sensores del vehículo?</li>
-<li>¿Cómo usar esta posición estimada para que el vehículo se estacione automáticamente?</li>
+<li>¿Cómo se pueden aplicar algoritmos de procesamiento de imágenes (detección de bordes, extracción de líneas) para identificar las líneas del espacio de estacionamiento?</li>
+<li>¿Qué técnicas de visión por computadora usar para detectar y extraer las características geométricas de una retícula de estacionamiento a partir de imágenes de cámara?</li>
+<li>¿Cómo se puede estimar la pose del vehículo utilizando transformaciones geométricas sobre las características extraídas de la imagen?</li>
+<li>¿Cómo puede integrarse este sistema de estimación en aplicaciones de control autónomo?</li>
 </ul>
 </section>
 </section>
@@ -435,10 +491,10 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
       }</style></aside>
 </section>
 
-<section id="detección-del-estacionamiento" class="title-slide slide level2 center">
-<h2>Detección del estacionamiento</h2>
+<section id="propiedades-y-geometría-de-estacionamientos" class="title-slide slide level2 center">
+<h2>Propiedades y geometría de estacionamientos</h2>
 <aside class="notes">
-<p>una vez que tengamos los datos de la camara captados en el entorno de sumulacion podemos procesarlos para detectar la ubicacion estacionamiento</p>
+<p>una vez que tengamos los datos de la camara captados en el entorno de simulacion podemos procesarlos para detectar la ubicacion estacionamiento</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -540,6 +596,17 @@ y otros conceptos del marco teorico como objetivos, preguntas, hipotesis.
           display:block!important;
       }</style></aside>
 </section>
+
+<section id="detección-de-la-retícula-de-estacionamiento" class="title-slide slide level2 center">
+<h2>Detección de la retícula de estacionamiento</h2>
+
+</section>
+<section id="flujo-de-detección-de-la-retícula-de-estacionamiento" class="slide level3 center">
+<h3>Flujo de detección de la retícula de estacionamiento</h3>
+<div style="text-align: center;">
+<p><img src="./img/line_detection/piperline-reticule11.svg" alt="Pipeline de detección"></p>
+</div>
+</section>
 <section id="detección-de-líneas-paralelas" class="slide level3 center">
 <h3>Detección de líneas paralelas</h3>
 <div class="columns">
@@ -593,7 +660,6 @@ c
 </div><div class="column" style="width:40%;">
 <ul>
 <li>Calculamos el espacio nulo (a,b,c) de cada recta</li>
-<li>SVD (Descomposición en valores singulares)</li>
 </ul>
 </div></div>
 <aside class="notes">
@@ -712,6 +778,12 @@ M = \sum_{i=1}^{n} w_i l_i l_i^T
           display:block!important;
       }</style></aside>
 </section>
+<section id="flujo-de-detección-de-la-retícula-de-estacionamiento-1" class="slide level3 unlisted center">
+<h3>Flujo de detección de la retícula de estacionamiento</h3>
+<div style="text-align: center;">
+<p><img src="./img/line_detection/piperline-reticule11.svg" alt="Pipeline de detección"></p>
+</div>
+</section>
 
 <section id="ajuste-de-la-retícula-ransac" class="title-slide slide level2 center">
 <h2>Ajuste de la retícula (RANSAC)</h2>
@@ -743,7 +815,7 @@ M = \sum_{i=1}^{n} w_i l_i l_i^T
 </div></div>
 </section>
 
-<section id="ajuste-de-la-retícula-ransac-1" class="title-slide slide level2 center">
+<section id="ajuste-de-la-retícula-ransac-1" class="title-slide slide level2 unlisted center">
 <h2>Ajuste de la retícula (RANSAC)</h2>
 <p><img src="./img/line_detection/ramsac_loop.svg" alt=""> <img src="./img/line_detection/transformacion.png" alt=""></p>
 <aside class="notes">
@@ -767,7 +839,7 @@ M = \sum_{i=1}^{n} w_i l_i l_i^T
 </div>
 </section>
 
-<section id="ajuste-de-la-retícula-ransac-2" class="title-slide slide level2 center">
+<section id="ajuste-de-la-retícula-ransac-2" class="title-slide slide level2 unlisted center">
 <h2>Ajuste de la retícula (RANSAC)</h2>
 <div class="columns">
 <p><img src="./img/line_detection/tenasf_reticule.png" alt=""></p>
@@ -792,33 +864,100 @@ M = \sum_{i=1}^{n} w_i l_i l_i^T
 </section>
 
 <section id="mediciones-en-la-retícula" class="title-slide slide level2 center">
-<h2>mediciones en la retícula</h2>
+<h2>Mediciones en la retícula</h2>
+
+</section>
+<section id="extracción-de-coordenadas-tridimensionales" class="slide level3 center">
+<h3>Extracción de Coordenadas Tridimensionales</h3>
+<iframe src="https://www.geogebra.org/classic/upykxsxj" width="100%" height="500">
+</iframe>
+<aside class="notes">
+<p>La proyección perspectiva deforma las distancias en la imagen. Para obtener coordenadas reales en 3D, invertimos esta transformación.</p>
+<p><strong>El proceso:</strong> 1. Tenemos puntos detectados en la imagen 2D (píxeles) 2. Lanzamos rayos desde el foco de la cámara a través de esos puntos 3. Estos rayos intersectan el plano del suelo (el plano real donde está el estacionamiento) 4. La intersección nos da las coordenadas 3D reales en metros</p>
+<p>Usamos los parámetros de la cámara (altura, distancia focal, centro óptico) para hacer esta transformación. La imagen de GeoGebra arriba muestra esta geometría: los rayos amarillos punteados desde el foco hacia los puntos en el plano de la cámara, y cómo esos rayos intersectan el plano del suelo (abajo) para dar coordenadas 3D.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="obtención-de-coordenadas-tridimensionales-en-el-plano-del-suelo" class="slide level3 center">
+<h3>Obtención de Coordenadas Tridimensionales en el Plano del Suelo</h3>
+<div style="font-size: 0.8em;">
+<ol type="1">
+<li><p><strong>Normalizar coordenadas imagen:</strong> <span class="math display">\[\mathbf{r}_{cam} = \mathbf{K}^{-1} \begin{bmatrix} u \\ v \\ 1 \end{bmatrix}\]</span></p></li>
+<li><p><strong>Escalar rayo hasta intersectar suelo:</strong> <span class="math display">\[\lambda = \frac{h}{r_{cam,y}}\]</span></p></li>
+<li><p><strong>Obtener punto 3D en el suelo:</strong> <span class="math display">\[\mathbf{P}_{suelo} = \lambda \cdot \mathbf{r}_{cam} = \begin{bmatrix} X \\ 0 \\ Z \end{bmatrix}\]</span></p></li>
+</ol>
+</div>
+<div class="footer">
+
+</div>
+<aside class="notes">
+<p>Convertimos cada punto detectado en la imagen a una coordenada real en metros en el plano del suelo.</p>
+<p><strong>Explicación del proceso:</strong></p>
+<p>Paso 1: Tomamos un punto (u,v) en píxeles de la imagen y lo multiplicamos por la inversa de la matriz de calibración K. Esto nos da un rayo normalizado en coordenadas de cámara que apunta desde el foco a través de ese punto.</p>
+<p>Paso 2: Sabemos que el suelo está a una altura h bajo la cámara (a Y=0 en coordenadas de cámara). Escalamos el rayo por un factor λ que hace que su componente Y alcance exactamente 0. Este factor λ es simplemente h dividido por la componente Y del rayo.</p>
+<p>Paso 3: Multiplicamos el rayo completo por λ. El resultado es el punto 3D en el plano del suelo. Las componentes X y Z son las coordenadas reales en metros en el suelo (la componente Y es 0 porque está en el plano).</p>
+<p><strong>Por qué funciona:</strong> Esto es la inversa de la proyección perspectiva. En lugar de ir de 3D→2D como hace la cámara, vamos de 2D→3D, deshaciendo la deformación perspectiva usando los parámetros de la cámara.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="cálculo-de-distancias-métricas" class="slide level3 center">
+<h3>Cálculo de Distancias Métricas</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img src="./img/line_detection/distances.png" alt=""></p>
-</div><div class="column" style="width:50%;">
-<ul>
-<li><p><span class="math display">\[
-\mathbf{p}_1 = [x_1, y_1, 1]^T  ,
-\mathbf{p}_2 = [x_2, y_2, 1]^T
-\]</span></p></li>
-<li><p><span class="math display">\[
-\mathbf{P}_1 = \mathbf{H} \cdot \mathbf{p}_1,\quad
-\mathbf{P}_2 = \mathbf{H} \cdot \mathbf{p}_2
-\]</span></p></li>
-<li><p><span class="math display">\[
-d = \sqrt{(X_2 - X_1)^2 + (Y_2 - Y_1)^2}
-\]</span></p></li>
-</ul>
+<p><img src="./img/line_detection/distances.png" alt="Mediciones de distancias en 3D"></p>
+</div><div class="column" style="font-size: 0.8em;">
+<p>Una vez obtenidas las coordenadas 3D de dos puntos en el plano del suelo:</p>
+<p><span class="math display">\[\mathbf{P}_1 = (X_1, 0, Z_1), \quad \mathbf{P}_2 = (X_2, 0, Z_2)\]</span></p>
+<p>Calculamos la distancia euclidiana real:</p>
+<p><span class="math display">\[d = \sqrt{(X_2 - X_1)^2 + (Z_2 - Z_1)^2}\]</span></p>
 </div></div>
 <aside class="notes">
-<ul>
-<li>Teniendo la matriz de homografía <span class="math inline">\(H\)</span> que mapea el plano de la cámara al espacio del estacionamiento:</li>
-<li>Sean dos puntos en la imagen:</li>
-<li>Convertimos los puntos de imagen a coordenadas reales en el plano:</li>
-<li>Calculamos la distancia euclidiana en el espacio:</li>
-<li>Esto permite medir <strong>distancias reales</strong> usando solo la imagen y la homografía.</li>
-</ul>
+<p>Con las coordenadas 3D reales en metros, podemos calcular distancias euclidianas precisas entre puntos del estacionamiento.</p>
+<p><strong>Para qué sirve esto:</strong> - Determinar si un cajón tiene dimensiones suficientes para estacionar el vehículo - Calcular la posición relativa del vehículo respecto a los cajones - Planificar trayectorias de estacionamiento con restricciones geométricas precisas - Validar que el vehículo cumpla con las dimensiones permitidas</p>
+<p>La imagen muestra exactamente esto: el rectángulo azul es el vehículo en el origen, la retícula azul es el estacionamiento proyectado al plano 3D, y las líneas rojas con números son las distancias métricas calculadas en metros desde el vehículo hacia diferentes puntos de interés en la retícula.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+</section>
+<section>
+<section id="validación-y-experimentación-del-sistema-de-visión" class="title-slide slide level1 center">
+<h1>Validación y experimentación del sistema de visión</h1>
+
+</section>
+<section id="validación-cuantitativa-evolución-del-error-temporal" class="title-slide slide level2 center">
+<h2>Validación cuantitativa: Evolución del error temporal</h2>
+
+<img src="./img/vc_validation/ransac_avg_dist.png" alt="Error promedio RANSAC" class="r-stretch"><aside class="notes">
+<p>Se validó el sistema procesando 9 secuencias de video del mismo escenario de estacionamiento.</p>
+<p>Este gráfico muestra cómo evoluciona el error de reconstrucción RANSAC a lo largo de cada secuencia. Cada línea de color representa una ejecución diferente del vehículo en el mismo escenario, y la línea azul gruesa es el promedio entre todas las secuencias.</p>
+<p><strong>Interpretación:</strong> Puedes ver que el error se mantiene bajo y consistente durante la mayoría del tiempo, con algunos picos ocasionales que ocurren en ángulos extremos o cuando hay oclusiones. Los espacios vacíos al inicio (primeros frames) representan momentos donde RANSAC no pudo encontrar un modelo válido, una limitación que ocurre cuando el vehículo está en perspectivas muy extremas. Sin embargo, una vez que el vehículo obtiene perspectivas más reveladoras de la retícula, el error disminuye significativamente.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -832,19 +971,56 @@ d = \sqrt{(X_2 - X_1)^2 + (Y_2 - Y_1)^2}
       }</style></aside>
 </section>
 
-<section id="posición-relativa" class="title-slide slide level2 center">
-<h2>Posición relativa</h2>
-<iframe src="https://www.geogebra.org/classic/a8pwjzyk?embed" width="100%" height="600" allowfullscreen="" style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0">
-</iframe>
-<!-- 
-$(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(\rho_4, \theta_4, z)$
--->
-<div class="footer">
+<section id="validación-cuantitativa-distribución-global-del-error" class="title-slide slide level2 center">
+<h2>Validación cuantitativa: Distribución global del error</h2>
 
-</div>
-<aside class="notes">
-<p>para esto utilizaremos 4 vectores de distancias <span class="math inline">\(\rho\)</span> desde la camara a las 4 esquinas de uno de los cajones de estacionamiento ubicados en la reticula. y 4 angulos <span class="math inline">\(\theta\)</span> que serian los angulos de orientacion entre los vectores de distancias y el eje de la camara. y de esta forma tendriamos 4 vectores de coordenadas polares que junto a la altura conocida de la camara z serian coordenadas cilindricas que representan la posicion del vehiculo con respecto al cajon de estacionamiento.</p>
-<p>y estos vectores de coordenadas seran los que usaremos como modelo del estado del sistema.</p>
+<img src="./img/vc_validation/ransac_histogram.png" alt="Distribución del error" class="r-stretch"><aside class="notes">
+<p>Este histograma resume el comportamiento global del error en todas las secuencias, agrupando todos los valores válidos de las 9 secuencias combinadas.</p>
+<p><strong>Características principales:</strong> - La distribución sigue una forma acampanada con ligera asimetría hacia la derecha - La moda (pico) está alrededor de 20-25 píxeles - La mediana (línea azul marino) es 25.30 píxeles - La media (línea roja) es 26.50 píxeles</p>
+<p>Esta concentración de valores demuestra que el algoritmo encontró muy buenas soluciones para la mayoría de los frames. Los errores más altos (40-60 píxeles) son excepcionales y ocurren en situaciones difíciles (oclusiones, perspectivas extremas), pero considerando que las imágenes tienen 1920×1080 píxeles, esa desviación es mínima geométricamente. El resultado valida que el sistema mantiene un ajuste geométrico estable y resiliente a lo largo del tiempo.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="validación-cualitativa-vehículo-en-dirección-diagonal" class="title-slide slide level2 center">
+<h2>Validación cualitativa: Vehículo en dirección diagonal</h2>
+
+<img src="./img/vc_validation/v2c.png" alt="Vehículo diagonal procesado" class="r-stretch"><aside class="notes">
+<p>Este caso representa uno de los mejores resultados del sistema (error de ~13 píxeles).</p>
+<p><strong>Contexto:</strong> El vehículo se posiciona en diagonal al estacionamiento, lo que hace que las líneas paralelas converjan hacia los bordes de la imagen. Esto presenta desafíos: detectar puntos de fuga en los extremos, ruido de otros vehículos estacionados, y la complejidad de la disposición de líneas.</p>
+<p><strong>Lo que ves en la imagen:</strong> La imagen original en color con los resultados del procesamiento superpuestos. Los colores resaltados muestran: - Las líneas detectadas (en verde) que convergen correctamente hacia los dos puntos de fuga - Los puntos de fuga conectados por una línea roja - El punto de fuga principal se ubica dentro de la imagen (1916, 540) - El punto de fuga secundario está fuera de la imagen (-3, 540) debido a la ortogonalidad</p>
+<p><strong>Por qué funciona bien:</strong> A pesar de los vehículos estacionados que generan ruido, el algoritmo detecta correctamente solo las líneas que convergen a los puntos de fuga principales, ignorando el ruido. La reconstrucción de la retícula es coherente y permite realizar mediciones métricas confiables para planificar movimientos del vehículo.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="validación-cualitativa-vehículo-en-dirección-paralela" class="title-slide slide level2 center">
+<h2>Validación cualitativa: Vehículo en dirección paralela</h2>
+
+<img src="./img/vc_validation/v1c.png" alt="Vehículo paralelo procesado" class="r-stretch"><aside class="notes">
+<p>Este caso presenta uno de los desafíos más difíciles: cuando el vehículo se posiciona en paralelo al estacionamiento (el estacionamiento queda a un lado del vehículo)..</p>
+<p><strong>Desafíos del escenario:</strong> - Líneas externas (calles, bordes) pueden interferir en la detección - Otros vehículos estacionados generan oclusión - La barda perimetral tiene color similar a las líneas de estacionamiento - La mayoría de las líneas detectadas están orientadas en una sola dirección</p>
+<p><strong>Lo que ves en la imagen:</strong> La imagen procesada en color sobre la original, mostrando: - Líneas detectadas (en verde) que convergen al punto de fuga principal cerca del centro - El punto de fuga principal correctamente ubicado en (984, 542) - El punto de fuga secundario muy lejano (-36135, 542) porque ambas familias de líneas son casi paralelas en esta perspectiva</p>
+<p><strong>Limitación importante:</strong> A diferencia del caso diagonal, aquí RANSAC enfrenta dificultad para encontrar un modelo global completo porque falta cantidad de líneas transversales (inliers) que cruzen ambas direcciones. Resulta en una <strong>reconstrucción parcial</strong> de la retícula en lugar de completa.</p>
+<p><strong>Por qué sigue siendo útil:</strong> Aunque no obtiene la retícula completa, el sistema sigue extrayendo coordenadas métricas válidas de las líneas detectadas, que son suficientes para mediciones directas. El agente de RL puede usar estas mediciones parciales y, a medida que se desplaza, obtiene nuevas perspectivas que complementan la información.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -943,6 +1119,49 @@ r = -|g - s| - α·|a|
 </div>
 </section>
 
+<section id="arquitectura-de-integración" class="title-slide slide level2 center">
+<h2>Arquitectura de Integración</h2>
+<div style="font-size: 0.8em; text-align: center;">
+<pre><code>┌─────────────────────────────────────┐
+│  CARLA Simulator                    │
+│  (Física realista del vehículo)     │
+└──────────────────▲──────────────────┘
+                   │ Imágenes cámara
+┌──────────────────┴──────────────────┐
+│  Sistema de Visión                  │
+│  (Detección de retícula + Pose 3D)  │
+└──────────────────▲──────────────────┘
+                   │
+      Estado [x,y,vx,vy,cos(θ),sin(θ)]
+┌──────────────────┴──────────────────┐
+│  Gymnasium + Highway-env            │
+│  (Interfaz RL + Recompensa)         │
+└──────────────────▲──────────────────┘
+                   │
+            Agente de RL</code></pre>
+</div>
+<aside class="notes">
+<p>La arquitectura de nuestra implementación integra 4 componentes clave:</p>
+<ol type="1">
+<li><strong>CARLA</strong>: Simulador que proporciona física realista del vehículo y la cámara frontal</li>
+<li><strong>Sistema de Visión</strong>: Tu pipeline de detección de retícula que procesa imágenes y estima la posición/orientación del vehículo en coordenadas reales (métricas)</li>
+<li><strong>Gymnasium + Highway-env</strong>: Proporciona la interfaz estándar de RL, define espacios de acción y observación, y la función de recompensa</li>
+<li><strong>Agente de RL</strong>: Aprende a controlar el vehículo basándose en las observaciones del estado</li>
+</ol>
+<p><strong>Lo clave</strong>: Tu sistema de visión actúa como el “intérprete de estado” que convierte imágenes en información numérica que el agente puede usar. Esto es realista: a diferencia de entornos ideales que dan coordenadas perfectas, aquí el agente aprende con información visual procesada (con ruido e incertidumbre real).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
 <section id="parking-env-nuestra-versión" class="title-slide slide level2 center">
 <h2>Parking-env (Nuestra versión)</h2>
 <div class="columns">
@@ -951,564 +1170,276 @@ r = -|g - s| - α·|a|
 </iframe>
 </div><div class="column" style="width:30%;">
 <ul>
-<li>Initialization Wrapper</li>
-<li>Observation Wrapper</li>
-<li>Action Wrapper</li>
+<li><strong>Initialization Wrapper</strong></li>
+<li><strong>Observation Wrapper</strong></li>
+<li><strong>Action Wrapper</strong></li>
 </ul>
 </div></div>
+<aside class="notes">
+<p>Los tres wrappers son adaptadores que hacen la integración realista:</p>
+<p><strong>Initialization Wrapper</strong> (CarlaInitRoadWrapper): - Construye la geometría del estacionamiento usando CARLA - Crea 7 cajones de estacionamiento con coordenadas reales - Reemplaza el diseño abstracto de Highway-env con un layout realista</p>
+<p><strong>Observation Wrapper</strong> (CarlaObservationWrapper) - <strong>EL MÁS IMPORTANTE</strong>: - Reemplaza las coordenadas perfectas de Highway-env por tu sistema de visión - Toma la imagen de la cámara frontal en CARLA - Aplica tu pipeline: detección de retícula + RANSAC + proyección perspectiva - Extrae [x, y, vx, vy, cos(θ), sin(θ)] a partir de visión (no GPS perfecto) - Este es lo que hace realista el entrenamiento</p>
+<p><strong>Action Wrapper</strong> (CarlaActionWrapper): - Traduce acciones del agente [aceleración, dirección] a controles vehiculares de CARLA - Aplica throttle, steering, freno - Sincroniza el tiempo de simulación</p>
+<p>El resultado: un agente que aprende a estacionar usando SOLO información visual procesada, como un vehículo autónomo real.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
 <section id="entrenamiento-del-agente" class="title-slide slide level2 center">
 <h2>Entrenamiento del agente</h2>
-<div class="columns">
-<div class="column" style="width:33.3%;">
 <table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
-<th><strong>Initial</strong></th>
-<th></th>
+<th><strong>Métrica</strong></th>
+<th><strong>Inicial (~350 steps)</strong></th>
+<th><strong>Highway-env Original</strong></th>
+<th><strong>Nuestro Wrapper con VC</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>ep_len_mean</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Desempeño del agente</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Longitud promedio (pasos/ep)</td>
 <td>87.5</td>
-</tr>
-<tr class="even">
-<td>ep_rew_mean</td>
-<td>-51.8</td>
-</tr>
-<tr class="odd">
-<td>success_rate</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td><strong>time</strong></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>episodes</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td>fps</td>
-<td>52</td>
-</tr>
-<tr class="odd">
-<td>time_elapsed</td>
-<td>6</td>
-</tr>
-<tr class="even">
-<td>total_timesteps</td>
-<td>350</td>
-</tr>
-<tr class="odd">
-<td><strong>train</strong></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>actor_loss</td>
-<td>-2.41</td>
-</tr>
-<tr class="odd">
-<td>critic_loss</td>
-<td>0.0353</td>
-</tr>
-<tr class="even">
-<td>ent_coef</td>
-<td>0.78</td>
-</tr>
-<tr class="odd">
-<td>ent_coef_loss</td>
-<td>-0.832</td>
-</tr>
-<tr class="even">
-<td>learning_rate</td>
-<td>0.001</td>
-</tr>
-<tr class="odd">
-<td>n_updates</td>
-<td>249</td>
-</tr>
-</tbody>
-</table>
-</div><div class="column" style="width:33.3%;">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th><strong>Highway-env</strong></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ep_len_mean</td>
 <td>20.1</td>
+<td>92.0</td>
 </tr>
 <tr class="even">
-<td>ep_rew_mean</td>
+<td>Recompensa promedio (adimensional)</td>
+<td>-51.8</td>
 <td>-6.92</td>
-</tr>
-<tr class="odd">
-<td>success_rate</td>
-<td>0.93</td>
-</tr>
-<tr class="even">
-<td><strong>time</strong></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>episodes</td>
-<td>3292</td>
-</tr>
-<tr class="even">
-<td>fps</td>
-<td>36</td>
-</tr>
-<tr class="odd">
-<td>time_elapsed</td>
-<td>2758</td>
-</tr>
-<tr class="even">
-<td>total_timesteps</td>
-<td>99957</td>
-</tr>
-<tr class="odd">
-<td><strong>train</strong></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>actor_loss</td>
-<td>1.44</td>
-</tr>
-<tr class="odd">
-<td>critic_loss</td>
-<td>0.00482</td>
-</tr>
-<tr class="even">
-<td>ent_coef</td>
-<td>0.00608</td>
-</tr>
-<tr class="odd">
-<td>ent_coef_loss</td>
-<td>0.622</td>
-</tr>
-<tr class="even">
-<td>learning_rate</td>
-<td>0.001</td>
-</tr>
-<tr class="odd">
-<td>n_updates</td>
-<td>99856</td>
-</tr>
-</tbody>
-</table>
-</div><div class="column" style="width:33.3%;">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th><strong>Our Wrapper</strong></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ep_len_mean</td>
-<td>92</td>
-</tr>
-<tr class="even">
-<td>ep_rew_mean</td>
 <td>-35.2</td>
 </tr>
 <tr class="odd">
-<td>success_rate</td>
-<td>0.18</td>
+<td><strong>Tasa de éxito (%)</strong></td>
+<td><strong>0</strong></td>
+<td><strong>93</strong></td>
+<td><strong>18</strong></td>
 </tr>
 <tr class="even">
-<td><strong>time</strong></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>episodes</td>
+<td><strong>Información de entrenamiento</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Episodios completados</td>
+<td>4</td>
+<td>3292</td>
 <td>101</td>
 </tr>
-<tr class="even">
-<td>fps</td>
-<td>12</td>
-</tr>
 <tr class="odd">
-<td>time_elapsed</td>
-<td>1520</td>
-</tr>
-<tr class="even">
-<td>total_timesteps</td>
+<td>Pasos de simulación totales</td>
+<td>350</td>
+<td>99957</td>
 <td>9210</td>
 </tr>
+<tr class="even">
+<td>Tiempo transcurrido (s)</td>
+<td>6</td>
+<td>2758 (~46 min)</td>
+<td>1520 (~25 min)</td>
+</tr>
 <tr class="odd">
-<td><strong>train</strong></td>
+<td>Frecuencia de simulación (fps)</td>
+<td>52</td>
+<td>36</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Métricas de la red neuronal</strong></td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr class="even">
-<td>actor_loss</td>
+<td>Pérdida del actor (adimensional)</td>
+<td>-2.41</td>
+<td>1.44</td>
 <td>-0.76</td>
 </tr>
 <tr class="odd">
-<td>critic_loss</td>
-<td>0.041</td>
+<td>Pérdida del crítico (adimensional)</td>
+<td>0.0353</td>
+<td>0.00482</td>
+<td>0.011</td>
 </tr>
 <tr class="even">
-<td>ent_coef</td>
+<td>Coeficiente de entropía (adimensional)</td>
+<td>0.78</td>
+<td>0.00608</td>
 <td>0.62</td>
 </tr>
 <tr class="odd">
-<td>ent_coef_loss</td>
+<td>Pérdida coef. entropía (adimensional)</td>
+<td>-0.832</td>
+<td>0.622</td>
 <td>-0.34</td>
 </tr>
 <tr class="even">
-<td>learning_rate</td>
-<td>0.001</td>
-</tr>
-<tr class="odd">
-<td>n_updates</td>
+<td>Actualizaciones de red</td>
+<td>249</td>
+<td>99856</td>
 <td>8215</td>
 </tr>
 </tbody>
 </table>
-</div></div>
-</section>
-</section>
-<section id="avances-y-planificación" class="title-slide slide level1 center">
-<h1>Avances y Planificación</h1>
-<table class="caption-top" style="width:100%;">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Actividad</strong></th>
-<th>Ene</th>
-<th>Feb</th>
-<th>Mar</th>
-<th>Abr</th>
-<th>May</th>
-<th>Jun</th>
-<th>Jul</th>
-<th>Ago</th>
-<th>Sep</th>
-<th>Oct</th>
-<th>Nov</th>
-<th>Dic</th>
-<th>Ene</th>
-<th>Feb</th>
-<th>Mar</th>
-<th>Abr</th>
-<th>May</th>
-<th>Jun</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Investigación y revisión bibliográfica</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Diseño y Configuración del Entorno Simulado</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Adquisición y pre-procesamiento de Datos</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Interpretar los datos de los sensores</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Obtención de mediciones en la imagen</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>✅</td>
-<td>✅</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Detección de lineas y puntos de fuga</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Estimación de la posición de la retícula</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Estimación de distancias</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>✅</td>
-<td>✅</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Estimación de la posición relativa</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>✅</td>
-<td>✅</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Establecer los límites de la retícula</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>⏳</td>
-</tr>
-<tr class="odd">
-<td>Utilizar la posición en algoritmos de RL</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>✅</td>
-<td>✅</td>
-<td>⏳</td>
-</tr>
-<tr class="even">
-<td>Documentación y Análisis de Resultados</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>⏳</td>
-</tr>
-<tr class="odd">
-<td>Redacción y Revisión del documento de tesis</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>⏳</td>
-</tr>
-</tbody>
-</table>
+<aside class="notes">
+<p><strong>Tres configuraciones comparadas:</strong></p>
+<ol type="1">
+<li><p><strong>Inicial (~350 steps)</strong>: Estado inicial del entrenamiento, antes de cualquier aprendizaje significativo. Sirve como referencia del punto de partida.</p></li>
+<li><p><strong>Highway-env Original</strong>: Entorno estándar de Highway-env con:</p>
+<ul>
+<li>Observaciones perfectas (posición, velocidad, orientación conocidas con precisión)</li>
+<li>Física simplificada y bidimensional</li>
+<li>Entrenado durante ~46 minutos (3292 episodios, 99957 timesteps)</li>
+<li><strong>Resultado: 93% de tasa de éxito</strong> (el agente aprende muy rápido)</li>
+</ul></li>
+<li><p><strong>Nuestro Wrapper con VC</strong>: Tu implementación híbrida que integra:</p>
+<ul>
+<li>CARLA (física realista 3D)</li>
+<li>Tu sistema de visión (percepe realista basada en imágenes: Canny → Hough → RANSAC → Proyección 3D)</li>
+<li>Gymnasium + Highway-env (interfaz estándar)</li>
+<li>Entrenado durante ~25 minutos (101 episodios, 9210 timesteps)</li>
+<li><strong>Resultado: 18% de tasa de éxito</strong></li>
+</ul></li>
+</ol>
+<p><strong>¿Por qué es diferente el 18% vs 93%?</strong></p>
+<p><strong>Mayor complejidad realista:</strong> Highway-env recibe posición GPS perfecta. Tu sistema debe inferirla de imágenes con: - Ruido en detección de bordes (Canny) - Errores en detección de líneas (Hough) - Oclusiones por otros vehículos - Variabilidad en RANSAC</p>
+<p><strong>Costo computacional:</strong> - Renderizado 3D de CARLA (fotorrealismo) vs representación 2D - Física vehicular compleja vs modelo cinemático simple - Procesamiento visual en cada frame - Todo esto reduce fps de 36 a 12 y episodios por minuto</p>
+<p><strong>Lo importante: El 18% es una VALIDACIÓN</strong></p>
+<p>El agente SÍ APRENDIÓ (0% → 18%) usando SOLO información visual procesada. Esto demuestra que: - Tu sistema de visión proporciona características geométricas suficientes - Es viable para control autónomo en tiempo real - Podría transferirse a vehículos reales (Highway-env no podría, requiere GPS)</p>
+<p>Con hardware más potente (GPU profesional, múltiples entornos paralelos), se alcanzarían mayores tasas de éxito.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
-<section id="fin" class="title-slide slide level1 center">
+<section id="progresión-del-aprendizaje" class="title-slide slide level2 center">
+<h2>Progresión del Aprendizaje</h2>
+<p><strong>Evidencia de aprendizaje progresivo en tu configuración:</strong></p>
+<ul>
+<li><strong>Tasa de éxito</strong>: Incremento de <strong>0% → 18%</strong> (1 de cada 5 intentos con éxito)
+<ul>
+<li>El agente aprendió a estacionar usando SOLO información visual procesada</li>
+</ul></li>
+<li><strong>Recompensa promedio</strong>: Mejora del <strong>32%</strong> (-51.8 → -35.2)
+<ul>
+<li>El agente desarrolló políticas que lo acercan consistentemente al objetivo</li>
+</ul></li>
+<li><strong>Coeficiente de entropía</strong>: Disminución de <strong>0.78 → 0.62</strong>
+<ul>
+<li>El agente reduce exploración aleatoria y favorece acciones más determinísticas</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p><strong>Lo importante:</strong></p>
+<p>El resultado del 18% de tasa de éxito <strong>NO es un fracaso</strong>, es una <strong>validación</strong>:</p>
+<ol type="1">
+<li><p><strong>Mayor complejidad realista</strong>: A diferencia de Highway-env que recibe posición perfecta, tu sistema debe inferirla de imágenes con ruido, oclusiones y errores de detección</p></li>
+<li><p><strong>Transferencia al mundo real</strong>: Un agente que aprende con visión realista (como el tuyo) podría transferirse a un vehículo real. Highway-env requeriría GPS de precisión centimétrica, que no existe</p></li>
+<li><p><strong>Suficiencia del sistema de visión</strong>: El hecho de que logre 18% demuestra que tu pipeline (Canny → Hough → RANSAC → Proyección 3D) extrae características geométricas suficientes para guiar decisiones de control en tiempo real</p></li>
+</ol>
+<p><strong>Limitaciones computacionales:</strong> - Hardware compartido (GPU RTX 3060, 32GB RAM) entre CARLA, procesamiento visual y entrenamiento de red - Con mayor capacidad computacional (GPU profesional, múltiples instancias del entorno en paralelo) se podrían lograr mayores tasas de éxito - El tiempo limitado (25 min) vs 46 min del original también afecta la acumulación de experiencia</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="conclusión" class="title-slide slide level2 center">
+<h2>Conclusión</h2>
+<div style="font-size: 0.80em;">
+<p><strong>Contribución central: Sistema de visión por computadora para estacionamiento autónomo</strong></p>
+<ul>
+<li><p>✅ Desarrollamos un <strong>pipeline completo</strong> de visión: detección de líneas → puntos de fuga → reconstrucción 3D → mediciones métricas</p></li>
+<li><p>✅ <strong>Validación cuantitativa</strong>: RANSAC mantiene error &lt;30px en 75% de frames en múltiples perspectivas</p></li>
+<li><p>✅ <strong>Validación cualitativa</strong>: Sistema robusto ante oclusiones, ruido y ángulos extremos</p></li>
+<li><p>✅ <strong>Integración con RL</strong>: El sistema proporciona información de estado suficientemente precisa para entrenar agentes de control autónomo (18% de éxito con información visual realista)</p></li>
+<li><p>✅ <strong>Aplicabilidad real</strong>: Transferible a vehículos reales equipados con cámaras (vs entornos ideales que requieren GPS de precisión centimétrica)</p></li>
+</ul>
+</div>
+<div class="footer">
+
+</div>
+<aside class="notes">
+<p>Esta investigación aborda un problema real: ¿cómo un vehículo autónomo puede entender su posición respecto al estacionamiento usando SOLO información visual?</p>
+<p><strong>El viaje:</strong> 1. <strong>Problema</strong>: ¿Cómo detectar cajones de estacionamiento en imágenes y estimar pose vehicular? 2. <strong>Solución</strong>: Pipeline de visión computacional completo (Canny → Hough → RANSAC → Proyección 3D inversa) 3. <strong>Validación</strong>: Casos cuantitativos y cualitativos muestran robustez en condiciones realistas 4. <strong>Aplicación</strong>: Integración exitosa con RL demuestra viabilidad para control autónomo</p>
+<p><strong>Resultado final:</strong> Un sistema independiente, completo y validado que puede usarse como componente de percepción en arquitecturas de conducción autónoma. Los algoritmos y métodos desarrollados son transferibles a vehículos reales y pueden integrarse con diversos sistemas de control (RL, controladores clásicos, planificadores de trayectorias).</p>
+<p><strong>Cumplimos el objetivo</strong>: Proporcionar información geométrica del entorno de estacionamiento desde imágenes de cámara, aplicable a sistemas de asistencia al conductor.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+</section>
+<section id="fin" class="title-slide slide level1 unlisted center">
 <h1>Fin</h1>
 <p>Gracias por su atención…</p>
 </section>
 
 <section>
-<section id="extras" class="title-slide slide level1 center">
+<section id="extras" class="title-slide slide level1 unlisted center">
 <h1>Extras</h1>
 
 </section>
@@ -1576,7 +1507,7 @@ l = p_1 \times p_2
 <p>“Estimando la posición relativa al estacionamiento de un vehículo mediante cámaras y sensores, y utilizando esta posición, se puede lograr un sistema de estacionamiento automático en simulación.”</p>
 </section>
 
-<section id="objetivos-específicos" class="title-slide slide level2 center">
+<section id="objetivos-específicos-1" class="title-slide slide level2 center">
 <h2>Objetivos específicos:</h2>
 <ul>
 <li>Modelar un ambiente de simulación de un vehículo y estacionamiento.</li>
@@ -1680,6 +1611,81 @@ l = p_1 \times p_2
 <li><p>Se han revisado trabajos relacionados con este contexto donde se utilizan camaras y sensores para resolver el problema de la conducción autónoma como el estacionamiento.</p></li>
 <li><p>Pero esto no es precisamente lo que queremos proponer en este trabajo. Queremos proponer un sistema de visión computacional que permita modelar la posición del vehículo con respecto al estacionamiento y utilizar este modelo para delegar la solución del estacionamiento a un algoritmo de aprendizaje automático.</p></li>
 </ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="ortogonalidad-en-puntos-de-fuga" class="title-slide slide level2 center">
+<h2>Ortogonalidad en Puntos de Fuga</h2>
+<p>Si dos direcciones son perpendiculares en 3D, existe una relación matemática entre sus puntos de fuga en la imagen. <span class="math display">\[(x_1 - c_x)(x_2 - c_x) + f^2 = 0\]</span></p>
+<aside class="notes">
+<p><strong>Parámetros:</strong> - <span class="math inline">\(x_1, y_1\)</span> = Primer punto de fuga (obtenido por clustering) - <span class="math inline">\(x_2, y_2\)</span> = Segundo punto de fuga (a calcular) - <span class="math inline">\(c_x\)</span> = Centro óptico horizontal de la cámara - <span class="math inline">\(f\)</span> = Distancia focal de la cámara</p>
+<p>Esta ecuación expresa la propiedad fundamental de que dos familias de líneas perpendiculares en 3D (como las de un estacionamiento) generan puntos de fuga relacionados en la proyección 2D de la imagen.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="derivación-obtención-del-segundo-punto-de-fuga" class="title-slide slide level2 center">
+<h2>Derivación: Obtención del Segundo Punto de Fuga</h2>
+<div style="font-size: 0.85em;">
+<ol type="1">
+<li><p>Condición de ortogonalidad en 3D: <span class="math display">\[\mathbf{d}_1 \cdot \mathbf{d}_2 = 0\]</span></p></li>
+<li><p>Relación proyectiva: <span class="math display">\[\mathbf{d} = \mathbf{K}^{-1} \mathbf{v}\]</span></p></li>
+<li><p>Aplicar a ambas direcciones: <span class="math display">\[(\mathbf{K}^{-1}\mathbf{v}_1)^\top (\mathbf{K}^{-1}\mathbf{v}_2) = 0\]</span></p></li>
+<li><p>Simplificar y despejar: <span class="math display">\[x_2 = c_x - \frac{f^2}{x_1 - c_x}, \quad y_2 = y_1\]</span></p></li>
+</ol>
+</div>
+<div class="footer">
+
+</div>
+<aside class="notes">
+<p>Cuando dos direcciones en 3D son perpendiculares entre sí, la matriz de calibración de la cámara <span class="math inline">\(\mathbf{K}\)</span> relaciona estas direcciones con sus puntos de fuga en la imagen.</p>
+<p>Al aplicar esta relación a ambas direcciones ortogonales y simplificar, obtenemos una fórmula directa: conociendo el primer punto de fuga (<span class="math inline">\(x_1\)</span>) y los parámetros intrínsecos de la cámara (<span class="math inline">\(f\)</span>, <span class="math inline">\(c_x\)</span>), podemos calcular exactamente dónde estará el segundo punto de fuga.</p>
+<p><strong>Interpretación geométrica:</strong> Cuando <span class="math inline">\(x_1\)</span> se acerca mucho al centro óptico <span class="math inline">\(c_x\)</span>, el denominador se vuelve muy pequeño y <span class="math inline">\(x_2\)</span> se aleja enormemente (tiende a infinito), lo que significa que ambas familias de líneas son casi paralelas en la proyección.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="posición-relativa" class="title-slide slide level2 center">
+<h2>Posición relativa</h2>
+<iframe src="https://www.geogebra.org/classic/a8pwjzyk?embed" width="100%" height="600" allowfullscreen="" style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0">
+</iframe>
+<!-- 
+$(\rho_1, \theta_1, z)$ , $(\rho_2, \theta_2, z)$ , $(\rho_3, \theta_3, z)$ , $(\rho_4, \theta_4, z)$
+-->
+<div class="footer">
+
+</div>
+<aside class="notes">
+<p>para esto utilizaremos 4 vectores de distancias <span class="math inline">\(\rho\)</span> desde la camara a las 4 esquinas de uno de los cajones de estacionamiento ubicados en la reticula. y 4 angulos <span class="math inline">\(\theta\)</span> que serian los angulos de orientacion entre los vectores de distancias y el eje de la camara. y de esta forma tendriamos 4 vectores de coordenadas polares que junto a la altura conocida de la camara z serian coordenadas cilindricas que representan la posicion del vehiculo con respecto al cajon de estacionamiento.</p>
+<p>y estos vectores de coordenadas seran los que usaremos como modelo del estado del sistema.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

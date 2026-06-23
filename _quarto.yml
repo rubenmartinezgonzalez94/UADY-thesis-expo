@@ -2,8 +2,8 @@ project:
   type: website
   output-dir: docs
 
-title: "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación"
-date: 06/16/2025
+title: "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación"
+date: 06/25/2026
 date-format: "MMM, YYYY"
 authors:
   - name: Ing. Rubén Martínez González
@@ -15,8 +15,8 @@ authors:
 
 format:
   revealjs:
-    title: "Estimación de la pose de un vehículo respecto a su estacionamiento en simulación"
-    subtitle: "Proyecto de tesis"
+    title: "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación"
+    subtitle: "Examen de grado"
     bibliography: references.bib
 #    header: "Protocolo de tesis"
     footer: Facultad de Matemáticas</br>Universidad Autónoma de Yucatán
@@ -31,15 +31,16 @@ format:
     progress: true
     history: true
     logo: /img/uady.svg
-    toc: false
+    toc: true
     toc-depth: 2
-    toc-title: "Contenido"
+    toc-title: "Estructura de la presentación"
     toc-icon: "toc"
     code-fold: true
     code-line-numbers: true
     code-line-highlight: true
     sc-sb-title: true
 #    incremental: true
+
 css: styles.css
 slide-level: 3
 number-sections: false
