@@ -137,7 +137,7 @@
     "href": "index.html#parking-env",
     "title": "Estimación de la pose de un vehículo mediante cámaras y sensores para estacionamiento automático en simulación",
     "section": "Parking-env",
-    "text": "Parking-env\n\nAcciones: espacio continuo\nBox([-1, -1], [1, 1]) → [aceleración, dirección]\nObservación: vector continuo de 6 elementos:\n[x, y, vx, vy, cos(θ), sin(θ)]\n\nObjetivo: alcanzar una posición objetivo (Landmark).\nRecompensa: basada en la distancia al objetivo y penalizaciones por acciones:\nAlgoritmo: SAC (Soft Actor-Critic) \\[\nr = -|g - s| - α·|a|\n\\]\n\n\neste enviroment de estacionamiento se llama parking-env y es un entorno de estacionamiento\n\ng: posición del goal (desired_goal)\ns: estado actual (achieved_goal)\na: acción tomada\nα: regularizador factor de penalización a acciones extremas"
+    "text": "Parking-env\n\nAcciones: espacio continuo\nBox([-1, -1], [1, 1]) → [aceleración, dirección]\nObservación: vector continuo de 6 elementos:\n[x, y, vx, vy, cos(θ), sin(θ)]\n\nObjetivo: alcanzar una posición objetivo (Landmark).\nAlgoritmo: SAC (Soft Actor-Critic)\nRecompensa: basada en la distancia al objetivo y penalizaciones por acciones: \\[\nr = -|g - s| - α·|a|\n\\]\n\n\neste enviroment de estacionamiento se llama parking-env y es un entorno de estacionamiento\n\ng: posición del goal (desired_goal)\ns: estado actual (achieved_goal)\na: acción tomada\nα: regularizador factor de penalización a acciones extremas"
   },
   {
     "objectID": "index.html#arquitectura-de-integración",

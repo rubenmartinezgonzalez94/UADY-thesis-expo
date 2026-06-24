@@ -723,8 +723,8 @@ deep Q-Network, Proximal Policy Optimization, Soft Actor-Critic, este último es
 - **Observación**: vector continuo de 6 elementos:  
   `[x, y, vx, vy, cos(θ), sin(θ)]`  
 - **Objetivo**: alcanzar una posición objetivo (`Landmark`).
-- **Recompensa**: basada en la distancia al objetivo y penalizaciones por acciones:
 - **Algoritmo**: SAC (Soft Actor-Critic)
+- **Recompensa**: basada en la distancia al objetivo y penalizaciones por acciones:
 $$
   r = -|g - s| - α·|a|
 $$
