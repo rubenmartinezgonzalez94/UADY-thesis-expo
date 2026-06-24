@@ -19,7 +19,7 @@ format:
     subtitle: "Examen de grado"
     bibliography: references.bib
 #    header: "Protocolo de tesis"
-    footer: Facultad de Matemáticas</br>Universidad Autónoma de Yucatán
+    footer: Facultad de Matemáticas UADY
     footer-logo-link: "https://www.matematicas.uady.mx"
     theme: moon
     slideNumber: true

@@ -5,20 +5,27 @@
 
 <!--
 Buen dia, les habla ing Ruben mg y a continuación les presentaré
-los avances en mi investigación titulada "Estimación ...".
-asesorada por los doctores Arturo E
+mi investigación titulada "Estimación ...".
+asesorada por el doctor Arturo E
 -->
 
 <!--
-La presentación estará estructurada con una introducción del problema que se aborda
-la metodología que se propone
-y otros conceptos del marco teórico como objetivos, preguntas, hipótesis.
+La presentación estará estructurada de la siguiente manera:
+- una introducción del problema que se aborda y tecnologías propuestas
+- se establecerán algunos conceptos del marco teórico como objetivos y preguntas
+- entraremos en detalle sobre la metodología utilizada para cumplir estos objetivos
+- como parte de esta metodología se presentará el entorno de simulación,
+ el proceso de detección de la retícula y como se realizan las mediciones  
+- a continuación detallaremos algunas validaciones y experimentaciones para evaluar el proceso 
+- En cuanto posibles aplicaciones de la solución , integraremos el proceso de detección de la retícula
+ en un sistema de control autónomo con aprendizaje por refuerzo
+- finalmente se presentarán algunas conclusiones y recomendaciones
 -->
 ::: {.notes}
 - Haciendo introducción al tema, podemos debatir algunas cuestiones sobre el estacionamiento como:
 :::
 
-## Estacionamientos
+## Estacionamientos {.unlisted}
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -47,7 +54,7 @@ mientras realizan otras actividades.
   que dependen unas de otras y si calculas mal en alguna ,
   en la siguiente maniobra se tendría rectificar esta equivocación.
 
-- que ayuda a solucionar este problema , pues Con la ayuda de sistemas de asistencia al conductor.
+- entonces algo que puede ayudar a solucionar este problema , son los sistemas de asistencia al conductor.
 
 :::
 
@@ -59,7 +66,7 @@ mientras realizan otras actividades.
 
 ::: {.notes}
 
-- Los sistemas de asistencia al conductor son programas informáticos
+- Estos sistemas son programas informáticos
   que proporcionan información sobre el entorno del vehículo.
 
 - Algunos son tan avanzados que pueden estacionar el vehículo de forma autónoma
@@ -135,8 +142,6 @@ mientras realizan otras actividades.
 <img class="my-h" src="/img/front.png" alt=""/>
 <img class="my-h" src="/img/up.png" alt=""/>
 
-:::footer
-:::
 
 ::: {.notes}
 - y en construir este sistema de vision computacional sera nuesto objetivo en esta investigacion.
@@ -153,7 +158,7 @@ mientras realizan otras actividades.
 
 # Marco Teórico
 ::: {.notes}
-por lo que podemos definir el marco teórico de la investigación como:
+Entonces después de esta introducción podemos definir el marco teórico de la investigación:
 :::
 
 ## Objetivo general
@@ -162,7 +167,7 @@ Desarrollar un sistema de visión por computadora en simulación para la detecci
 de estacionamiento y estimación de pose vehicular, que proporcione información geométrica
 aplicable a sistemas de asistencia al conductor.
 
-## Objetivos específicos
+## Objetivos específicos {.unlisted}
 - Implementar un entorno realista de estacionamiento utilizando un software de simulación con vehículos y sensores de cámara.
 - Desarrollar algoritmos de procesamiento de imágenes para la detección de líneas de marcado de cajones de estacionamiento.
 - Diseñar e implementar un método para estimar homografías que ajusten retículas a la información extraída de las imágenes de la cámara.
@@ -212,8 +217,6 @@ esta situación lo mas realista posible.
 
 ::::
 
-:::footer
-:::
 
 ::: {.notes}
 
@@ -242,11 +245,10 @@ Proponemos: Carla (Car learning to act) pssei.
 - y las imagenes de abajo son ejemplos de los datos capturados por la camara
 :::
 
-## Propiedades y geometría de estacionamientos
+## Propiedades y geometría de estacionamientos {.unlisted}
 
 ::: {.notes}
-una vez que tengamos los datos de la camara captados en el entorno de simulacion
-podemos procesarlos para detectar la ubicacion estacionamiento
+Para lograr detectar la retícula de estacionamiento, podemos aprovechar algunas propiedades generales de la geometría de los estacionamientos 
 :::
 ### Propiedades
 
@@ -256,8 +258,7 @@ organizada como una retícula de paralelogramos.
 intersectarse en los “puntos de fuga”.
 
 ::: {.notes}
-Hay dos propiedades que podemos aprovechar para plantear el mé-
-todo:
+Hay dos propiedades que podemos aprovechar para plantear el método:
 :::
 
 ### Proyección de la imagen en el plano de la cámara
@@ -299,12 +300,16 @@ podriamos calcular la ubicacion de cualquier punto de interes en la reticula.
 :::
 
 ## Detección de la retícula de estacionamiento
+::: {.notes}
+Entonces para proceder a hacer la detección, planteamos el siguiente flujo de procesamiento. 
+:::
 
 ### Flujo de detección de la retícula de estacionamiento
 
 ::: {style="text-align: center;"}
 <img src="/img/line_detection/piperline-reticule11.svg" alt="Pipeline de detección"/>
 :::
+
 
 ### Detección de líneas paralelas
 
@@ -318,14 +323,14 @@ podriamos calcular la ubicacion de cualquier punto de interes en la reticula.
 
 - Umbralización
 - Detección de contornos (Algoritmo de Canny)
-- Lineas paralelas (Transformada de Hough)
+- líneas paralelas (Transformada de Hough)
 :::
 ::::
 
 ::: {.notes}
 Para detectar las líneas paralelas de interes en la imagen, primero se hace un 
 preprocesamiento del area debajo del horizonte de la imagen donde estara el estacionamiento.
-donde se resaltan las lineas claras mediante umbralizacion
+donde se resaltan las líneas claras mediante umbralizacion
 
 luego se utiliza el algorithmo de Canny para detectar los bordes de las figuras resaltadas en la umbraizacion.
 
@@ -361,7 +366,7 @@ c
 $$
 :::
 ::: {.column width="40%"}
-
+- $x1,y1$ y $x2,y2$  coordenadas de inicio y fin de cada recta
 - Calculamos el espacio nulo (a,b,c) de cada recta
 
 :::
@@ -371,7 +376,8 @@ $$
 Una vez obtenidas las coordenadas de inicio y fin de cada línea paralela, podemos utilizar la ecuacion
 general de la recta ax+by+c=0 ,para formular un sistema de ecuaciones de esta forma matricial
 donde x1,y1 y x2,y2 son las coordenadas de inicio y fin de cada recta 
-y abc son los coeficientes que podemos resolver con la descomposicion en valores singulares.
+y abc son los coeficientes que podemos resolver mediante métodos estándar como la regla de Cramer o elimi-
+nación gaussiana
 
 :::
 
@@ -420,16 +426,13 @@ Geometric Computation for Machine Vision
  para saber la ubicacion del punto de fuga que mejor representa estas intersecciones,
 
  podemos calcular el eigen vector asociado al eigen valor mas pequeño de la matriz M donde M es la 
- suma de cada linea homogenea por su transpuesta y multiplicada por una ponderacion que calculamos en dependencia de
- la longitud de cada linea
+ suma de cada línea homogenea por su transpuesta y multiplicada por una ponderacion que calculamos en dependencia de
+ la longitud de cada línea
 
  w - ponderacion
 
 :::
 
-
-:::footer
-:::
 
 ### líneas que concurren en los puntos de fuga
 
@@ -445,7 +448,7 @@ Geometric Computation for Machine Vision
 
 ::: {.notes}
 - y realizando esta operacion ya tendriamos la ubicacion de los puntos de fuga de la imagen
-- y podemos filtrar las lineas relevantes que los generaron 
+- y podemos filtrar las líneas relevantes que los generaron 
 
 :::
 
@@ -482,10 +485,10 @@ los umbrales de canny, hough, clustering, cercania al horizonte, etc.
 :::
 
 ::: {.notes}
-- entonces una vez que tenemos estas lineas relevantes que representan la reticula de estacionamiento,
-- podemos ajustar una reticula a estas lineas utilizando el algoritmo RANSAC
+- entonces una vez que tenemos estas líneas relevantes que representan la reticula de estacionamiento,
+- podemos ajustar una reticula a estas líneas utilizando el algoritmo RANSAC
 - que es un algoritmo iterativo que ajusta un modelo a los datos con muchos valores atípicos .
-- este es un caso tipico donde se utiliza para encontrar cual es la linea que mejor representa una nube de puntos
+- este es un caso tipico donde se utiliza para encontrar cual es la línea que mejor representa una nube de puntos
 
 :::
 
@@ -497,12 +500,11 @@ los umbrales de canny, hough, clustering, cercania al horizonte, etc.
 
 ## Ajuste de la retícula (RANSAC) {.unlisted}
 
-
-<img src="/img/line_detection/ramsac_loop.svg" alt=""/>
-<img src="/img/line_detection/transformacion.png" alt=""/>
+<img src="/img/line_detection/ramsac_loop.svg" alt="" style="width:35vw;"/>
+<img src="/img/line_detection/transformacion.png" alt="" style="width:35vw;"/>
 
 ::: {.notes}
-- en nuestro caso, utilizamos una variacion de RANSAC que ajusta el modelo una reticula de n x n  a las lineas detectadas
+- en nuestro caso, utilizamos una variacion de RANSAC que ajusta el modelo una reticula de n x n  a las líneas detectadas
 - para esto el algoritomo ...
 
 :::
@@ -522,8 +524,6 @@ los umbrales de canny, hough, clustering, cercania al horizonte, etc.
 - y al final del algoritmo la homografia con menor error es una buena candidata para mapear la reticula regular
 a los cajones de estacionamiento. 
 - en este ejempo se ve como los cajones mas cercanos a la camara se ajustaron bastante bien
-- tambien se ve como un efecto espejo arriba del horizonte de la imagen debido a un trabajo pendiente que aun queda por hacer
-y es acotar los limites de la reticula que proyectamos.
 
 :::
 
@@ -531,7 +531,7 @@ y es acotar los limites de la reticula que proyectamos.
 
 ### Extracción de Coordenadas Tridimensionales
 
-<iframe src="https://www.geogebra.org/classic/upykxsxj" width="100%" height="500"></iframe>
+<iframe src="https://www.geogebra.org/classic/dn9eadpx" width="100%" height="500"></iframe>
 
 ::: {.notes}
 La proyección perspectiva deforma las distancias en la imagen. Para obtener coordenadas reales en 3D, invertimos esta transformación.
@@ -547,15 +547,23 @@ Usamos los parámetros de la cámara (altura, distancia focal, centro óptico) p
 
 ### Obtención de Coordenadas Tridimensionales en el Plano del Suelo
 
-::: {style="font-size: 0.8em;"}
+:::: {.columns style="font-size: 0.7em;"}
+::: {.column width="60%"}
 
-1. **Normalizar coordenadas imagen:** $$\mathbf{r}_{cam} = \mathbf{K}^{-1} \begin{bmatrix} u \\ v \\ 1 \end{bmatrix}$$
+1. **Construir $\mathbf{K}$:**
+$$f = \frac{w}{2\tan(\text{FOV}/2)}, \quad \mathbf{K} = \begin{bmatrix} f & 0 & c_x \\ 0 & f & c_y \\ 0 & 0 & 1 \end{bmatrix}$$
 
-2. **Escalar rayo hasta intersectar suelo:** $$\lambda = \frac{h}{r_{cam,y}}$$
-
-3. **Obtener punto 3D en el suelo:** $$\mathbf{P}_{suelo} = \lambda \cdot \mathbf{r}_{cam} = \begin{bmatrix} X \\ 0 \\ Z \end{bmatrix}$$
+2. **Normalizar coordenadas:** $$\mathbf{r}_{cam} = \mathbf{K}^{-1} \begin{bmatrix} u \\ v \\ 1 \end{bmatrix}$$
 
 :::
+::: {.column width="40%"}
+
+3. **Escalar rayo hasta intersectar suelo:** $$\lambda = \frac{h}{r_{cam,y}}$$
+
+4. **Obtener punto 3D en el suelo:** $$\mathbf{P}_{suelo} = \lambda \cdot \mathbf{r}_{cam} = \begin{bmatrix} X \\ 0 \\ Z \end{bmatrix}$$
+
+:::
+::::
 :::footer
 :::
 
@@ -564,11 +572,13 @@ Convertimos cada punto detectado en la imagen a una coordenada real en metros en
 
 **Explicación del proceso:**
 
-Paso 1: Tomamos un punto (u,v) en píxeles de la imagen y lo multiplicamos por la inversa de la matriz de calibración K. Esto nos da un rayo normalizado en coordenadas de cámara que apunta desde el foco a través de ese punto.
+Paso 1: Construimos la matriz K con los parámetros intrínsecos de la cámara. La distancia focal f la calculamos a partir del ancho de la imagen w y el campo de visión FOV. cx y cy son el centro óptico, generalmente el centro de la imagen. K encapsula cómo la cámara proyecta el mundo en píxeles.
 
-Paso 2: Sabemos que el suelo está a una altura h bajo la cámara (a Y=0 en coordenadas de cámara). Escalamos el rayo por un factor λ que hace que su componente Y alcance exactamente 0. Este factor λ es simplemente h dividido por la componente Y del rayo.
+Paso 2: Tomamos un punto (u,v) en píxeles de la imagen y lo multiplicamos por la inversa de K. Esto nos da un rayo normalizado en coordenadas de cámara que apunta desde el foco a través de ese punto.
 
-Paso 3: Multiplicamos el rayo completo por λ. El resultado es el punto 3D en el plano del suelo. Las componentes X y Z son las coordenadas reales en metros en el suelo (la componente Y es 0 porque está en el plano).
+Paso 3: El rayo del paso 2 apunta en una dirección pero no tiene longitud definida — es como una flecha infinita. Necesitamos saber exactamente en qué punto esa flecha toca el suelo. Sabemos que la cámara está a una altura h sobre el suelo, entonces el suelo siempre está a Y = h metros debajo. λ es simplemente cuánto hay que "estirar" esa flecha para que su componente vertical llegue justo a esa altura h. Es una regla de tres: si el rayo avanza r_y en vertical por cada unidad, necesito estirarlo h/r_y veces para llegar a h.
+
+Paso 4: Multiplicamos el rayo completo por λ. El resultado es el punto 3D en el plano del suelo. Las componentes X y Z son las coordenadas reales en metros en el suelo (la componente Y es 0 porque está en el plano).
 
 **Por qué funciona:** Esto es la inversa de la proyección perspectiva. En lugar de ir de 3D→2D como hace la cámara, vamos de 2D→3D, deshaciendo la deformación perspectiva usando los parámetros de la cámara.
 :::
@@ -620,7 +630,7 @@ Este gráfico muestra cómo evoluciona el error de reconstrucción RANSAC a lo l
 **Interpretación:** Puedes ver que el error se mantiene bajo y consistente durante la mayoría del tiempo, con algunos picos ocasionales que ocurren en ángulos extremos o cuando hay oclusiones. Los espacios vacíos al inicio (primeros frames) representan momentos donde RANSAC no pudo encontrar un modelo válido, una limitación que ocurre cuando el vehículo está en perspectivas muy extremas. Sin embargo, una vez que el vehículo obtiene perspectivas más reveladoras de la retícula, el error disminuye significativamente.
 :::
 
-## Validación cuantitativa: Distribución global del error
+## Validación cuantitativa: Distribución global del error {.unlisted}
 
 <img src="/img/vc_validation/ransac_histogram.png" alt="Distribución del error"/>
 
@@ -654,7 +664,7 @@ Este caso representa uno de los mejores resultados del sistema (error de ~13 pí
 **Por qué funciona bien:** A pesar de los vehículos estacionados que generan ruido, el algoritmo detecta correctamente solo las líneas que convergen a los puntos de fuga principales, ignorando el ruido. La reconstrucción de la retícula es coherente y permite realizar mediciones métricas confiables para planificar movimientos del vehículo.
 :::
 
-## Validación cualitativa: Vehículo en dirección paralela
+## Validación cualitativa: Vehículo en dirección paralela {.unlisted}
 
 <img src="/img/vc_validation/v1c.png" alt="Vehículo paralelo procesado"/>
 
@@ -682,17 +692,15 @@ Este caso presenta uno de los desafíos más difíciles: cuando el vehículo se 
 # Aplicación en ambiente de RL
 
 ::: {.notes}
-- y hasta aqui ya tendriamos cumplido el objetivo de la investigacion, que es poder representar la posicion del vehiculo
-con respecto al estacionamiento a partir de las imagenes de la camara.
+- y hasta aqui ya tendriamos cumplido el objetivo de la investigacion, que es poder representar la posicion del vehiculo con respecto al estacionamiento a partir de las imagenes de la camara.
+- pero para demostrar como se puede utilizar el resultado de esta investigacion , se realizo una experimentacion de integracion de esta posicion como observacion de un agente de aprendizaje por refuerzo en un ambiente de estacionamiento.
 
-- pero para demostrar como se puede utilizar esta investigacion para entrenar un agente de aprendizaje por refuerzo
-hicimos una experimentacion extra de nuestro modelo en un ambiente de RL.
 :::
 
-## Highway-env
+## Highway-env {.unlisted}
 - Colección de entornos para tareas de conducción autónoma y toma de decisiones tácticas [@highway-env]
 <img class="my-h" src="/img/rl/parking-env.gif" alt=""/>
-<img class="my-h" src="/img/rl/intersection-env.gif" alt=""/>
+<img class="my-h" src="/img/rl/intersection-env.gif" alt="" style="margin-right: 1em !important;"/>
 <img class="my-h" src="/img/rl/racetrack-env.gif" alt=""/>
 <img class="my-h" src="/img/rl/roundabout-env.gif" alt=""/>
 
@@ -702,19 +710,21 @@ hicimos una experimentacion extra de nuestro modelo en un ambiente de RL.
 - y baseline3 para entrenar los agentes con implementaciones confiables de algoritmos de aprendizaje por refuerzo como
 deep Q-Network, Proximal Policy Optimization, Soft Actor-Critic, este último es el que utilizamos en nuestra experimentación.
 - aqui podemos ver algunos de los entornos que provee, rotondas, intersecciones, curvas, estacionamiento, etc.
+- que le podemos mejorar a este entorno ? pues que en el entorno original, el agente tiene acceso a la posición exacta del vehículo y del estacionamiento, lo cual no es realista. En la vida real, un vehículo autónomo no tiene acceso a coordenadas perfectas; debe inferir su posición a partir de sensores como cámaras.
 :::
 
 :::footer
 :::
 
-## Parking-env
+## Parking-env {.unlisted}
 
 - **Acciones**: espacio continuo  
   `Box([-1, -1], [1, 1]) → [aceleración, dirección]`
 - **Observación**: vector continuo de 6 elementos:  
   `[x, y, vx, vy, cos(θ), sin(θ)]`  
-- **Objetivo**: alcanzar una posición objetivo (`Landmark`) con orientación deseada.
+- **Objetivo**: alcanzar una posición objetivo (`Landmark`).
 - **Recompensa**: basada en la distancia al objetivo y penalizaciones por acciones:
+- **Algoritmo**: SAC (Soft Actor-Critic)
 $$
   r = -|g - s| - α·|a|
 $$
@@ -769,7 +779,7 @@ La arquitectura de nuestra implementación integra 4 componentes clave:
 **Lo clave**: Tu sistema de visión actúa como el "intérprete de estado" que convierte imágenes en información numérica que el agente puede usar. Esto es realista: a diferencia de entornos ideales que dan coordenadas perfectas, aquí el agente aprende con información visual procesada (con ruido e incertidumbre real).
 :::
 
-## Parking-env (Nuestra versión)
+## Parking-env (Nuestra versión) {.unlisted}
 
 
 :::: {.columns}
@@ -811,7 +821,8 @@ El resultado: un agente que aprende a estacionar usando SOLO información visual
 
 ## Entrenamiento del agente
 
-| **Métrica** | **Inicial (~350 steps)** | **Highway-env Original** | **Nuestro Wrapper con VC** |
+
+| **Métrica** | **Inicial** | **Highway-env Original** | **Nuestro Wrapper con VC** |
 |---|---|---|---|
 | | | | |
 | **Desempeño del agente** | | | |
@@ -832,49 +843,40 @@ El resultado: un agente que aprende a estacionar usando SOLO información visual
 | Pérdida coef. entropía (adimensional) | -0.832 | 0.622 | -0.34 |
 | Actualizaciones de red | 249 | 99856 | 8215 |
 
+
 ::: {.notes}
-**Tres configuraciones comparadas:**
 
-1. **Inicial (~350 steps)**: Estado inicial del entrenamiento, antes de cualquier aprendizaje significativo. Sirve como referencia del punto de partida.
+**Desempeño del agente:**
 
-2. **Highway-env Original**: Entorno estándar de Highway-env con:
-   - Observaciones perfectas (posición, velocidad, orientación conocidas con precisión)
-   - Física simplificada y bidimensional
-   - Entrenado durante ~46 minutos (3292 episodios, 99957 timesteps)
-   - **Resultado: 93% de tasa de éxito** (el agente aprende muy rápido)
+- *Longitud promedio (pasos/ep)* → cuántos pasos dura un episodio en promedio
+  → highway 20 pasos (llega rápido y bien), nuestro 92 (da más vueltas, tarda más en llegar o falla)
+- *Recompensa promedio* → qué tan bien lo hace en promedio, menos negativo es mejor
+  → initial -51.8, highway -6.9 (casi perfecto), nuestro -35.2 (mejoró respecto al inicio)
+- *Tasa de éxito* → el indicador más directo: 0% → 93% → 18%
 
-3. **Nuestro Wrapper con VC**: Tu implementación híbrida que integra:
-   - CARLA (física realista 3D)
-   - Tu sistema de visión (percepe realista basada en imágenes: Canny → Hough → RANSAC → Proyección 3D)
-   - Gymnasium + Highway-env (interfaz estándar)
-   - Entrenado durante ~25 minutos (101 episodios, 9210 timesteps)
-   - **Resultado: 18% de tasa de éxito**
+**Información de entrenamiento:**
 
-**¿Por qué es diferente el 18% vs 93%?**
+- *Episodios* → highway tuvo 3292, nuestro solo 101 (CARLA es más lento de simular)
+- *FPS* → highway corre a 36 fps, nuestro a 12 (CARLA + visión consume más CPU/GPU)
+- *Tiempo* → 46 min vs 25 min, pero con muchos menos episodios por minuto
 
-**Mayor complejidad realista:** Highway-env recibe posición GPS perfecta. Tu sistema debe inferirla de imágenes con:
-- Ruido en detección de bordes (Canny)
-- Errores en detección de líneas (Hough)
-- Oclusiones por otros vehículos
-- Variabilidad en RANSAC
+**Métricas de red:**
 
-**Costo computacional:**
-- Renderizado 3D de CARLA (fotorrealismo) vs representación 2D
-- Física vehicular compleja vs modelo cinemático simple
-- Procesamiento visual en cada frame
-- Todo esto reduce fps de 36 a 12 y episodios por minuto
+- *Pérdida del actor* → mide el balance entre explotar buenas acciones y mantener variedad; negativo = el agente prioriza explotar (confía en sus acciones), positivo = aún balancea exploración
+  → highway 1.44 (converge con balance sano), nuestro -0.76 (empieza a explotar pero no terminó de converger)
+- *Pérdida del crítico* → menor es mejor, mide qué tan bien estima recompensas futuras
+  → 0.035 → 0.005 (highway) / 0.011 (nuestro) → ambos aprendieron
+- *Coeficiente de entropía* → alto = explora, bajo = ya sabe qué hacer
+  → highway en 0.006 (converge), nuestro en 0.62 (aún aprendiendo cuando paramos)
+- *Pérdida coef. entropía* → controla si SAC sube o baja la exploración automáticamente
+  → negativo = haciéndose más determinista, positivo = explorando más
 
-**Lo importante: El 18% es una VALIDACIÓN**
-
-El agente SÍ APRENDIÓ (0% → 18%) usando SOLO información visual procesada. Esto demuestra que:
-- Tu sistema de visión proporciona características geométricas suficientes
-- Es viable para control autónomo en tiempo real
-- Podría transferirse a vehículos reales (Highway-env no podría, requiere GPS)
-
-Con hardware más potente (GPU profesional, múltiples entornos paralelos), se alcanzarían mayores tasas de éxito.
+**Mensaje final:**
+- El agente pasó de 0% a 18% sin GPS, solo con visión computacional
+- Eso valida que el pipeline extrae suficiente información geométrica para control autónomo
 :::
 
-## Progresión del Aprendizaje
+<!-- ## Progresión del Aprendizaje
 
 **Evidencia de aprendizaje progresivo en tu configuración:**
 
@@ -885,7 +887,7 @@ Con hardware más potente (GPU profesional, múltiples entornos paralelos), se a
   - El agente desarrolló políticas que lo acercan consistentemente al objetivo
 
 - **Coeficiente de entropía**: Disminución de **0.78 → 0.62**
-  - El agente reduce exploración aleatoria y favorece acciones más determinísticas
+  - El agente reduce exploración aleatoria y favorece acciones más determinísticas -->
 
 ::: {.notes}
 **Lo importante:**
@@ -904,21 +906,19 @@ El resultado del 18% de tasa de éxito **NO es un fracaso**, es una **validació
 - El tiempo limitado (25 min) vs 46 min del original también afecta la acumulación de experiencia
 ::::
 
-## Conclusión
+# Conclusiones
 
 ::: {style="font-size: 0.80em;"}
 
 **Contribución central: Sistema de visión por computadora para estacionamiento autónomo**
 
-- ✅ Desarrollamos un **pipeline completo** de visión: detección de líneas → puntos de fuga → reconstrucción 3D → mediciones métricas
+- ✅ Desarrollamos un **flujo** de visión: detección de líneas → puntos de fuga → reconstrucción 3D → mediciones métricas
 
-- ✅ **Validación cuantitativa**: RANSAC mantiene error <30px en 75% de frames en múltiples perspectivas
-
-- ✅ **Validación cualitativa**: Sistema robusto ante oclusiones, ruido y ángulos extremos
+- ✅ **Validación**: RANSAC mantiene error <30px en 75% de frames
 
 - ✅ **Integración con RL**: El sistema proporciona información de estado suficientemente precisa para entrenar agentes de control autónomo (18% de éxito con información visual realista)
 
-- ✅ **Aplicabilidad real**: Transferible a vehículos reales equipados con cámaras (vs entornos ideales que requieren GPS de precisión centimétrica)
+- ✅ **Aplicabilidad real**: Transferible a vehículos reales equipados con cámaras 
 
 :::
 
@@ -942,7 +942,11 @@ Esta investigación aborda un problema real: ¿cómo un vehículo autónomo pued
 # Fin {.unlisted}
 Gracias por su atención...
 
-# Extras {.unlisted}
+
+
+
+
+## Extras
 
 ## Recomendaciones
 - Utilizar patrones de retículas mas complejas
@@ -991,6 +995,46 @@ $$
 ::::
 
 Hartley, R., & Zisserman, A. (2003). Multiple view geometry in computer vision. Cambridge university press.
+
+:::footer
+:::
+
+## Coeficientes de la recta: Cramer vs Gauss
+
+$\quad Ax_1+By_1=1,\quad Ax_2+By_2=1$
+
+::::: {style="font-size: 0.75em;"}
+:::: {.columns}
+::: {.column width=”50%”}
+
+**Regla de Cramer**
+
+- Matriz de coeficientes $M = \begin{bmatrix} x_1 & y_1 \\ x_2 & y_2 \end{bmatrix}$
+- $\det(M) = x_1 y_2 - x_2 y_1$
+- $A = \dfrac{y_2 - y_1}{\det(M)}$
+- $B = \dfrac{x_1 - x_2}{\det(M)}$
+:::
+::: {.column width=”50%”}
+**Eliminación Gaussiana**
+
+- Matriz aumentada $\left[\begin{array}{cc|c} x_1 & y_1 & 1 \\ x_2 & y_2 & 1 \end{array}\right]$
+- Factor $f = x_2 / x_1$
+- $R_2 \leftarrow R_2 - f \cdot R_1 \;\Rightarrow\; \left[\begin{array}{cc|c} x_1 & y_1 & 1 \\ 0 & y_2 - f y_1 & 1-f \end{array}\right]$
+- Despejar $B$ por sustitución hacia atrás, luego $A$
+:::
+::::
+:::::
+
+
+::: {.notes}
+Tenemos un sistema de 2 ecuaciones con 2 incógnitas, A y B, porque fijamos C = -1.
+
+**Regla de Cramer:** calculamos el determinante de la matriz formada por las coordenadas de los dos puntos. Luego A y B son cocientes de determinantes — reemplazas una columna por el vector del lado derecho y divides entre el determinante principal.
+
+**Eliminación Gaussiana:** tomamos la matriz aumentada y eliminamos la x de la segunda fila multiplicando la primera fila por un factor y restándola. Eso nos deja una fila con solo B, que despejamos directamente. Luego sustituimos hacia atrás para obtener A.
+
+Ambos métodos dan el mismo resultado. En la práctica usamos el que sea más conveniente de implementar.
+:::
 
 :::footer
 :::
@@ -1074,6 +1118,62 @@ Cuando dos direcciones en 3D son perpendiculares entre sí, la matriz de calibra
 Al aplicar esta relación a ambas direcciones ortogonales y simplificar, obtenemos una fórmula directa: conociendo el primer punto de fuga ($x_1$) y los parámetros intrínsecos de la cámara ($f$, $c_x$), podemos calcular exactamente dónde estará el segundo punto de fuga.
 
 **Interpretación geométrica:** Cuando $x_1$ se acerca mucho al centro óptico $c_x$, el denominador se vuelve muy pequeño y $x_2$ se aleja enormemente (tiende a infinito), lo que significa que ambas familias de líneas son casi paralelas en la proyección.
+:::
+
+## Escalado del rayo al suelo (A)
+
+:::: {.columns style="font-size: 0.85em;"}
+::: {.column width="50%"}
+**¿Qué es $\lambda$?**
+
+El rayo $\mathbf{r}_{cam}$ apunta en una dirección pero no tiene longitud definida.
+
+$\lambda$ es cuánto hay que estirarlo para que llegue exactamente al suelo:
+
+$$\lambda = \frac{h}{r_{cam,y}}$$
+
+- $h$ = altura de la cámara sobre el suelo
+- $r_{cam,y}$ = cuánto "baja" el rayo por unidad
+:::
+::: {.column width="50%"}
+**Ejemplo con números**
+
+Cámara a $h = 1.5\,\text{m}$, rayo $\mathbf{r}_{cam} = [0.3,\; 0.5,\; 1.0]$
+
+$$\lambda = \frac{1.5}{0.5} = 3$$
+
+$$\mathbf{P}_{suelo} = 3 \cdot [0.3,\; 0.5,\; 1.0] = [0.9,\; 1.5,\; 3.0]$$
+
+La componente $Y = 1.5\,\text{m}$ = altura de la cámara ✓
+
+Las coordenadas útiles son $X=0.9$ y $Z=3.0$ metros.
+:::
+::::
+
+:::footer
+:::
+
+## Escalado del rayo al suelo (B)
+
+::: {style="font-size: 0.85em;"}
+```
+        [cámara]          ← altura h sobre el suelo
+            |
+            |  rayo r_cam (dirección, sin longitud)
+            |
+            ✦  ← punto buscado: donde el rayo toca el suelo
+____________|____________  plano del suelo (Y = 0)
+```
+
+- El rayo baja $r_{cam,y}$ metros en $Y$ por cada unidad de longitud
+- El suelo está a $h$ metros en $Y$
+- Necesito estirarlo $\lambda = h \,/\, r_{cam,y}$ veces para llegar
+- Entonces el punto en el suelo es $\mathbf{P} = \lambda \cdot \mathbf{r}_{cam}$
+
+**regla de tres**: si avanzo $r_{cam,y}$ por unidad, ¿cuántas unidades necesito para avanzar $h$?
+:::
+
+:::footer
 :::
 
 ## Posición relativa
