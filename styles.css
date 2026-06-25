@@ -11,7 +11,7 @@
 }
 
 .title-slide h1 {
-    font-size: 2.0em !important;
+    font-size: 1.5em !important;
 }
 
 #title-slide {
@@ -122,7 +122,7 @@ img.my-h {
 
 .reveal table th,
 .reveal table td {
-    font-size: 14px;
+    font-size: 18px;
 }
 .csl-entry{
     font-size: 0.8em;

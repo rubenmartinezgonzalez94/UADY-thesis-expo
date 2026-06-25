@@ -455,7 +455,7 @@ Geometric Computation for Machine Vision
 ::::
 
 ### Experimentación y ajuste de parámetros
-<iframe src="https://www.youtube.com/embed/wckOQT7v0VI?autoplay=0&mute=1&loop=1&playlist=wckOQT7v0VI" width="100%" height="500">
+<iframe src="https://www.youtube.com/embed/wckOQT7v0VI?autoplay=1&mute=1&start=0&end=55&loop=1&playlist=wckOQT7v0VI" width="100%" height="500">
 </iframe>
 
 ::: {.notes}
@@ -825,40 +825,39 @@ El resultado: un agente que aprende a estacionar usando SOLO información visual
 | **Métrica** | **Inicial** | **Highway-env Original** | **Nuestro Wrapper con VC** |
 |---|---|---|---|
 | | | | |
-| **Desempeño del agente** | | | |
-| Longitud promedio (pasos/ep) | 87.5 | 20.1 | 92.0 |
-| Recompensa promedio (adimensional) | -51.8 | -6.92 | -35.2 |
-| **Tasa de éxito (%)** | **0** | **93** | **18** |
-| | | | |
 | **Información de entrenamiento** | | | |
 | Episodios completados | 4 | 3292 | 101 |
 | Pasos de simulación totales | 350 | 99957 | 9210 |
 | Tiempo transcurrido (s) | 6 | 2758 (~46 min) | 1520 (~25 min) |
 | Frecuencia de simulación (fps) | 52 | 36 | 12 |
 | | | | |
+| **Desempeño del agente** | | | |
+| Longitud promedio (pasos/ep) | 87.5 | 20.1 | 92.0 |
+| Recompensa promedio (adimensional) | -51.8 | -6.92 | -35.2 |
+| **Tasa de éxito (%)** | **0** | **93** | **18** |
+| | | | |
 | **Métricas de la red neuronal** | | | |
 | Pérdida del actor (adimensional) | -2.41 | 1.44 | -0.76 |
 | Pérdida del crítico (adimensional) | 0.0353 | 0.00482 | 0.011 |
 | Coeficiente de entropía (adimensional) | 0.78 | 0.00608 | 0.62 |
-| Pérdida coef. entropía (adimensional) | -0.832 | 0.622 | -0.34 |
-| Actualizaciones de red | 249 | 99856 | 8215 |
+
 
 
 ::: {.notes}
 
-**Desempeño del agente:**
-
-- *Longitud promedio (pasos/ep)* → cuántos pasos dura un episodio en promedio
-  → highway 20 pasos (llega rápido y bien), nuestro 92 (da más vueltas, tarda más en llegar o falla)
-- *Recompensa promedio* → qué tan bien lo hace en promedio, menos negativo es mejor
-  → initial -51.8, highway -6.9 (casi perfecto), nuestro -35.2 (mejoró respecto al inicio)
-- *Tasa de éxito* → el indicador más directo: 0% → 93% → 18%
 
 **Información de entrenamiento:**
 
 - *Episodios* → highway tuvo 3292, nuestro solo 101 (CARLA es más lento de simular)
 - *FPS* → highway corre a 36 fps, nuestro a 12 (CARLA + visión consume más CPU/GPU)
 - *Tiempo* → 46 min vs 25 min, pero con muchos menos episodios por minuto
+
+**Desempeño del agente:**
+- *Longitud promedio (pasos/ep)* → cuántos pasos dura un episodio en promedio
+  → highway 20 pasos (llega rápido y bien), nuestro 92 (da más vueltas, tarda más en llegar o falla)
+- *Recompensa promedio* → qué tan bien lo hace en promedio, menos negativo es mejor
+  → initial -51.8, highway -6.9 (casi perfecto), nuestro -35.2 (mejoró respecto al inicio)
+- *Tasa de éxito* → el indicador más directo: 0% → 93% → 18%
 
 **Métricas de red:**
 
@@ -914,7 +913,7 @@ El resultado del 18% de tasa de éxito **NO es un fracaso**, es una **validació
 
 - ✅ Desarrollamos un **flujo** de visión: detección de líneas → puntos de fuga → reconstrucción 3D → mediciones métricas
 
-- ✅ **Validación**: RANSAC mantiene error <30px en 75% de frames
+- ✅ **Validación**: RANSAC mantiene error <30px (5-10cm) en 75% de frames
 
 - ✅ **Integración con RL**: El sistema proporciona información de estado suficientemente precisa para entrenar agentes de control autónomo (18% de éxito con información visual realista)
 
@@ -924,6 +923,9 @@ El resultado del 18% de tasa de éxito **NO es un fracaso**, es una **validació
 
 :::footer
 :::
+
+
+
 
 ::: {.notes}
 Esta investigación aborda un problema real: ¿cómo un vehículo autónomo puede entender su posición respecto al estacionamiento usando SOLO información visual?

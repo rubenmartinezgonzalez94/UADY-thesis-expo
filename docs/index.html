@@ -758,7 +758,7 @@ M = \sum_{i=1}^{n} w_i l_i l_i^T
 </section>
 <section id="experimentación-y-ajuste-de-parámetros" class="slide level3 center">
 <h3>Experimentación y ajuste de parámetros</h3>
-<iframe src="https://www.youtube.com/embed/wckOQT7v0VI?autoplay=0&amp;mute=1&amp;loop=1&amp;playlist=wckOQT7v0VI" width="100%" height="500">
+<iframe src="https://www.youtube.com/embed/wckOQT7v0VI?autoplay=1&amp;mute=1&amp;start=0&amp;end=55&amp;loop=1&amp;playlist=wckOQT7v0VI" width="100%" height="500">
 </iframe>
 <aside class="notes">
 <ul>
@@ -1228,6 +1228,42 @@ r = -|g - s| - α·|a|
 <td></td>
 </tr>
 <tr class="even">
+<td><strong>Información de entrenamiento</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Episodios completados</td>
+<td>4</td>
+<td>3292</td>
+<td>101</td>
+</tr>
+<tr class="even">
+<td>Pasos de simulación totales</td>
+<td>350</td>
+<td>99957</td>
+<td>9210</td>
+</tr>
+<tr class="odd">
+<td>Tiempo transcurrido (s)</td>
+<td>6</td>
+<td>2758 (~46 min)</td>
+<td>1520 (~25 min)</td>
+</tr>
+<tr class="even">
+<td>Frecuencia de simulación (fps)</td>
+<td>52</td>
+<td>36</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
 <td><strong>Desempeño del agente</strong></td>
 <td></td>
 <td></td>
@@ -1250,42 +1286,6 @@ r = -|g - s| - α·|a|
 <td><strong>0</strong></td>
 <td><strong>93</strong></td>
 <td><strong>18</strong></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><strong>Información de entrenamiento</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Episodios completados</td>
-<td>4</td>
-<td>3292</td>
-<td>101</td>
-</tr>
-<tr class="odd">
-<td>Pasos de simulación totales</td>
-<td>350</td>
-<td>99957</td>
-<td>9210</td>
-</tr>
-<tr class="even">
-<td>Tiempo transcurrido (s)</td>
-<td>6</td>
-<td>2758 (~46 min)</td>
-<td>1520 (~25 min)</td>
-</tr>
-<tr class="odd">
-<td>Frecuencia de simulación (fps)</td>
-<td>52</td>
-<td>36</td>
-<td>12</td>
 </tr>
 <tr class="even">
 <td></td>
@@ -1317,33 +1317,16 @@ r = -|g - s| - α·|a|
 <td>0.00608</td>
 <td>0.62</td>
 </tr>
-<tr class="odd">
-<td>Pérdida coef. entropía (adimensional)</td>
-<td>-0.832</td>
-<td>0.622</td>
-<td>-0.34</td>
-</tr>
-<tr class="even">
-<td>Actualizaciones de red</td>
-<td>249</td>
-<td>99856</td>
-<td>8215</td>
-</tr>
 </tbody>
 </table>
 <aside class="notes">
-<p><strong>Desempeño del agente:</strong></p>
-<ul>
-<li><em>Longitud promedio (pasos/ep)</em> → cuántos pasos dura un episodio en promedio → highway 20 pasos (llega rápido y bien), nuestro 92 (da más vueltas, tarda más en llegar o falla)</li>
-<li><em>Recompensa promedio</em> → qué tan bien lo hace en promedio, menos negativo es mejor → initial -51.8, highway -6.9 (casi perfecto), nuestro -35.2 (mejoró respecto al inicio)</li>
-<li><em>Tasa de éxito</em> → el indicador más directo: 0% → 93% → 18%</li>
-</ul>
 <p><strong>Información de entrenamiento:</strong></p>
 <ul>
 <li><em>Episodios</em> → highway tuvo 3292, nuestro solo 101 (CARLA es más lento de simular)</li>
 <li><em>FPS</em> → highway corre a 36 fps, nuestro a 12 (CARLA + visión consume más CPU/GPU)</li>
 <li><em>Tiempo</em> → 46 min vs 25 min, pero con muchos menos episodios por minuto</li>
 </ul>
+<p><strong>Desempeño del agente:</strong> - <em>Longitud promedio (pasos/ep)</em> → cuántos pasos dura un episodio en promedio → highway 20 pasos (llega rápido y bien), nuestro 92 (da más vueltas, tarda más en llegar o falla) - <em>Recompensa promedio</em> → qué tan bien lo hace en promedio, menos negativo es mejor → initial -51.8, highway -6.9 (casi perfecto), nuestro -35.2 (mejoró respecto al inicio) - <em>Tasa de éxito</em> → el indicador más directo: 0% → 93% → 18%</p>
 <p><strong>Métricas de red:</strong></p>
 <ul>
 <li><em>Pérdida del actor</em> → mide el balance entre explotar buenas acciones y mantener variedad; negativo = el agente prioriza explotar (confía en sus acciones), positivo = aún balancea exploración → highway 1.44 (converge con balance sano), nuestro -0.76 (empieza a explotar pero no terminó de converger)</li>
@@ -1403,7 +1386,7 @@ r = -|g - s| - α·|a|
 <p><strong>Contribución central: Sistema de visión por computadora para estacionamiento autónomo</strong></p>
 <ul>
 <li><p>✅ Desarrollamos un <strong>flujo</strong> de visión: detección de líneas → puntos de fuga → reconstrucción 3D → mediciones métricas</p></li>
-<li><p>✅ <strong>Validación</strong>: RANSAC mantiene error &lt;30px en 75% de frames</p></li>
+<li><p>✅ <strong>Validación</strong>: RANSAC mantiene error &lt;30px (5-10cm) en 75% de frames</p></li>
 <li><p>✅ <strong>Integración con RL</strong>: El sistema proporciona información de estado suficientemente precisa para entrenar agentes de control autónomo (18% de éxito con información visual realista)</p></li>
 <li><p>✅ <strong>Aplicabilidad real</strong>: Transferible a vehículos reales equipados con cámaras</p></li>
 </ul>
