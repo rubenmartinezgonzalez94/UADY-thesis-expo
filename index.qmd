@@ -909,7 +909,7 @@ El resultado del 18% de tasa de éxito **NO es un fracaso**, es una **validació
 
 ::: {style="font-size: 0.80em;"}
 
-**Contribución central: Sistema de visión por computadora para estacionamiento autónomo**
+**Contribución central: Sistema de visión computacional para estimar la pose de un vehículo respecto a un estacionamiento**
 
 - ✅ Desarrollamos un **flujo** de visión: detección de líneas → puntos de fuga → reconstrucción 3D → mediciones métricas
 
